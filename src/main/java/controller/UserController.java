@@ -1,2 +1,4 @@
-package controller;public class UserController {
+package controller;
+
+public class UserController {
 }
