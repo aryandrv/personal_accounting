@@ -17,7 +17,12 @@ import java.time.LocalDateTime;
 
 public class Transaction {
     private int id;
+    private User user;
+    private Account account;
+    private double amount;
     private TypeEnum type;
+    private Titles titles;
+    private String description;
     private LocalDateTime transactionDate;
 
 
