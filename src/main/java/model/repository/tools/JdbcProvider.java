@@ -12,7 +12,7 @@ public class JdbcProvider {
     private JdbcProvider() {
     }
 
-    public static JdbcProvider getInstance() {
+    public static JdbcProvider getJdbcProvider() {
         return jdbcProvider;
     }
 

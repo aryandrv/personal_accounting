@@ -9,14 +9,14 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserRepository implements Repository<User> {
+public class UserRepository implements Repository<User>, AutoCloseable {
 
     private PreparedStatement preparedStatement;
     private Connection connection;
 
     @Override
     public User save(User user) throws Exception {
-        connection = JdbcProvider.getInstance().getConnection();
+        connection = JdbcProvider.getJdbcProvider().getConnection();
         preparedStatement = connection.prepareStatement(
                 "SELECT USER_SEQ.nextval AS NEXT_ID FROM DUAL"
         );
@@ -39,7 +39,7 @@ public class UserRepository implements Repository<User> {
 
     @Override
     public User edit(User user) throws Exception {
-        connection = JdbcProvider.getInstance().getConnection();
+        connection = JdbcProvider.getJdbcProvider().getConnection();
         preparedStatement = connection.prepareStatement(
                 "UPDATE USER_TBL SET NAME=?,FAMILY=?,USERNAME=?,PASSWORD=?,CREATIONDATE=? WHERE ID=?"
         );
@@ -56,7 +56,7 @@ public class UserRepository implements Repository<User> {
 
     @Override
     public User remove(int id) throws Exception {
-        connection = JdbcProvider.getInstance().getConnection();
+        connection = JdbcProvider.getJdbcProvider().getConnection();
         preparedStatement = connection.prepareStatement(
                 "DELETE FROM USER_TBL WHERE ID=?"
         );
@@ -68,7 +68,7 @@ public class UserRepository implements Repository<User> {
 
     @Override
     public List findAll() throws Exception {
-        connection =JdbcProvider.getInstance().getConnection();
+        connection =JdbcProvider.getJdbcProvider().getConnection();
         preparedStatement = connection.prepareStatement(
                 "SELECT * FROM USER_TBL"
         );
@@ -94,7 +94,7 @@ public class UserRepository implements Repository<User> {
 
     @Override
     public User findById(int id) throws Exception {
-        connection = preparedStatement.getConnection();
+        connection =  JdbcProvider.getJdbcProvider().getConnection();
         preparedStatement = connection.prepareStatement(
                 "SELECT * FROM USER_TBL WHERE ID=?"
         );
@@ -118,7 +118,7 @@ public class UserRepository implements Repository<User> {
     }
 
     public User findByUsernameAndPassword(String username ,String password)  throws Exception{
-        connection = JdbcProvider.getInstance().getConnection();
+        connection = JdbcProvider.getJdbcProvider().getConnection();
 
         preparedStatement = connection.prepareStatement(
                 "SELECT * FROM USER_TBL WHERE USERNAME=? AND PASSWORD = ?"
@@ -141,5 +141,35 @@ public class UserRepository implements Repository<User> {
                     .build();
         }
         return user;
+    }
+
+    public User findByUsername(String username) throws Exception {
+        connection =  JdbcProvider.getJdbcProvider().getConnection();
+        preparedStatement = connection.prepareStatement(
+                "SELECT * FROM USER_TBL WHERE USERNAME=?"
+        );
+
+        preparedStatement.setString(1,username);
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        User user = null;
+
+        while (resultSet.next()){
+            user = User.builder()
+                    .id(resultSet.getInt("ID"))
+                    .name(resultSet.getString("NAME"))
+                    .family(resultSet.getString("FAMILY"))
+                    .username(resultSet.getString("USERNAME"))
+                    .password(resultSet.getString("PASSWORD"))
+                    .creationDate(resultSet.getTimestamp("CREATIONDATE").toLocalDateTime())
+                    .build();
+        }
+        return user;
+    }
+
+    @Override
+    public void close() throws Exception {
+        preparedStatement.close();
+        connection.close();
     }
 }

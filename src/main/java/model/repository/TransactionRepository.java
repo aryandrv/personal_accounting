@@ -13,12 +13,12 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TransactionRepository implements Repository<Transaction> {
+public class TransactionRepository implements Repository<Transaction>, AutoCloseable {
     private PreparedStatement preparedStatement;
     private Connection connection;
     @Override
     public Transaction save(Transaction transaction) throws Exception {
-        connection = JdbcProvider.getInstance().getConnection();
+        connection = JdbcProvider.getJdbcProvider().getConnection();
         preparedStatement = connection.prepareStatement(
                 "SELECT TRANSACTION_SEQ.nextval AS NEXT_ID FROM DUAL"
         );
@@ -42,7 +42,7 @@ public class TransactionRepository implements Repository<Transaction> {
 
     @Override
     public Transaction edit(Transaction transaction) throws Exception {
-        connection = JdbcProvider.getInstance().getConnection();
+        connection = JdbcProvider.getJdbcProvider().getConnection();
         preparedStatement = connection.prepareStatement(
                 "UPDATE USER_TBL SET USER_ID=?,ACCOUNT_ID=?,AMOUNT=?,TITLES_ID=?,TRANSACTIONDATE=?, DESCRIPTION=? WHERE ID=?"
         );
@@ -60,7 +60,7 @@ public class TransactionRepository implements Repository<Transaction> {
 
     @Override
     public Transaction remove(int id) throws Exception {
-        connection = JdbcProvider.getInstance().getConnection();
+        connection = JdbcProvider.getJdbcProvider().getConnection();
         preparedStatement = connection.prepareStatement(
                 "DELETE FROM TRANSACTION_TBL WHERE ID=?"
         );
@@ -72,7 +72,7 @@ public class TransactionRepository implements Repository<Transaction> {
 
     @Override
     public List<Transaction> findAll() throws Exception {
-        connection =JdbcProvider.getInstance().getConnection();
+        connection =JdbcProvider.getJdbcProvider().getConnection();
         preparedStatement = connection.prepareStatement(
                 "SELECT * FROM TRANSACTION_TBL"
         );
@@ -114,7 +114,7 @@ public class TransactionRepository implements Repository<Transaction> {
 
     @Override
     public Transaction findById(int id) throws Exception {
-        connection = JdbcProvider.getInstance().getConnection();
+        connection = JdbcProvider.getJdbcProvider().getConnection();
         preparedStatement = connection.prepareStatement(
                 "SELECT * FROM TRANSACTION_TBL WHERE ID=?"
         );
@@ -153,7 +153,7 @@ public class TransactionRepository implements Repository<Transaction> {
     }
 
     public List<Transaction> findByUserId(int userId) throws Exception {
-        connection = JdbcProvider.getInstance().getConnection();
+        connection = JdbcProvider.getJdbcProvider().getConnection();
         preparedStatement = connection.prepareStatement(
                 "SELECT * FROM TRANSACTION_TBL WHERE USER_ID=?"
         );
@@ -194,5 +194,9 @@ public class TransactionRepository implements Repository<Transaction> {
         }
         return transactionList;
     }
-
+    @Override
+    public void close() throws Exception {
+        preparedStatement.close();
+        connection.close();
+    }
 }

@@ -20,8 +20,6 @@ public class User {
     private String family;
     private String username;
     private String password;
-    private boolean active;
-
     private LocalDateTime creationDate;
 
 }
