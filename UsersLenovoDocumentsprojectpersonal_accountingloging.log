@@ -4,3 +4,9 @@
 2024-01-26 15:49:39,028 [main] INFO  controller.UserController - save TEST 
 2024-01-26 15:51:05,077 [main] INFO  controller.UserController - find all TEST 
 2024-01-26 15:51:41,446 [main] INFO  controller.UserController - find by id TEST 
+2024-01-28 00:09:29,261 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
+2024-01-28 00:09:41,359 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
+2024-01-28 00:09:50,945 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
+2024-01-28 00:11:56,256 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
+2024-01-28 00:13:51,625 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
+2024-01-28 00:14:11,974 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
