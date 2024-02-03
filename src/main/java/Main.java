@@ -8,7 +8,8 @@ public class Main {
         try {
 //            User user = UserController.getController().save(2, "radin", "darvishzadeh",
 //                    "radin_drv", "12345678", LocalDateTime.now());
-            System.out.println(UserController.getController().findById(2));
+            User user = UserController.getController().findById(1);
+//            System.out.println(UserController.getController().edit(user.getId(), user.getUsername(), user.getPassword(), "aryan jan"), user.getFamily(), user.getCreationDate());
 
 
         } catch (Exception e) {

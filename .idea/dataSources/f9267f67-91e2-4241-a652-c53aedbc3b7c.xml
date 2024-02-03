@@ -487,8 +487,8 @@
     </table>
     <table id="97" parent="2" name="USER_TBL">
       <CreatedTimestamp>2024-01-22.03:26:12</CreatedTimestamp>
-      <DetailsLevel>3</DetailsLevel>
-      <ModifiedTimestamp>2024-01-25.15:59:05</ModifiedTimestamp>
+      <DetailsLevel>2</DetailsLevel>
+      <ModifiedTimestamp>2024-02-02.02:21:09</ModifiedTimestamp>
       <ObjectId>77843</ObjectId>
       <TemporaryPreserve>1</TemporaryPreserve>
     </table>

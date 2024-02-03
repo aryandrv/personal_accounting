@@ -12,11 +12,12 @@ public class LoginForm extends JFrame {
     }
 
     private void initComponent() {
-        username_Lable = new JLabel("Username");
-        password_Lable = new JLabel("Password");
 
-        username_Textfield = new JTextField();
-        password_Textfield = new JTextField();
+        username_Label = new JLabel("Username");
+        password_Label = new JLabel("Password");
+
+        username_TextField = new JTextField();
+        password_TextField = new JTextField();
 
         login_Button = new JButton("Log in");
         login_Button.addActionListener(e -> {
@@ -24,12 +25,13 @@ public class LoginForm extends JFrame {
         });
 
         close_Button = new JButton("Close");
-        close_Button.addActionListener(e ->{
+        close_Button.addActionListener(e -> {
             System.out.println("bye");
             super.dispose();
 
         });
-
+        setSize(400, 300);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
 
     }
 
@@ -40,15 +42,15 @@ public class LoginForm extends JFrame {
                 .addGap(20)
                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
-                                .addComponent(username_Lable)
+                                .addComponent(username_Label)
                                 .addGap(15)
-                                .addComponent(username_Textfield, GroupLayout.PREFERRED_SIZE, 180, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(username_TextField, GroupLayout.PREFERRED_SIZE, 180, GroupLayout.PREFERRED_SIZE)
 
                         )
                         .addGroup(layout.createSequentialGroup()
-                                .addComponent(password_Lable)
+                                .addComponent(password_Label)
                                 .addGap(15)
-                                .addComponent(password_Textfield, GroupLayout.PREFERRED_SIZE, 180, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(password_TextField, GroupLayout.PREFERRED_SIZE, 180, GroupLayout.PREFERRED_SIZE)
                         )
                         .addGroup(layout.createSequentialGroup()
                                 .addGap(10)
@@ -63,13 +65,13 @@ public class LoginForm extends JFrame {
         layout.setVerticalGroup(layout.createSequentialGroup()
                 .addGap(50)
                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.CENTER)
-                        .addComponent(username_Lable)
-                        .addComponent(username_Textfield, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(username_Label)
+                        .addComponent(username_TextField, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
                 )
                 .addGap(15)
                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.CENTER)
-                        .addComponent(password_Lable)
-                        .addComponent(password_Textfield, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(password_Label)
+                        .addComponent(password_TextField, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
                 )
                 .addGap(10)
                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.CENTER)
@@ -84,14 +86,16 @@ public class LoginForm extends JFrame {
     }
 
     private void login_ButtonActionPreform() {
-        String username = username_Textfield.getText();
-        String password = password_Textfield.getText();
-        if(!username.isEmpty() && !password.isEmpty()){
-            User user = UserController.getController().findByUsernameAndPassword(username,password);
-            if(user != null && user.getUsername().equals(username) && user.getPassword().equals(password)){
-                System.out.println("welcome to my room");
-            }else{
-                System.out.println("ridi");
+        String username = username_TextField.getText();
+        String password = password_TextField.getText();
+        if (!username.isEmpty() && !password.isEmpty()) {
+            User user = UserController.getController().findByUsernameAndPassword(username, password);
+            if (user != null && user.getUsername().equals(username) && user.getPassword().equals(password)) {
+                dispose();
+                TopoForm topoform = new TopoForm(user);
+                topoform.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(this,"ridi");
             }
         }
 
@@ -100,14 +104,13 @@ public class LoginForm extends JFrame {
     public static void main(String[] args) {
         LoginForm page = new LoginForm();
         page.setVisible(true);
-        page.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
     }
 
-    private JLabel username_Lable;
-    private JLabel password_Lable;
-    private JTextField username_Textfield;
-    private JTextField password_Textfield;
+    private JLabel username_Label;
+    private JLabel password_Label;
+    private JTextField username_TextField;
+    private JTextField password_TextField;
 
     private JButton login_Button;
     private JButton close_Button;

@@ -10,3 +10,43 @@
 2024-01-28 00:11:56,256 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
 2024-01-28 00:13:51,625 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
 2024-01-28 00:14:11,974 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
+2024-01-28 22:56:22,676 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
+2024-01-28 23:16:30,529 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
+2024-01-28 23:17:28,174 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
+2024-01-29 00:45:25,433 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
+2024-01-29 00:49:49,301 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
+2024-01-29 00:51:58,140 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
+2024-01-30 23:41:55,741 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
+2024-02-01 22:10:18,615 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
+2024-02-01 22:11:18,791 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
+2024-02-01 22:13:07,491 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
+2024-02-01 22:14:01,788 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
+2024-02-01 22:16:07,103 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
+2024-02-01 22:39:04,679 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
+2024-02-01 23:06:55,951 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
+2024-02-01 23:08:30,678 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
+2024-02-01 23:09:21,781 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
+2024-02-01 23:16:25,220 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
+2024-02-01 23:54:05,539 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
+2024-02-01 23:55:16,229 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
+2024-02-01 23:58:33,858 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
+2024-02-02 00:15:17,610 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
+2024-02-02 00:20:35,101 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
+2024-02-02 00:20:42,925 [AWT-EventQueue-0] INFO  controller.UserController - edit TEST 
+2024-02-02 00:28:53,390 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
+2024-02-02 00:29:26,388 [AWT-EventQueue-0] INFO  controller.UserController - edit TEST 
+2024-02-02 19:49:26,232 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
+2024-02-02 19:51:28,754 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
+2024-02-02 19:52:41,439 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
+2024-02-02 19:52:55,764 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
+2024-02-02 19:53:08,570 [AWT-EventQueue-0] INFO  controller.UserController - find by id TEST 
+2024-02-02 19:53:10,326 [AWT-EventQueue-0] INFO  controller.UserController - find by id TEST 
+2024-02-02 19:55:34,636 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
+2024-02-02 19:55:40,589 [AWT-EventQueue-0] INFO  controller.UserController - find by id TEST 
+2024-02-02 19:55:52,422 [AWT-EventQueue-0] INFO  controller.UserController - edit TEST 
+2024-02-02 19:55:52,429 [AWT-EventQueue-0] INFO  controller.UserController - find by id TEST 
+2024-02-02 19:56:04,459 [AWT-EventQueue-0] INFO  controller.UserController - edit TEST 
+2024-02-02 19:56:04,671 [AWT-EventQueue-0] INFO  controller.UserController - find by id TEST 
+2024-02-03 22:45:21,760 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
+2024-02-03 22:45:41,436 [AWT-EventQueue-0] INFO  controller.UserController - edit TEST 
+2024-02-03 22:45:41,444 [AWT-EventQueue-0] INFO  controller.UserController - find by id TEST 
