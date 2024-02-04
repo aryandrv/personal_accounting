@@ -97,17 +97,17 @@ public class AccountRepository implements Repository<Account>, AutoCloseable {
 
     @Override
     public Account findById(int id) throws Exception {
-        connection =  JdbcProvider.getJdbcProvider().getConnection();
+        connection = JdbcProvider.getJdbcProvider().getConnection();
         preparedStatement = connection.prepareStatement(
                 "SELECT * FROM ACCOUNT_TBL WHERE ID=?"
         );
 
-        preparedStatement.setInt(1,id);
+        preparedStatement.setInt(1, id);
         ResultSet resultSet = preparedStatement.executeQuery();
 
         Account account = null;
 
-        while (resultSet.next()){
+        while (resultSet.next()) {
             account = Account.builder()
                     .id(resultSet.getInt("ID"))
                     .name(resultSet.getString("NAME"))
@@ -123,6 +123,39 @@ public class AccountRepository implements Repository<Account>, AutoCloseable {
                     .build();
         }
         return account;
+    }
+
+    public List<Account> findByUserId(int id) throws Exception {
+        connection = JdbcProvider.getJdbcProvider().getConnection();
+        preparedStatement = connection.prepareStatement(
+                "SELECT * FROM ACCOUNT_TBL WHERE USER_ID=?"
+        );
+
+        preparedStatement.setInt(1, id);
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        List<Account> accountsList = new ArrayList<>();
+
+        while (resultSet.next()) {
+            Account account = Account.builder()
+                    .id(resultSet.getInt("ID"))
+                    .name(resultSet.getString("NAME"))
+                    .balance(resultSet.getDouble("BALANCE"))
+                    .user(User.builder()
+                            .id(resultSet.getInt("ID"))
+                            .name(resultSet.getString("NAME"))
+                            .family(resultSet.getString("FAMILY"))
+                            .username(resultSet.getString("USERNAME"))
+                            .password(resultSet.getString("PASSWORD"))
+                            .creationDate(resultSet.getTimestamp("CREATIONDATE").toLocalDateTime())
+                            .build())
+                    .build();
+
+            accountsList.add(account);
+        }
+
+        return accountsList;
+
     }
 
     @Override

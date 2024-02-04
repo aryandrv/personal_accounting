@@ -50,3 +50,8 @@
 2024-02-03 22:45:21,760 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
 2024-02-03 22:45:41,436 [AWT-EventQueue-0] INFO  controller.UserController - edit TEST 
 2024-02-03 22:45:41,444 [AWT-EventQueue-0] INFO  controller.UserController - find by id TEST 
+2024-02-04 23:34:19,075 [main] INFO  controller.UserController - find by id TEST 
+2024-02-04 23:34:22,053 [main] INFO  controller.AccountController - save TEST 
+2024-02-04 23:48:44,542 [main] INFO  controller.UserController - find by id TEST 
+2024-02-04 23:48:47,736 [main] INFO  controller.AccountController - save TEST 
+2024-02-04 23:48:47,871 [main] INFO  controller.AccountController - edit TEST 
