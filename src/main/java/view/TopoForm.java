@@ -84,7 +84,7 @@ public class TopoForm extends JFrame {
         user = UserController.getController().findById(user.getId());
 
         }catch (Exception e){
-            JOptionPane.showMessageDialog(this,"eror");
+            JOptionPane.showMessageDialog(this,"Error");
 
         }
     }

@@ -480,8 +480,8 @@
     </table>
     <table id="96" parent="2" name="TRANSACTION_TBL">
       <CreatedTimestamp>2024-01-22.03:53:35</CreatedTimestamp>
-      <DetailsLevel>3</DetailsLevel>
-      <ModifiedTimestamp>2024-01-22.03:53:35</ModifiedTimestamp>
+      <DetailsLevel>2</DetailsLevel>
+      <ModifiedTimestamp>2024-02-05.04:25:45</ModifiedTimestamp>
       <ObjectId>77854</ObjectId>
       <TemporaryPreserve>1</TemporaryPreserve>
     </table>
@@ -59993,7 +59993,11 @@
       <DasType>NVARCHAR2(30)|0s</DasType>
       <Position>7</Position>
     </column>
-    <foreign-key id="7543" parent="96" name="SYS_C008338">
+    <column id="7543" parent="96" name="TYPE">
+      <DasType>NVARCHAR2(30)|0s</DasType>
+      <Position>8</Position>
+    </column>
+    <foreign-key id="7544" parent="96" name="SYS_C008338">
       <ColNames>USER_ID</ColNames>
       <ModifiedTimestamp>2024-01-22.03:53:35</ModifiedTimestamp>
       <NameSurrogate>1</NameSurrogate>
@@ -60001,7 +60005,7 @@
       <RefKeyName>SYS_C008331</RefKeyName>
       <RefTableName>USER_TBL</RefTableName>
     </foreign-key>
-    <foreign-key id="7544" parent="96" name="SYS_C008339">
+    <foreign-key id="7545" parent="96" name="SYS_C008339">
       <ColNames>ACCOUNT_ID</ColNames>
       <ModifiedTimestamp>2024-01-22.03:53:35</ModifiedTimestamp>
       <NameSurrogate>1</NameSurrogate>
@@ -60009,7 +60013,7 @@
       <RefKeyName>SYS_C008335</RefKeyName>
       <RefTableName>ACCOUNT_TBL</RefTableName>
     </foreign-key>
-    <foreign-key id="7545" parent="96" name="SYS_C008340">
+    <foreign-key id="7546" parent="96" name="SYS_C008340">
       <ColNames>TITLES_ID</ColNames>
       <ModifiedTimestamp>2024-01-22.03:53:35</ModifiedTimestamp>
       <NameSurrogate>1</NameSurrogate>
@@ -60017,7 +60021,7 @@
       <RefKeyName>SYS_C008333</RefKeyName>
       <RefTableName>TITLES_TBL</RefTableName>
     </foreign-key>
-    <index id="7546" parent="96" name="SYS_C008337">
+    <index id="7547" parent="96" name="SYS_C008337">
       <ColNames>ID</ColNames>
       <CreatedTimestamp>2024-01-22.03:53:35</CreatedTimestamp>
       <ModifiedTimestamp>2024-01-22.03:53:35</ModifiedTimestamp>
@@ -60026,39 +60030,39 @@
       <Unique>1</Unique>
       <TablespaceName>USERS</TablespaceName>
     </index>
-    <key id="7547" parent="96" name="SYS_C008337">
+    <key id="7548" parent="96" name="SYS_C008337">
       <InitiallyDeferred>1</InitiallyDeferred>
       <ModifiedTimestamp>2024-01-22.03:53:35</ModifiedTimestamp>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>SYS_C008337</UnderlyingIndexName>
     </key>
-    <column id="7548" parent="97" name="ID">
+    <column id="7549" parent="97" name="ID">
       <DasType>NUMBER(*)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="7549" parent="97" name="NAME">
+    <column id="7550" parent="97" name="NAME">
       <DasType>NVARCHAR2(30)|0s</DasType>
       <Position>2</Position>
     </column>
-    <column id="7550" parent="97" name="FAMILY">
+    <column id="7551" parent="97" name="FAMILY">
       <DasType>NVARCHAR2(30)|0s</DasType>
       <Position>3</Position>
     </column>
-    <column id="7551" parent="97" name="USERNAME">
+    <column id="7552" parent="97" name="USERNAME">
       <DasType>NVARCHAR2(30)|0s</DasType>
       <Position>4</Position>
     </column>
-    <column id="7552" parent="97" name="PASSWORD">
+    <column id="7553" parent="97" name="PASSWORD">
       <DasType>NVARCHAR2(30)|0s</DasType>
       <Position>5</Position>
     </column>
-    <column id="7553" parent="97" name="CREATIONDATE">
+    <column id="7554" parent="97" name="CREATIONDATE">
       <DasType>TIMESTAMP(6)|0s</DasType>
       <Position>6</Position>
     </column>
-    <index id="7554" parent="97" name="SYS_C008331">
+    <index id="7555" parent="97" name="SYS_C008331">
       <ColNames>ID</ColNames>
       <CreatedTimestamp>2024-01-22.03:26:14</CreatedTimestamp>
       <ModifiedTimestamp>2024-01-22.03:26:14</ModifiedTimestamp>
@@ -60067,7 +60071,7 @@
       <Unique>1</Unique>
       <TablespaceName>USERS</TablespaceName>
     </index>
-    <index id="7555" parent="97" name="SYS_C008332">
+    <index id="7556" parent="97" name="SYS_C008332">
       <ColNames>USERNAME</ColNames>
       <CreatedTimestamp>2024-01-22.03:26:15</CreatedTimestamp>
       <ModifiedTimestamp>2024-01-22.03:26:15</ModifiedTimestamp>
@@ -60076,14 +60080,14 @@
       <Unique>1</Unique>
       <TablespaceName>USERS</TablespaceName>
     </index>
-    <key id="7556" parent="97" name="SYS_C008331">
+    <key id="7557" parent="97" name="SYS_C008331">
       <InitiallyDeferred>1</InitiallyDeferred>
       <ModifiedTimestamp>2024-01-22.03:26:14</ModifiedTimestamp>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>SYS_C008331</UnderlyingIndexName>
     </key>
-    <key id="7557" parent="97" name="SYS_C008332">
+    <key id="7558" parent="97" name="SYS_C008332">
       <InitiallyDeferred>1</InitiallyDeferred>
       <ModifiedTimestamp>2024-01-22.03:26:15</ModifiedTimestamp>
       <NameSurrogate>1</NameSurrogate>

@@ -79,7 +79,7 @@ public class UserController {
                 return null;
             }
         } catch (Exception e) {
-            log.error("eror to remove");
+            log.error("Error to remove");
             System.out.println("Error : " + e.getMessage());
             return null;
         }
@@ -91,7 +91,7 @@ public class UserController {
             return UserService.getService().findAll();
 
         } catch (Exception e) {
-            log.error("eror to find");
+            log.error("Error to find");
             System.out.println("Error : " + e.getMessage());
             return null;
         }
@@ -103,7 +103,7 @@ public class UserController {
             return UserService.getService().findById(id);
 
         } catch (Exception e) {
-            log.error("eror to find");
+            log.error("Error to find");
             System.out.println("Error : " + e.getMessage());
             return null;
 
@@ -116,7 +116,7 @@ public class UserController {
             return UserService.getService().findByUsername(username);
 
         } catch (Exception e) {
-            log.error("eror to find");
+            log.error("Error to find");
             System.out.println("Error : " + e.getMessage());
             return null;
 
@@ -134,7 +134,7 @@ public class UserController {
                 return null;
             }
         } catch (Exception e) {
-            log.error("eror to find");
+            log.error("Error to find");
             System.out.println("Invalid Username/Password /n" + e.getMessage());
             return null;
 

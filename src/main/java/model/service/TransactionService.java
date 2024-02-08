@@ -3,6 +3,7 @@ package model.service;
 import model.entity.Transaction;
 import model.repository.TransactionRepository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class TransactionService {
@@ -53,6 +54,14 @@ public class TransactionService {
     public List<Transaction> findByUserId(int id) throws Exception {
         try (TransactionRepository transactionRepository = new TransactionRepository()) {
             return transactionRepository.findByUserId(id);
+        }
+    }public List<Transaction> findByDateAndAccountId(int id, LocalDateTime from, LocalDateTime to) throws Exception {
+        try (TransactionRepository transactionRepository = new TransactionRepository()) {
+            return transactionRepository.findByDateAndAccountId(id,from,to);
+        }
+    }public List<Transaction> findByDateAndUserId(int id, LocalDateTime from, LocalDateTime to) throws Exception {
+        try (TransactionRepository transactionRepository = new TransactionRepository()) {
+            return transactionRepository.findByDateAndUserId(id,from,to);
         }
     }
 
