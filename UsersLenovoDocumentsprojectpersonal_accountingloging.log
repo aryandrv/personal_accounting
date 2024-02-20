@@ -55,3 +55,50 @@
 2024-02-04 23:48:44,542 [main] INFO  controller.UserController - find by id TEST 
 2024-02-04 23:48:47,736 [main] INFO  controller.AccountController - save TEST 
 2024-02-04 23:48:47,871 [main] INFO  controller.AccountController - edit TEST 
+2024-02-08 12:30:42,996 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
+2024-02-08 12:31:10,912 [AWT-EventQueue-0] INFO  controller.UserController - find by id TEST 
+2024-02-08 23:37:05,435 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
+2024-02-08 23:37:20,215 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
+2024-02-08 23:38:17,026 [AWT-EventQueue-0] INFO  controller.UserController - edit TEST 
+2024-02-08 23:38:17,030 [AWT-EventQueue-0] INFO  controller.UserController - find by id TEST 
+2024-02-14 16:07:58,799 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
+2024-02-14 16:08:59,396 [AWT-EventQueue-0] INFO  controller.UserController - find by id TEST 
+2024-02-15 00:21:05,985 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
+2024-02-15 00:27:19,913 [main] INFO  controller.UserController - find by id TEST 
+2024-02-15 10:07:49,257 [main] INFO  controller.UserController - find by id TEST 
+2024-02-15 10:12:55,002 [main] INFO  controller.UserController - find by id TEST 
+2024-02-15 10:16:13,456 [main] INFO  controller.UserController - find by id TEST 
+2024-02-15 10:16:53,605 [main] INFO  controller.UserController - find by id TEST 
+2024-02-15 10:18:48,731 [main] INFO  controller.UserController - find by id TEST 
+2024-02-15 10:33:22,441 [main] INFO  controller.UserController - find by id TEST 
+2024-02-15 10:34:28,348 [main] INFO  controller.UserController - find by id TEST 
+2024-02-15 10:37:26,545 [main] INFO  controller.UserController - find by id TEST 
+2024-02-15 10:46:08,604 [main] INFO  controller.UserController - find by id TEST 
+2024-02-15 10:48:53,294 [main] INFO  controller.UserController - find by id TEST 
+2024-02-15 10:52:25,233 [main] INFO  controller.UserController - find by id TEST 
+2024-02-15 10:53:31,168 [main] INFO  controller.UserController - find by id TEST 
+2024-02-15 10:54:19,182 [main] INFO  controller.UserController - find by id TEST 
+2024-02-15 10:54:59,121 [main] INFO  controller.UserController - find by id TEST 
+2024-02-15 10:55:40,645 [main] INFO  controller.UserController - find by id TEST 
+2024-02-15 10:56:06,415 [main] INFO  controller.UserController - find by id TEST 
+2024-02-16 00:01:14,585 [main] INFO  controller.UserController - find by id TEST 
+2024-02-16 00:04:21,562 [main] INFO  controller.UserController - find by id TEST 
+2024-02-16 00:16:15,544 [main] INFO  controller.UserController - find by id TEST 
+2024-02-16 00:17:25,834 [AWT-EventQueue-0] INFO  controller.UserController - find by id TEST 
+2024-02-16 00:19:30,290 [main] INFO  controller.UserController - find by id TEST 
+2024-02-16 00:21:40,703 [main] INFO  controller.UserController - find by id TEST 
+2024-02-16 00:22:22,606 [AWT-EventQueue-0] INFO  controller.UserController - edit TEST 
+2024-02-16 00:22:22,614 [AWT-EventQueue-0] INFO  controller.UserController - find by id TEST 
+2024-02-16 00:24:12,867 [main] INFO  controller.UserController - find by id TEST 
+2024-02-16 00:25:02,647 [AWT-EventQueue-0] INFO  controller.UserController - edit TEST 
+2024-02-16 00:25:02,651 [AWT-EventQueue-0] INFO  controller.UserController - find by id TEST 
+2024-02-16 00:25:08,214 [AWT-EventQueue-0] INFO  controller.UserController - edit TEST 
+2024-02-16 00:25:08,218 [AWT-EventQueue-0] INFO  controller.UserController - find by id TEST 
+2024-02-16 00:25:27,866 [AWT-EventQueue-0] INFO  controller.UserController - edit TEST 
+2024-02-16 00:25:27,870 [AWT-EventQueue-0] INFO  controller.UserController - find by id TEST 
+2024-02-16 00:27:57,234 [main] INFO  controller.UserController - find by id TEST 
+2024-02-16 00:31:17,370 [main] INFO  controller.UserController - find by id TEST 
+2024-02-16 00:33:36,854 [main] INFO  controller.UserController - find by id TEST 
+2024-02-16 00:34:57,023 [main] INFO  controller.UserController - find by id TEST 
+2024-02-16 00:37:42,814 [main] INFO  controller.UserController - find by id TEST 
+2024-02-16 00:39:59,238 [main] INFO  controller.UserController - find by id TEST 
