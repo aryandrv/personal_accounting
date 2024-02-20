@@ -29,22 +29,18 @@ public class TopoForm extends JFrame {
         username = new JLabel("Welcome : " + user.getUsername());
         timeToLogin = new JLabel("Time to login : " + LocalDateTime.now().toLocalDate());
 
-        profile_button = new JButton("Profile");
         home_button = new JButton("Home");
         transaction_button = new JButton("Transaction");
         bankAccount_button = new JButton("Bank account");
-        titles_button = new JButton("Titles");
 
+        profile_button = new JButton("Profile");
         profile_button.addActionListener(e -> {
-            if (profileMamagementForm == null) {
-                titles = "Profile";
-                profileMamagementForm = new ProfileMamagementForm();
-                profileMamagementForm.fillForm(user, this);
-                profileMamagementForm.setVisible(true);
-                right_Panel.add(profileMamagementForm);
-                this.repaint();
-                this.validate();
-            }
+            changeButton(ButtonEnum.PROFILE);
+        });
+
+        titles_button = new JButton("Titles");
+        titles_button.addActionListener(e -> {
+            changeButton(ButtonEnum.TITLES);
         });
 
         refresh_button = new JButton("Refresh");
@@ -128,6 +124,41 @@ public class TopoForm extends JFrame {
         }
     }
 
+    private void changeButton(ButtonEnum buttonEnum) {
+        profileManagementForm = null;
+        titlesManagementForm = null;
+        right_Panel.removeAll();
+        switch (buttonEnum) {
+            case HOME:
+                break;
+            case TITLES:
+                titles = "Profile";
+                titlesManagementForm = new TitlesManagementForm();
+                titlesManagementForm.fillForm();
+                titlesManagementForm.setVisible(true);
+                right_Panel.add(titlesManagementForm);
+                this.repaint();
+                this.validate();
+                break;
+            case PROFILE:
+                titles = "Profile";
+                profileManagementForm = new ProfileManagementForm();
+                profileManagementForm.fillForm(user, this);
+                profileManagementForm.setVisible(true);
+                right_Panel.add(profileManagementForm);
+                this.repaint();
+                this.validate();
+                break;
+            case BANKACCOUNT:
+                break;
+            case TRANSACTION:
+                break;
+
+        }
+
+
+    }
+
     public static void main(String[] args) {
         try {
             TopoForm topoForm = new TopoForm(UserController.getController().findById(1));
@@ -138,7 +169,8 @@ public class TopoForm extends JFrame {
         }
     }
 
-    private ProfileMamagementForm profileMamagementForm = null;
+    private ProfileManagementForm profileManagementForm = null;
+    private TitlesManagementForm titlesManagementForm = null;
 
     private JPanel left_Panel;
     private JPanel right_Panel;
@@ -155,6 +187,14 @@ public class TopoForm extends JFrame {
     private String titles;
 
     public User user;
+
+    private enum ButtonEnum {
+        PROFILE,
+        TITLES,
+        HOME,
+        TRANSACTION,
+        BANKACCOUNT;
+    }
 
 
 }

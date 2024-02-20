@@ -102,3 +102,37 @@
 2024-02-16 00:34:57,023 [main] INFO  controller.UserController - find by id TEST 
 2024-02-16 00:37:42,814 [main] INFO  controller.UserController - find by id TEST 
 2024-02-16 00:39:59,238 [main] INFO  controller.UserController - find by id TEST 
+2024-02-20 22:43:43,603 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
+2024-02-21 00:30:53,499 [main] INFO  controller.UserController - find by id TEST 
+2024-02-21 00:31:52,179 [AWT-EventQueue-0] INFO  controller.UserController - find by id TEST 
+2024-02-21 00:57:13,574 [main] INFO  controller.UserController - find by id TEST 
+2024-02-21 01:19:47,109 [AWT-EventQueue-0] INFO  controller.TitlesController - save TEST 
+2024-02-21 01:28:23,741 [main] INFO  controller.UserController - find by id TEST 
+2024-02-21 01:28:41,206 [AWT-EventQueue-0] INFO  controller.TitlesController - find all TEST 
+2024-02-21 01:28:45,917 [AWT-EventQueue-0] ERROR controller.TitlesController - Error to find TEST 
+2024-02-21 01:34:43,548 [main] INFO  controller.UserController - find by id TEST 
+2024-02-21 01:34:56,657 [AWT-EventQueue-0] INFO  controller.TitlesController - find all TEST 
+2024-02-21 01:35:15,901 [AWT-EventQueue-0] INFO  controller.TitlesController - save TEST 
+2024-02-21 01:35:34,883 [AWT-EventQueue-0] INFO  controller.TitlesController - save TEST 
+2024-02-21 01:35:40,615 [AWT-EventQueue-0] INFO  controller.TitlesController - save TEST 
+2024-02-21 01:35:48,257 [AWT-EventQueue-0] INFO  controller.TitlesController - save TEST 
+2024-02-21 01:35:53,715 [AWT-EventQueue-0] INFO  controller.TitlesController - save TEST 
+2024-02-21 01:36:00,673 [AWT-EventQueue-0] INFO  controller.TitlesController - save TEST 
+2024-02-21 01:36:18,810 [AWT-EventQueue-0] INFO  controller.TitlesController - save TEST 
+2024-02-21 01:36:43,980 [AWT-EventQueue-0] INFO  controller.TitlesController - save TEST 
+2024-02-21 01:36:57,362 [AWT-EventQueue-0] INFO  controller.TitlesController - find all TEST 
+2024-02-21 01:37:03,962 [AWT-EventQueue-0] INFO  controller.TitlesController - find all TEST 
+2024-02-21 01:38:04,970 [AWT-EventQueue-0] INFO  controller.TitlesController - find all TEST 
+2024-02-21 01:42:18,729 [main] INFO  controller.UserController - find by id TEST 
+2024-02-21 01:42:33,625 [AWT-EventQueue-0] INFO  controller.TitlesController - find all TEST 
+2024-02-21 01:42:50,985 [AWT-EventQueue-0] INFO  controller.TitlesController - find all TEST 
+2024-02-21 01:42:58,870 [AWT-EventQueue-0] INFO  controller.TitlesController - find all TEST 
+2024-02-21 01:43:22,703 [AWT-EventQueue-0] INFO  controller.TitlesController - find all TEST 
+2024-02-21 01:43:34,781 [AWT-EventQueue-0] INFO  controller.TitlesController - find all TEST 
+2024-02-21 01:43:45,530 [AWT-EventQueue-0] INFO  controller.TitlesController - find all TEST 
+2024-02-21 01:44:29,246 [main] INFO  controller.UserController - find by id TEST 
+2024-02-21 01:44:37,903 [AWT-EventQueue-0] INFO  controller.TitlesController - find all TEST 
+2024-02-21 01:44:41,845 [AWT-EventQueue-0] INFO  controller.TitlesController - find all TEST 
+2024-02-21 01:44:45,236 [AWT-EventQueue-0] INFO  controller.TitlesController - find all TEST 
+2024-02-21 01:44:51,980 [AWT-EventQueue-0] INFO  controller.TitlesController - find all TEST 
+2024-02-21 01:45:02,776 [AWT-EventQueue-0] INFO  controller.TitlesController - find all TEST 

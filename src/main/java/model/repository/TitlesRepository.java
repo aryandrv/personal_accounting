@@ -77,7 +77,7 @@ public class TitlesRepository implements Repository<Titles>, AutoCloseable {
             Titles titles = Titles.builder()
                     .id(resultSet.getInt("ID"))
                     .name(resultSet.getString("NAME"))
-                    .type(TypeEnum.valueOf(resultSet.getString("TYPE")))
+                    .type(TypeEnum.toEnum(resultSet.getString("TYPE")))
                     .build();
 
             titlesList.add(titles);
@@ -101,7 +101,7 @@ public class TitlesRepository implements Repository<Titles>, AutoCloseable {
             titles = Titles.builder()
                     .id(resultSet.getInt("ID"))
                     .name(resultSet.getString("NAME"))
-                    .type(TypeEnum.valueOf(resultSet.getString("TYPE")))
+                    .type(TypeEnum.toEnum(resultSet.getString("TYPE")))
                     .build();
         }
         return titles;

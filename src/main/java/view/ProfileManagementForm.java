@@ -7,9 +7,9 @@ import org.jdesktop.swingx.JXDatePicker;
 import javax.swing.*;
 import java.sql.Timestamp;
 
-public class ProfileMamagementForm extends JPanel {
+public class ProfileManagementForm extends JPanel {
 
-    public ProfileMamagementForm() {
+    public ProfileManagementForm() {
         initComponent();
         drawGui();
     }
@@ -250,11 +250,11 @@ public class ProfileMamagementForm extends JPanel {
 
     public static void main(String[] args) {
         JFrame a = new JFrame();
-        ProfileMamagementForm profileMamagementForm = new ProfileMamagementForm();
-        a.add(profileMamagementForm);
+        ProfileManagementForm profileManagementForm = new ProfileManagementForm();
+        a.add(profileManagementForm);
         a.pack();
         a.setVisible(true);
-        profileMamagementForm.setVisible(true);
+        profileManagementForm.setVisible(true);
     }
 
     private User user;
