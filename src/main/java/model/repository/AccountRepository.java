@@ -80,12 +80,12 @@ public class AccountRepository implements Repository<Account>, AutoCloseable {
                     .name(resultSet.getString("NAME"))
                     .balance(resultSet.getDouble("BALANCE"))
                     .user(User.builder()
-                            .id(resultSet.getInt("ID"))
-                            .name(resultSet.getString("NAME"))
-                            .family(resultSet.getString("FAMILY"))
-                            .username(resultSet.getString("USERNAME"))
-                            .password(resultSet.getString("PASSWORD"))
-                            .creationDate(resultSet.getTimestamp("CREATIONDATE").toLocalDateTime())
+                            .id(resultSet.getInt("USER_ID"))
+                            .name(resultSet.getString("USER_NAME"))
+                            .family(resultSet.getString("USER_FAMILY"))
+                            .username(resultSet.getString("USER_USERNAME"))
+                            .password(resultSet.getString("USER_PASSWORD"))
+                            .creationDate(resultSet.getTimestamp("USER_CREATIONDATE").toLocalDateTime())
                             .build())
                     .build();
 

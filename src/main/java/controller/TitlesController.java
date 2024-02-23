@@ -75,6 +75,7 @@ public class TitlesController {
         } catch (Exception e) {
             log.error("Error to remove");
             System.out.println("Error : " + e.getMessage());
+            e.printStackTrace();
             return null;
         }
     }

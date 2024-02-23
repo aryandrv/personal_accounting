@@ -7,11 +7,16 @@
     <list default="true" id="6ff2f35b-f77f-43d1-aa91-f961d4384e62" name="Changes" comment="user">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UsersLenovoDocumentsprojectpersonal_accountingloging.log" beforeDir="false" afterPath="$PROJECT_DIR$/UsersLenovoDocumentsprojectpersonal_accountingloging.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/enums/TypeEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/enums/TypeEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AccountController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/TitlesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/TitlesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/repository/AccountRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/repository/AccountRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/repository/TitlesRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/repository/TitlesRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/ProfileMamagementForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/ProfileManagementForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/service/TitlesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/service/TitlesService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/ProfileManagementForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/ProfileManagementForm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/TitlesManagementForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/TitlesManagementForm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/TopoForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/TopoForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/bankAccountForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/BankAccountManagementForm.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +36,9 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
@@ -76,9 +84,9 @@
       <recent name="C:\Users\Lenovo\Documents\project\personal_accounting\src\main\java\model\repository" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.TopoForm">
-    <configuration name="LoginForm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="view.LoginForm" />
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="BankAccountManagementForm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="view.BankAccountManagementForm" />
       <module name="personal_accounting" />
       <extension name="coverage">
         <pattern>
@@ -97,8 +105,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ProfileManagementForm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="view.ProfileManagementForm" />
+    <configuration name="TitlesManagementForm (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="view.TitlesManagementForm" />
       <module name="personal_accounting" />
       <extension name="coverage">
         <pattern>
@@ -123,7 +131,33 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TopoForm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="TitlesManagementForm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="view.TitlesManagementForm" />
+      <module name="personal_accounting" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="view.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TitlesManagementForm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="view.TitlesManagementForm" />
+      <module name="personal_accounting" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="view.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TopoForm" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="view.TopoForm" />
       <module name="personal_accounting" />
       <extension name="coverage">
@@ -138,11 +172,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.TopoForm" />
-        <item itemvalue="Application.TitlesManagementForm" />
-        <item itemvalue="Application.ProfileManagementForm" />
-        <item itemvalue="Application.LoginForm" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.BankAccountManagementForm" />
+        <item itemvalue="Application.TitlesManagementForm (2)" />
+        <item itemvalue="Application.TitlesManagementForm (1)" />
+        <item itemvalue="Application.TitlesManagementForm" />
       </list>
     </recent_temporary>
   </component>
@@ -178,7 +212,9 @@
       <workItem from="1707892174827" duration="21725000" />
       <workItem from="1707977461523" duration="5028000" />
       <workItem from="1708028868074" duration="3596000" />
-      <workItem from="1708455745094" duration="10596000" />
+      <workItem from="1708455745094" duration="10844000" />
+      <workItem from="1708541959451" duration="3144000" />
+      <workItem from="1708622903964" duration="13834000" />
     </task>
     <task id="LOCAL-00001" summary="nothing">
       <option name="closed" value="true" />
@@ -292,11 +328,30 @@
       <option name="project" value="LOCAL" />
       <updated>1708455993073</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="user">
+      <option name="closed" value="true" />
+      <created>1708467350575</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1708467350575</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
@@ -312,7 +367,17 @@
           <line>15</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/view/BankAccountManagementForm.java</url>
+          <line>152</line>
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="javax.swing.table.DefaultTableModel" memberName="columnIdentifiers" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
 </project>

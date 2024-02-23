@@ -6,6 +6,7 @@ import utils.ImageIconUtil;
 
 import javax.swing.*;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 public class TopoForm extends JFrame {
 
@@ -16,10 +17,8 @@ public class TopoForm extends JFrame {
     }
 
     private void initComponent() {
-        titles = "salam";
-
         left_Panel = new JPanel();
-        left_Panel.setBorder(BorderFactory.createTitledBorder("Dashbord"));
+        left_Panel.setBorder(BorderFactory.createTitledBorder("Welcome"));
         right_Panel = new JPanel();
         right_Panel.setBorder(BorderFactory.createTitledBorder(titles));
 
@@ -32,15 +31,27 @@ public class TopoForm extends JFrame {
         home_button = new JButton("Home");
         transaction_button = new JButton("Transaction");
         bankAccount_button = new JButton("Bank account");
+        bankAccount_button.addActionListener(e -> {
+            if (!Objects.equals(selectedButton, ButtonEnum.BANKACCOUNT)) {
+                selectedButton = ButtonEnum.BANKACCOUNT;
+                changeButton(selectedButton);
+            }
+        });
 
         profile_button = new JButton("Profile");
         profile_button.addActionListener(e -> {
-            changeButton(ButtonEnum.PROFILE);
+            if (!Objects.equals(selectedButton, ButtonEnum.PROFILE)) {
+                selectedButton = ButtonEnum.PROFILE;
+                changeButton(selectedButton);
+            }
         });
 
         titles_button = new JButton("Titles");
         titles_button.addActionListener(e -> {
-            changeButton(ButtonEnum.TITLES);
+            if (!Objects.equals(selectedButton, ButtonEnum.TITLES)) {
+                selectedButton = ButtonEnum.TITLES;
+                changeButton(selectedButton);
+            }
         });
 
         refresh_button = new JButton("Refresh");
@@ -125,31 +136,44 @@ public class TopoForm extends JFrame {
     }
 
     private void changeButton(ButtonEnum buttonEnum) {
-        profileManagementForm = null;
-        titlesManagementForm = null;
         right_Panel.removeAll();
         switch (buttonEnum) {
             case HOME:
                 break;
             case TITLES:
-                titles = "Profile";
-                titlesManagementForm = new TitlesManagementForm();
-                titlesManagementForm.fillForm();
+                right_Panel.setName("Profile");
+                right_Panel.setBorder(BorderFactory.createTitledBorder("Titles Management Form"));
+
+                if (titlesManagementForm == null) {
+                    titlesManagementForm = new TitlesManagementForm();
+                    titlesManagementForm.fillForm();
+                }
                 titlesManagementForm.setVisible(true);
                 right_Panel.add(titlesManagementForm);
                 this.repaint();
                 this.validate();
                 break;
             case PROFILE:
-                titles = "Profile";
-                profileManagementForm = new ProfileManagementForm();
-                profileManagementForm.fillForm(user, this);
+                right_Panel.setBorder(BorderFactory.createTitledBorder("Profile Management Form"));
+                if (profileManagementForm == null) {
+                    profileManagementForm = new ProfileManagementForm();
+                    profileManagementForm.fillForm(user, this);
+                }
                 profileManagementForm.setVisible(true);
                 right_Panel.add(profileManagementForm);
                 this.repaint();
                 this.validate();
                 break;
             case BANKACCOUNT:
+                right_Panel.setBorder(BorderFactory.createTitledBorder("Account Management Form"));
+                if (bankAccountManagementForm == null) {
+                    bankAccountManagementForm = new BankAccountManagementForm();
+                    bankAccountManagementForm.fillForm(user);
+                }
+                bankAccountManagementForm.setVisible(true);
+                right_Panel.add(bankAccountManagementForm);
+                this.repaint();
+                this.validate();
                 break;
             case TRANSACTION:
                 break;
@@ -171,6 +195,9 @@ public class TopoForm extends JFrame {
 
     private ProfileManagementForm profileManagementForm = null;
     private TitlesManagementForm titlesManagementForm = null;
+    private BankAccountManagementForm bankAccountManagementForm = null;
+
+    private ButtonEnum selectedButton = null;
 
     private JPanel left_Panel;
     private JPanel right_Panel;

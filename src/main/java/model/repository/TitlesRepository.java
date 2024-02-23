@@ -90,7 +90,7 @@ public class TitlesRepository implements Repository<Titles>, AutoCloseable {
     public Titles findById(int id) throws Exception {
         connection = JdbcProvider.getJdbcProvider().getConnection();
         preparedStatement = connection.prepareStatement(
-                "SELECT FROM TITLES_TBL WHERE ID=?"
+                "SELECT * FROM TITLES_TBL WHERE ID=?"
         );
         preparedStatement.setInt(1, id);
         ResultSet resultSet = preparedStatement.executeQuery();

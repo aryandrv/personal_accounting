@@ -87,6 +87,7 @@ public class AccountController {
         } catch (Exception e) {
             log.error("Error to find");
             System.out.println("Error : " + e.getMessage());
+            e.printStackTrace();
             return null;
         }
     }

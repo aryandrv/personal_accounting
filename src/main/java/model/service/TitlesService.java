@@ -33,14 +33,7 @@ public class TitlesService {
 
     public Titles remove(int id) throws Exception {
         try (TitlesRepository titlesRepository = new TitlesRepository()) {
-            Titles titles= titlesRepository.findById(id);
-            if (titles != null){
-                titlesRepository.remove(id);
-                return titles;
-            }
-            else {
-                return null;
-            }
+                return  titlesRepository.remove(id);
         }
     }
 
