@@ -150,7 +150,7 @@ public class BankAccountManagementForm extends JPanel {
     public void fillForm(User user) {
         try {
         this.user = user;
-            List<Account> accountsList = AccountController.getController().findAll();
+            List<Account> accountsList = AccountController.getController().findByUserId(user.getId());
             if (accountsList != null) {
                 for (Account account : accountsList) {
                     tableModel.addRow(new Object[]{table.getRowCount() + 1, account.getId(),

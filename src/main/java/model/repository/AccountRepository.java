@@ -68,7 +68,7 @@ public class AccountRepository implements Repository<Account>, AutoCloseable {
     public List<Account> findAll() throws Exception {
         connection = JdbcProvider.getJdbcProvider().getConnection();
         preparedStatement = connection.prepareStatement(
-                "SELECT * FROM ACCOUNT_TBL"
+                "SELECT * FROM ACCOUNT_REPORT"
         );
         ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -76,16 +76,16 @@ public class AccountRepository implements Repository<Account>, AutoCloseable {
 
         while (resultSet.next()) {
             Account account = Account.builder()
-                    .id(resultSet.getInt("ID"))
-                    .name(resultSet.getString("NAME"))
-                    .balance(resultSet.getDouble("BALANCE"))
+                    .id(resultSet.getInt("account_id"))
+                    .name(resultSet.getString("account_name"))
+                    .balance(resultSet.getDouble("account_balance"))
                     .user(User.builder()
-                            .id(resultSet.getInt("USER_ID"))
-                            .name(resultSet.getString("USER_NAME"))
-                            .family(resultSet.getString("USER_FAMILY"))
-                            .username(resultSet.getString("USER_USERNAME"))
-                            .password(resultSet.getString("USER_PASSWORD"))
-                            .creationDate(resultSet.getTimestamp("USER_CREATIONDATE").toLocalDateTime())
+                            .id(resultSet.getInt("user_id"))
+                            .name(resultSet.getString("user_name"))
+                            .family(resultSet.getString("user_family"))
+                            .username(resultSet.getString("user_username"))
+                            .password(resultSet.getString("user_password"))
+                            .creationDate(resultSet.getTimestamp("user_creationdate").toLocalDateTime())
                             .build())
                     .build();
 
@@ -99,7 +99,7 @@ public class AccountRepository implements Repository<Account>, AutoCloseable {
     public Account findById(int id) throws Exception {
         connection = JdbcProvider.getJdbcProvider().getConnection();
         preparedStatement = connection.prepareStatement(
-                "SELECT * FROM ACCOUNT_TBL WHERE ID=?"
+                "SELECT * FROM ACCOUNT_REPORT WHERE ACCOUNT_ID=?"
         );
 
         preparedStatement.setInt(1, id);
@@ -109,16 +109,16 @@ public class AccountRepository implements Repository<Account>, AutoCloseable {
 
         while (resultSet.next()) {
             account = Account.builder()
-                    .id(resultSet.getInt("ID"))
-                    .name(resultSet.getString("NAME"))
-                    .balance(resultSet.getDouble("BALANCE"))
+                    .id(resultSet.getInt("account_id"))
+                    .name(resultSet.getString("account_name"))
+                    .balance(resultSet.getDouble("account_balance"))
                     .user(User.builder()
-                            .id(resultSet.getInt("ID"))
-                            .name(resultSet.getString("NAME"))
-                            .family(resultSet.getString("FAMILY"))
-                            .username(resultSet.getString("USERNAME"))
-                            .password(resultSet.getString("PASSWORD"))
-                            .creationDate(resultSet.getTimestamp("CREATIONDATE").toLocalDateTime())
+                            .id(resultSet.getInt("user_id"))
+                            .name(resultSet.getString("user_name"))
+                            .family(resultSet.getString("user_family"))
+                            .username(resultSet.getString("user_username"))
+                            .password(resultSet.getString("user_password"))
+                            .creationDate(resultSet.getTimestamp("user_creationdate").toLocalDateTime())
                             .build())
                     .build();
         }
@@ -128,7 +128,7 @@ public class AccountRepository implements Repository<Account>, AutoCloseable {
     public List<Account> findByUserId(int id) throws Exception {
         connection = JdbcProvider.getJdbcProvider().getConnection();
         preparedStatement = connection.prepareStatement(
-                "SELECT * FROM ACCOUNT_TBL WHERE USER_ID=?"
+                "SELECT * FROM ACCOUNT_REPORT WHERE USER_ID=?"
         );
 
         preparedStatement.setInt(1, id);
@@ -138,16 +138,16 @@ public class AccountRepository implements Repository<Account>, AutoCloseable {
 
         while (resultSet.next()) {
             Account account = Account.builder()
-                    .id(resultSet.getInt("ID"))
-                    .name(resultSet.getString("NAME"))
-                    .balance(resultSet.getDouble("BALANCE"))
+                    .id(resultSet.getInt("account_id"))
+                    .name(resultSet.getString("account_name"))
+                    .balance(resultSet.getDouble("account_balance"))
                     .user(User.builder()
-                            .id(resultSet.getInt("ID"))
-                            .name(resultSet.getString("NAME"))
-                            .family(resultSet.getString("FAMILY"))
-                            .username(resultSet.getString("USERNAME"))
-                            .password(resultSet.getString("PASSWORD"))
-                            .creationDate(resultSet.getTimestamp("CREATIONDATE").toLocalDateTime())
+                            .id(resultSet.getInt("user_id"))
+                            .name(resultSet.getString("user_name"))
+                            .family(resultSet.getString("user_family"))
+                            .username(resultSet.getString("user_username"))
+                            .password(resultSet.getString("user_password"))
+                            .creationDate(resultSet.getTimestamp("user_creationdate").toLocalDateTime())
                             .build())
                     .build();
 
