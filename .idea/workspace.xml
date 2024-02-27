@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ff2f35b-f77f-43d1-aa91-f961d4384e62" name="Changes" comment="user" />
+    <list default="true" id="6ff2f35b-f77f-43d1-aa91-f961d4384e62" name="Changes" comment="user">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f9267f67-91e2-4241-a652-c53aedbc3b7c.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f9267f67-91e2-4241-a652-c53aedbc3b7c.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f9267f67-91e2-4241-a652-c53aedbc3b7c/storage_v2/_src_/schema/ARYAN.dZS6Aw.zip" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f9267f67-91e2-4241-a652-c53aedbc3b7c/storage_v2/_src_/schema/ARYAN.dZS6Aw.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UsersLenovoDocumentsprojectpersonal_accountingloging.log" beforeDir="false" afterPath="$PROJECT_DIR$/UsersLenovoDocumentsprojectpersonal_accountingloging.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/TopoForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/TopoForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/TransactionManagementForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/TransactionManagementForm.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -157,8 +164,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TransactionManagementForm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="view.TransactionManagementForm" />
+      <module name="personal_accounting" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="view.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.TransactionManagementForm" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.BankAccountManagementForm" />
         <item itemvalue="Application.TitlesManagementForm (1)" />
@@ -202,6 +223,7 @@
       <workItem from="1708541959451" duration="3144000" />
       <workItem from="1708622903964" duration="13834000" />
       <workItem from="1708895517017" duration="222000" />
+      <workItem from="1709062549933" duration="1918000" />
     </task>
     <task id="LOCAL-00001" summary="nothing">
       <option name="closed" value="true" />
@@ -339,7 +361,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708895730164</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="user">
+      <option name="closed" value="true" />
+      <created>1709062975376</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1709062975376</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

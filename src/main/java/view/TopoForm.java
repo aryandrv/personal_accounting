@@ -30,6 +30,12 @@ public class TopoForm extends JFrame {
 
         home_button = new JButton("Home");
         transaction_button = new JButton("Transaction");
+        transaction_button.addActionListener(e -> {
+            if (!Objects.equals(selectedButton, ButtonEnum.TRANSACTION)) {
+                selectedButton = ButtonEnum.TRANSACTION;
+                changeButton(selectedButton);
+            }
+        });
         bankAccount_button = new JButton("Bank account");
         bankAccount_button.addActionListener(e -> {
             if (!Objects.equals(selectedButton, ButtonEnum.BANKACCOUNT)) {
@@ -176,6 +182,17 @@ public class TopoForm extends JFrame {
                 this.validate();
                 break;
             case TRANSACTION:
+                right_Panel.setName("Transaction");
+                right_Panel.setBorder(BorderFactory.createTitledBorder("Transaction Management Form"));
+
+                if (transactionManagementForm == null) {
+                    transactionManagementForm = new TransactionManagementForm();
+                    transactionManagementForm.fillForm(user);
+                }
+                transactionManagementForm.setVisible(true);
+                right_Panel.add(transactionManagementForm);
+                this.repaint();
+                this.validate();
                 break;
 
         }
@@ -196,6 +213,7 @@ public class TopoForm extends JFrame {
     private ProfileManagementForm profileManagementForm = null;
     private TitlesManagementForm titlesManagementForm = null;
     private BankAccountManagementForm bankAccountManagementForm = null;
+    private TransactionManagementForm transactionManagementForm = null;
 
     private ButtonEnum selectedButton = null;
 
