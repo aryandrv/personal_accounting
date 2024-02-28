@@ -108,6 +108,29 @@ public class TitlesRepository implements Repository<Titles>, AutoCloseable {
 
     }
 
+    public List<Titles> findByType(String type) throws Exception {
+        connection = JdbcProvider.getJdbcProvider().getConnection();
+        preparedStatement = connection.prepareStatement(
+                "SELECT * FROM TITLES_TBL WHERE TYPE=?"
+        );
+        preparedStatement.setString(1, type);
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        List<Titles> titlesList = new ArrayList<>();
+
+        while (resultSet.next()) {
+            Titles titles = Titles.builder()
+                    .id(resultSet.getInt("ID"))
+                    .name(resultSet.getString("NAME"))
+                    .type(TypeEnum.toEnum(resultSet.getString("TYPE")))
+                    .build();
+
+            titlesList.add(titles);
+
+        }
+        return titlesList;
+    }
+
     @Override
     public void close() throws Exception {
         preparedStatement.close();

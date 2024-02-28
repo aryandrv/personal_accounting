@@ -104,4 +104,16 @@ public class TitlesController {
 
         }
     }
+
+    public List<Titles> findByType(String type) {
+        try {
+            log.info("find all by type");
+            return TitlesService.getService().findByType(type);
+
+        } catch (Exception e) {
+            log.error("Error to find by type");
+            System.out.println("Error : " + e.getMessage());
+            return null;
+        }
+    }
 }

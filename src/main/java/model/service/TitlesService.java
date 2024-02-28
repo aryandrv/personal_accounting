@@ -49,4 +49,10 @@ public class TitlesService {
         }
     }
 
+    public List<Titles> findByType(String type) throws Exception {
+        try (TitlesRepository titlesRepository = new TitlesRepository()) {
+            return titlesRepository.findByType(type);
+        }
+    }
+
 }

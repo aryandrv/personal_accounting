@@ -7,6 +7,7 @@ import org.jdesktop.swingx.JXDatePicker;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 public class TransactionManagementForm extends JPanel {
 
@@ -44,6 +45,10 @@ public class TransactionManagementForm extends JPanel {
 
         tableModel = new DefaultTableModel(headers, 0);
         table = new JTable(tableModel);
+        TableColumn rowColumn =table.getColumnModel().getColumn(0);
+        rowColumn.setPreferredWidth(30);
+        TableColumn id_olumn =table.getColumnModel().getColumn(0);
+        rowColumn.setPreferredWidth(30);
         scrollPane = new JScrollPane(table);
 
         add_Button = new JButton("Add");
@@ -164,7 +169,7 @@ public class TransactionManagementForm extends JPanel {
                 .addGap(30)
                 .addComponent(panel1, GroupLayout.PREFERRED_SIZE, 180, GroupLayout.PREFERRED_SIZE)
                 .addGap(10)
-                .addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 250, GroupLayout.PREFERRED_SIZE)
+                .addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)
                 .addGap(10)
                 .addGroup(layout.createParallelGroup()
                         .addComponent(add_Button, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
@@ -185,11 +190,17 @@ public class TransactionManagementForm extends JPanel {
     }
 
     private void add_ButtonActionPreform() {
-        try {
+        new Thread(() -> {
+            try {
+                TransactionSettingForm transactionSettingForm = new TransactionSettingForm();
+                transactionSettingForm.setVisible(true);
+                transactionSettingForm.fillForm(user);
 
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }).start();
+
 
     }
 

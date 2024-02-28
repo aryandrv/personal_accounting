@@ -7,6 +7,7 @@ import model.entity.User;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 import javax.swing.text.AbstractDocument;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
@@ -153,6 +154,7 @@ public class TitlesManagementForm extends JPanel {
 
         } catch (Exception e) {
             e.printStackTrace();
+            JOptionPane.showMessageDialog(this,"This name has already been added");
 
         }
 

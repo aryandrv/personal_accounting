@@ -4,10 +4,13 @@ import controller.AccountController;
 import controller.TitlesController;
 import enums.TypeEnum;
 import model.entity.Account;
+import model.entity.Titles;
 import model.entity.User;
 import org.jdesktop.swingx.JXDatePicker;
 
 import javax.swing.*;
+import javax.swing.event.PopupMenuEvent;
+import javax.swing.event.PopupMenuListener;
 import javax.swing.text.AbstractDocument;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
@@ -59,6 +62,20 @@ public class TransactionSettingForm extends JFrame {
 
         type_Label = new JLabel("Type");
         type_ComboBox = new JComboBox(TypeEnum.values());
+        type_ComboBox.addPopupMenuListener(new PopupMenuListener() {
+            @Override
+            public void popupMenuWillBecomeVisible(PopupMenuEvent e) {
+            }
+
+            @Override
+            public void popupMenuWillBecomeInvisible(PopupMenuEvent e) {
+                fillTitleComboBox();
+            }
+
+            @Override
+            public void popupMenuCanceled(PopupMenuEvent e) {
+            }
+        });
 
         title_Label = new JLabel("Title");
         titles_ComboBox = new JComboBox();
@@ -169,24 +186,31 @@ public class TransactionSettingForm extends JFrame {
     }
 
     public void fillForm(User user) {
-        try{
+        try {
             this.user = user;
-            if(user != null){
+            if (user != null) {
                 userValue_Label.setText(user.getUsername());
                 List<Account> listAccount = AccountController.getController().findByUserId(user.getId());
                 for (Account account : listAccount) {
                     account_ComboBox.addItem(account.getName());
                 }
-//                TitlesController.getController().find
-//                type_ComboBox.getSelectedItem();
+                fillTitleComboBox();
+
             }
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-            JOptionPane.showConfirmDialog(this,"Can not fillForm");
+            JOptionPane.showConfirmDialog(this, "Can not fillForm");
 
         }
+    }
 
+    private void fillTitleComboBox() {
+        List<Titles> listTitles = TitlesController.getController().findByType(type_ComboBox.getSelectedItem().toString());
+        titles_ComboBox.removeAllItems();
+        for (Titles title : listTitles) {
+            titles_ComboBox.addItem(title.getName());
+        }
 
     }
 
