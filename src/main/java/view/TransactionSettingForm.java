@@ -1,10 +1,19 @@
 package view;
 
+import controller.AccountController;
+import controller.TitlesController;
 import enums.TypeEnum;
+import model.entity.Account;
 import model.entity.User;
 import org.jdesktop.swingx.JXDatePicker;
 
 import javax.swing.*;
+import javax.swing.text.AbstractDocument;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.DocumentFilter;
+import java.util.List;
+import java.util.regex.Pattern;
 
 public class TransactionSettingForm extends JFrame {
     public TransactionSettingForm() {
@@ -21,6 +30,32 @@ public class TransactionSettingForm extends JFrame {
 
         amount_Label = new JLabel("Amount");
         amount_TextField = new JTextField();
+        amount_TextField.setText("0.0");
+        ((AbstractDocument) amount_TextField.getDocument()).setDocumentFilter(new DocumentFilter() {
+            Pattern regEx = Pattern.compile("\\d*");
+
+            @Override
+            public void replace(DocumentFilter.FilterBypass fb, int offset, int length, String text, AttributeSet attrs) throws
+                    BadLocationException {
+                char input = text.toCharArray()[0];
+                if (regEx.matcher(text).matches() || input == '.') {
+                    if (input == '.') {
+                        if (offset == 0) {
+                            getToolkit().beep();
+                            return;
+                        } else {
+                            if (amount_TextField.getText().contains(".")) {
+                                getToolkit().beep();
+                                return;
+                            }
+                        }
+                    }
+                    super.replace(fb, offset, length, text, attrs);
+                    return;
+                }
+                getToolkit().beep();
+            }
+        });
 
         type_Label = new JLabel("Type");
         type_ComboBox = new JComboBox(TypeEnum.values());
@@ -134,7 +169,24 @@ public class TransactionSettingForm extends JFrame {
     }
 
     public void fillForm(User user) {
-        this.user = user;
+        try{
+            this.user = user;
+            if(user != null){
+                userValue_Label.setText(user.getUsername());
+                List<Account> listAccount = AccountController.getController().findByUserId(user.getId());
+                for (Account account : listAccount) {
+                    account_ComboBox.addItem(account.getName());
+                }
+//                TitlesController.getController().find
+//                type_ComboBox.getSelectedItem();
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+            JOptionPane.showConfirmDialog(this,"Can not fillForm");
+
+        }
+
 
     }
 

@@ -1,6 +1,7 @@
 package view;
 
 import enums.TypeEnum;
+import lombok.Synchronized;
 import model.entity.User;
 import org.jdesktop.swingx.JXDatePicker;
 
@@ -184,6 +185,11 @@ public class TransactionManagementForm extends JPanel {
     }
 
     private void add_ButtonActionPreform() {
+        try {
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
     }
 
