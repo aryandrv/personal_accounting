@@ -5,12 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6ff2f35b-f77f-43d1-aa91-f961d4384e62" name="Changes" comment="user">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f9267f67-91e2-4241-a652-c53aedbc3b7c.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f9267f67-91e2-4241-a652-c53aedbc3b7c.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f9267f67-91e2-4241-a652-c53aedbc3b7c/storage_v2/_src_/schema/ARYAN.dZS6Aw.zip" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f9267f67-91e2-4241-a652-c53aedbc3b7c/storage_v2/_src_/schema/ARYAN.dZS6Aw.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_26_2024_12_18_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_26_2024_12_18_AM__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UsersLenovoDocumentsprojectpersonal_accountingloging.log" beforeDir="false" afterPath="$PROJECT_DIR$/UsersLenovoDocumentsprojectpersonal_accountingloging.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/TopoForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/TopoForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/TransactionManagementForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/TransactionManagementForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/TransactionSettingForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/TransactionSettingForm.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,7 +29,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
@@ -53,14 +50,14 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;database.data.extractors.current.export.id&quot;: &quot;Comma-separated (CSV)_id&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Lenovo/Documents/project/personal_accounting/src/main/resources&quot;,
+    &quot;last_opened_file_path&quot;: &quot;F:/example aryan/data Stracture/personal_accounting/src/main/java/model/lib&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/Lenovo/Documents/project/personal/src/main/java/org/example/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
@@ -78,7 +75,7 @@
       <recent name="C:\Users\Lenovo\Documents\project\personal_accounting\src\main\java\model\repository" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.TopoForm">
+  <component name="RunManager" selected="Application.TransactionSettingForm">
     <configuration name="BankAccountManagementForm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="view.BankAccountManagementForm" />
       <module name="personal_accounting" />
@@ -100,19 +97,6 @@
       </method>
     </configuration>
     <configuration name="TitlesManagementForm (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="view.TitlesManagementForm" />
-      <module name="personal_accounting" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="view.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TitlesManagementForm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="view.TitlesManagementForm" />
       <module name="personal_accounting" />
       <extension name="coverage">
@@ -177,13 +161,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TransactionSettingForm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="view.TransactionSettingForm" />
+      <module name="personal_accounting" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="view.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.TransactionSettingForm" />
         <item itemvalue="Application.TransactionManagementForm" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.BankAccountManagementForm" />
         <item itemvalue="Application.TitlesManagementForm (1)" />
-        <item itemvalue="Application.TitlesManagementForm" />
       </list>
     </recent_temporary>
   </component>
@@ -222,8 +219,7 @@
       <workItem from="1708455745094" duration="10844000" />
       <workItem from="1708541959451" duration="3144000" />
       <workItem from="1708622903964" duration="13834000" />
-      <workItem from="1708895517017" duration="222000" />
-      <workItem from="1709062549933" duration="1918000" />
+      <workItem from="1708752209227" duration="5006000" />
     </task>
     <task id="LOCAL-00001" summary="nothing">
       <option name="closed" value="true" />
@@ -345,31 +341,7 @@
       <option name="project" value="LOCAL" />
       <updated>1708467350575</updated>
     </task>
-    <task id="LOCAL-00016" summary="user">
-      <option name="closed" value="true" />
-      <created>1708894700775</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1708894700775</updated>
-    </task>
-    <task id="LOCAL-00017" summary="user">
-      <option name="closed" value="true" />
-      <created>1708895730164</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1708895730164</updated>
-    </task>
-    <task id="LOCAL-00018" summary="user">
-      <option name="closed" value="true" />
-      <created>1709062975376</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1709062975376</updated>
-    </task>
-    <option name="localTasksCounter" value="19" />
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -399,6 +371,11 @@
           <url>file://$PROJECT_DIR$/src/main/java/org/example/Main.java</url>
           <line>15</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/view/BankAccountManagementForm.java</url>
+          <line>152</line>
+          <option name="timeStamp" value="30" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
