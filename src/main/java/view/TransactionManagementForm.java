@@ -47,8 +47,8 @@ public class TransactionManagementForm extends JPanel {
         table = new JTable(tableModel);
         TableColumn rowColumn =table.getColumnModel().getColumn(0);
         rowColumn.setPreferredWidth(30);
-        TableColumn id_olumn =table.getColumnModel().getColumn(0);
-        rowColumn.setPreferredWidth(30);
+        TableColumn id_olumn =table.getColumnModel().getColumn(1);
+        id_olumn.setPreferredWidth(30);
         scrollPane = new JScrollPane(table);
 
         add_Button = new JButton("Add");

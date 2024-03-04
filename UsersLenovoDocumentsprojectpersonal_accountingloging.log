@@ -325,3 +325,8 @@
 2024-02-29 00:45:21,129 [AWT-EventQueue-0] INFO  controller.TitlesController - find all TEST 
 2024-02-29 00:46:00,504 [main] INFO  controller.UserController - find by id TEST 
 2024-02-29 00:47:36,568 [main] INFO  controller.UserController - find by id TEST 
+2024-02-29 13:36:40,146 [main] INFO  controller.UserController - find by id TEST 
+2024-02-29 13:38:36,708 [main] INFO  controller.UserController - find by id TEST 
+2024-02-29 13:39:09,581 [AWT-EventQueue-0] INFO  controller.AccountController - find all by user_id TEST 
+2024-02-29 13:39:23,522 [Thread-4] INFO  controller.AccountController - find all by user_id TEST 
+2024-02-29 13:39:23,650 [Thread-4] INFO  controller.TitlesController - find all by type TEST 
