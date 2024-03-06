@@ -5,15 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6ff2f35b-f77f-43d1-aa91-f961d4384e62" name="Changes" comment="user">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f9267f67-91e2-4241-a652-c53aedbc3b7c.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f9267f67-91e2-4241-a652-c53aedbc3b7c.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_28_2024_8_01_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_28_2024_8_01_PM__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UsersLenovoDocumentsprojectpersonal_accountingloging.log" beforeDir="false" afterPath="$PROJECT_DIR$/UsersLenovoDocumentsprojectpersonal_accountingloging.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/TitlesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/TitlesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/repository/TitlesRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/repository/TitlesRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/repository/TransactionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/repository/TransactionRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/service/TitlesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/service/TitlesService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/TransactionManagementForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/TransactionManagementForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/TransactionSettingForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/TransactionSettingForm.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

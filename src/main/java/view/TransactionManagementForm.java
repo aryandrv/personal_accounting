@@ -1,13 +1,14 @@
 package view;
 
 import enums.TypeEnum;
-import lombok.Synchronized;
 import model.entity.User;
 import org.jdesktop.swingx.JXDatePicker;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 public class TransactionManagementForm extends JPanel {
 
@@ -20,45 +21,47 @@ public class TransactionManagementForm extends JPanel {
         panel1 = new JLabel();
         panel1.setBorder(BorderFactory.createTitledBorder("Filter by"));
 
-        bankAccount_Label = new JLabel("Name");
+        bankAccount_CheckBox = new JCheckBox("Account name");
         bankAccount_Combobox = new JComboBox();
 
-        titles_Label = new JLabel("Title");
+        titles_CheckBox = new JCheckBox("Title");
         titles_Combobox = new JComboBox();
 
-        amountFrom_Label = new JLabel("Amount from");
+        amountFrom_CheckBox = new JCheckBox("Amount from");
         amountFrom_TextField = new JTextField();
 
-        amountTo_Label = new JLabel("Amount to");
+        amountTo_CheckBox = new JCheckBox("Amount to");
         amountTo_TextField = new JTextField();
 
-        description_Label = new JLabel("Description");
+        description_CheckBox = new JCheckBox("Description");
         description_TextField = new JTextField();
 
-        type_Label = new JLabel("Type");
+        type_CheckBox = new JCheckBox("Type");
         type_Combobox = new JComboBox(TypeEnum.values());
 
-        date_Label = new JLabel("Date");
+        date_CheckBox = new JCheckBox("Date");
         datePicker = new JXDatePicker();
 
         Object[] headers = {"Row", "ID", "User", "Bank", "Type", "Titles", "Amount", "Transaction date", "Description"};
 
         tableModel = new DefaultTableModel(headers, 0);
         table = new JTable(tableModel);
-        TableColumn rowColumn =table.getColumnModel().getColumn(0);
-        rowColumn.setPreferredWidth(30);
-        TableColumn id_olumn =table.getColumnModel().getColumn(1);
-        id_olumn.setPreferredWidth(30);
+        TableColumn row_Column = table.getColumnModel().getColumn(row_columnNo);
+        row_Column.setPreferredWidth(30);
+        TableColumn id_Column = table.getColumnModel().getColumn(id_columnNo);
+        id_Column.setPreferredWidth(30);
+
+        sorter = new TableRowSorter<>(tableModel);
+        sorter.setRowFilter(new CustomRowFilter());
+        table.setRowSorter(sorter);
+//        sorter.sort
+
+
         scrollPane = new JScrollPane(table);
 
         add_Button = new JButton("Add");
         add_Button.addActionListener(e -> {
             add_ButtonActionPreform();
-        });
-
-        filter_Button = new JButton("Filter");
-        filter_Button.addActionListener(e -> {
-            filter_ButtonActionPreform();
         });
 
         modify_Button = new JButton("Modify");
@@ -85,30 +88,29 @@ public class TransactionManagementForm extends JPanel {
         input_groupLayout.setHorizontalGroup(input_groupLayout.createSequentialGroup()
                 .addGap(10)
                 .addGroup(input_groupLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addComponent(bankAccount_Label)
+                        .addComponent(bankAccount_CheckBox)
                         .addComponent(bankAccount_Combobox, GroupLayout.PREFERRED_SIZE, 180, GroupLayout.PREFERRED_SIZE)
-                        .addComponent(type_Label)
+                        .addComponent(type_CheckBox)
                         .addComponent(type_Combobox, GroupLayout.PREFERRED_SIZE, 180, GroupLayout.PREFERRED_SIZE)
                 )
                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(input_groupLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addComponent(amountFrom_Label)
+                        .addComponent(amountFrom_CheckBox)
                         .addComponent(amountFrom_TextField, GroupLayout.PREFERRED_SIZE, 180, GroupLayout.PREFERRED_SIZE)
-                        .addComponent(amountTo_Label)
+                        .addComponent(amountTo_CheckBox)
                         .addComponent(amountTo_TextField, GroupLayout.PREFERRED_SIZE, 180, GroupLayout.PREFERRED_SIZE)
                 )
                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(input_groupLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addComponent(titles_Label)
+                        .addComponent(titles_CheckBox)
                         .addComponent(titles_Combobox, GroupLayout.PREFERRED_SIZE, 180, GroupLayout.PREFERRED_SIZE)
-                        .addComponent(description_Label)
+                        .addComponent(description_CheckBox)
                         .addComponent(description_TextField, GroupLayout.PREFERRED_SIZE, 180, GroupLayout.PREFERRED_SIZE)
                 )
                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(input_groupLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addComponent(date_Label)
+                        .addComponent(date_CheckBox)
                         .addComponent(datePicker, GroupLayout.PREFERRED_SIZE, 180, GroupLayout.PREFERRED_SIZE)
-                        .addComponent(filter_Button, GroupLayout.PREFERRED_SIZE, 180, GroupLayout.PREFERRED_SIZE)
                 )
 
                 .addGap(10)
@@ -117,10 +119,10 @@ public class TransactionManagementForm extends JPanel {
         input_groupLayout.setVerticalGroup(input_groupLayout.createSequentialGroup()
                 .addGap(20)
                 .addGroup(input_groupLayout.createParallelGroup(GroupLayout.Alignment.CENTER)
-                        .addComponent(bankAccount_Label)
-                        .addComponent(amountFrom_Label)
-                        .addComponent(titles_Label)
-                        .addComponent(date_Label)
+                        .addComponent(bankAccount_CheckBox)
+                        .addComponent(amountFrom_CheckBox)
+                        .addComponent(titles_CheckBox)
+                        .addComponent(date_CheckBox)
                 )
                 .addGap(5)
                 .addGroup(input_groupLayout.createParallelGroup(GroupLayout.Alignment.CENTER)
@@ -131,16 +133,15 @@ public class TransactionManagementForm extends JPanel {
                 )
                 .addGap(5)
                 .addGroup(input_groupLayout.createParallelGroup(GroupLayout.Alignment.CENTER)
-                        .addComponent(type_Label)
-                        .addComponent(amountTo_Label)
-                        .addComponent(description_Label)
+                        .addComponent(type_CheckBox)
+                        .addComponent(amountTo_CheckBox)
+                        .addComponent(description_CheckBox)
                 )
                 .addGap(5)
                 .addGroup(input_groupLayout.createParallelGroup(GroupLayout.Alignment.CENTER)
                         .addComponent(type_Combobox, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
                         .addComponent(amountTo_TextField, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
                         .addComponent(description_TextField, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
-                        .addComponent(filter_Button, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
                 )
 
                 .addGap(20)
@@ -215,6 +216,7 @@ public class TransactionManagementForm extends JPanel {
     private void delete_ButtonActionPreform() {
 
     }
+
     private void filter_ButtonActionPreform() {
 
     }
@@ -234,17 +236,18 @@ public class TransactionManagementForm extends JPanel {
     private JLabel panel1;
 
     private JTable table;
+    private TableRowSorter sorter;
     private DefaultTableModel tableModel;
     private JScrollPane scrollPane;
 
-    private JLabel bankAccount_Label;
-    private JLabel type_Label;
-    private JLabel amountFrom_Label;
-    private JLabel amountTo_Label;
+    private JCheckBox bankAccount_CheckBox;
+    private JCheckBox type_CheckBox;
+    private JCheckBox amountFrom_CheckBox;
+    private JCheckBox amountTo_CheckBox;
 
-    private JLabel date_Label;
-    private JLabel titles_Label;
-    private JLabel description_Label;
+    private JCheckBox date_CheckBox;
+    private JCheckBox titles_CheckBox;
+    private JCheckBox description_CheckBox;
 
 
     private JComboBox bankAccount_Combobox;
@@ -255,11 +258,57 @@ public class TransactionManagementForm extends JPanel {
     private JComboBox titles_Combobox;
     private JTextField description_TextField;
 
+    private int colNo = 0;
+
+
+    private final int row_columnNo = colNo++;
+    private final int id_columnNo = colNo++;
+    private final int user_columnNo = colNo++;
+    private final int bank_columnNo = colNo++;
+    private final int type_columnNo = colNo++;
+    private final int titles_columnNo = colNo++;
+    private final int amount_columnNo = colNo++;
+    private final int transaction_columnNo = colNo++;
+    private final int description_columnNo = colNo++;
+
     private JButton add_Button;
     private JButton modify_Button;
     private JButton delete_Button;
     private JButton refresh_Button;
-    private JButton filter_Button;
+
+    private class CustomRowFilter extends RowFilter<Object, Object> {
+
+        @Override
+        public boolean include(RowFilter.Entry<? extends Object, ? extends Object> entry) {
+            try {
+
+                if (bankAccount_CheckBox.isSelected() && bankAccount_Combobox.getSelectedItem() != null && !entry.getStringValue(bank_columnNo).equals(bankAccount_Combobox.getSelectedItem().toString())) {
+                    return false;
+                }
+                if (type_CheckBox.isSelected() && type_Combobox.getSelectedItem() != null && !entry.getStringValue(type_columnNo).equals(type_Combobox.getSelectedItem().toString())) {
+                    return false;
+                }
+                if (amountFrom_CheckBox.isSelected() && amountFrom_TextField != null && !(Double.valueOf(entry.getStringValue(amount_columnNo)) >= Double.valueOf(amountFrom_TextField.getText().trim()))) {
+                    return false;
+                }
+                if (amountTo_CheckBox.isSelected() && amountTo_TextField != null && !(Double.valueOf(entry.getStringValue(amount_columnNo)) <= Double.valueOf(amountTo_TextField.getText().trim()))) {
+                    return false;
+                }
+
+                if (titles_CheckBox.isSelected() && titles_Combobox.getSelectedItem() != null && !entry.getStringValue(titles_columnNo).equals(titles_Combobox.getSelectedItem().toString())) {
+                    return false;
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                return false;
+
+            }
+            return true;
+        }
+    }
+
+    ;
 
 
 }
