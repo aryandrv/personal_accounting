@@ -116,4 +116,15 @@ public class TitlesController {
             return null;
         }
     }
+    public Titles findByName(String name) {
+        try {
+            log.info("find by name");
+            return TitlesService.getService().findByName(name);
+
+        } catch (Exception e) {
+            log.error("Error to find by name");
+            System.out.println("Error : " + e.getMessage());
+            return null;
+        }
+    }
 }

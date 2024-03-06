@@ -130,6 +130,25 @@ public class TitlesRepository implements Repository<Titles>, AutoCloseable {
         }
         return titlesList;
     }
+    public Titles findByName(String name) throws Exception {
+        connection = JdbcProvider.getJdbcProvider().getConnection();
+        preparedStatement = connection.prepareStatement(
+                "SELECT * FROM TITLES_TBL WHERE NAME=?"
+        );
+        preparedStatement.setString(1, name);
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        Titles titles = null;
+
+        while (resultSet.next()) {
+             titles = Titles.builder()
+                    .id(resultSet.getInt("ID"))
+                    .name(resultSet.getString("NAME"))
+                    .type(TypeEnum.toEnum(resultSet.getString("TYPE")))
+                    .build();
+        }
+        return titles;
+    }
 
     @Override
     public void close() throws Exception {

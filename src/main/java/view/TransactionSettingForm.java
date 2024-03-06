@@ -2,6 +2,7 @@ package view;
 
 import controller.AccountController;
 import controller.TitlesController;
+import controller.TransactionController;
 import enums.TypeEnum;
 import model.entity.Account;
 import model.entity.Titles;
@@ -15,6 +16,8 @@ import javax.swing.text.AbstractDocument;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DocumentFilter;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -190,7 +193,7 @@ public class TransactionSettingForm extends JFrame {
             this.user = user;
             if (user != null) {
                 userValue_Label.setText(user.getUsername());
-                List<Account> listAccount = AccountController.getController().findByUserId(user.getId());
+                listAccount = AccountController.getController().findByUserId(user.getId());
                 for (Account account : listAccount) {
                     account_ComboBox.addItem(account.getName());
                 }
@@ -215,7 +218,37 @@ public class TransactionSettingForm extends JFrame {
     }
 
     private void add_ButtonActionPreform() {
+        try {
+            if (transactionDatePicker.getDate().toString().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "please put transaction date ");
+            } else if (amount_TextField.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "please put amount");
+            } else {
+                TransactionController.getController().save(0, user, getAccount(),
+                        Double.valueOf(amount_TextField.getText().trim()),
+                        TitlesController.getController().findByName(titles_ComboBox.getSelectedItem().toString()),
+                        new Timestamp(transactionDatePicker.getDate().getTime()).toLocalDateTime(),
+                        description_TextArea.getText(),
+                        TypeEnum.toEnum(type_ComboBox.getSelectedItem().toString()));
+                JOptionPane.showMessageDialog(this,"Save success!!");
+                dispose();
+            }
 
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "have some error");
+        }
+
+
+    }
+
+    private Account getAccount() {
+        for (Account account : listAccount) {
+            if (account_ComboBox.getSelectedItem().toString().equals(account.getName())) {
+                return account;
+            }
+        }
+        return null;
     }
 
     public static void main(String[] args) {
@@ -244,4 +277,6 @@ public class TransactionSettingForm extends JFrame {
 
 
     private User user;
+    private List<Account> listAccount;
+
 }

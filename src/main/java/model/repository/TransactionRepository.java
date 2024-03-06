@@ -30,7 +30,7 @@ public class TransactionRepository implements Repository<Transaction>, AutoClose
         resultSet.next();
         transaction.setId(resultSet.getInt("NEXT_ID"));
         preparedStatement = connection.prepareStatement(
-                "INSERT INTO TRANSACTION_TBL(ID,USER_ID,ACCOUNT_ID,AMOUNT,TITLES_ID,TRANSACTIONDATE,DESCRIPTION) VALUES (?,?,?,?,?,?,?)"
+                "INSERT INTO TRANSACTION_TBL(ID,USER_ID,ACCOUNT_ID,AMOUNT,TITLES_ID,TRANSACTIONDATE,DESCRIPTION,TYPE) VALUES (?,?,?,?,?,?,?,?)"
         );
         preparedStatement.setInt(1, transaction.getId());
         preparedStatement.setInt(2, transaction.getUser().getId());
@@ -39,6 +39,7 @@ public class TransactionRepository implements Repository<Transaction>, AutoClose
         preparedStatement.setInt(5, transaction.getTitles().getId());
         preparedStatement.setTimestamp(6, Timestamp.valueOf(transaction.getTransactionDate()));
         preparedStatement.setString(7, transaction.getDescription());
+        preparedStatement.setString(8, transaction.getType().toString());
         preparedStatement.execute();
 
         return transaction;
@@ -48,7 +49,7 @@ public class TransactionRepository implements Repository<Transaction>, AutoClose
     public Transaction edit(Transaction transaction) throws Exception {
         connection = JdbcProvider.getJdbcProvider().getConnection();
         preparedStatement = connection.prepareStatement(
-                "UPDATE USER_TBL SET USER_ID=?,ACCOUNT_ID=?,AMOUNT=?,TITLES_ID=?,TRANSACTIONDATE=?, DESCRIPTION=? WHERE ID=?"
+                "UPDATE USER_TBL SET USER_ID=?,ACCOUNT_ID=?,AMOUNT=?,TITLES_ID=?,TRANSACTIONDATE=?, DESCRIPTION=?, TYPE=? WHERE ID=?"
         );
         preparedStatement.setInt(1, transaction.getUser().getId());
         preparedStatement.setInt(2, transaction.getAccount().getId());
@@ -56,6 +57,7 @@ public class TransactionRepository implements Repository<Transaction>, AutoClose
         preparedStatement.setInt(4, transaction.getTitles().getId());
         preparedStatement.setTimestamp(5, Timestamp.valueOf(transaction.getTransactionDate()));
         preparedStatement.setString(6, transaction.getDescription());
+        preparedStatement.setString(6, transaction.getType().toString());
         preparedStatement.setInt(7, transaction.getId());
         preparedStatement.execute();
 

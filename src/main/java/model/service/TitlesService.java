@@ -55,4 +55,10 @@ public class TitlesService {
         }
     }
 
+    public Titles findByName(String name) throws Exception {
+        try (TitlesRepository titlesRepository = new TitlesRepository()) {
+            return titlesRepository.findByName(name);
+        }
+    }
+
 }

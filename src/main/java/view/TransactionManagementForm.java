@@ -58,7 +58,7 @@ public class TransactionManagementForm extends JPanel {
 
         filter_Button = new JButton("Filter");
         filter_Button.addActionListener(e -> {
-            modify_ButtonActionPreform();
+            filter_ButtonActionPreform();
         });
 
         modify_Button = new JButton("Modify");
@@ -213,6 +213,9 @@ public class TransactionManagementForm extends JPanel {
     }
 
     private void delete_ButtonActionPreform() {
+
+    }
+    private void filter_ButtonActionPreform() {
 
     }
 

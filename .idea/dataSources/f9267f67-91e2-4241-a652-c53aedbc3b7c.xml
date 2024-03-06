@@ -459,7 +459,7 @@
     </sequence>
     <table id="93" parent="2" name="ACCOUNT_TBL">
       <CreatedTimestamp>2024-01-22.03:51:26</CreatedTimestamp>
-      <DetailsLevel>3</DetailsLevel>
+      <DetailsLevel>2</DetailsLevel>
       <ModifiedTimestamp>2024-01-22.03:51:26</ModifiedTimestamp>
       <ObjectId>77851</ObjectId>
       <TemporaryPreserve>1</TemporaryPreserve>
