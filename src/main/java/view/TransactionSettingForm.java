@@ -3,9 +3,11 @@ package view;
 import controller.AccountController;
 import controller.TitlesController;
 import controller.TransactionController;
+import enums.DomainEnum;
 import enums.TypeEnum;
 import model.entity.Account;
 import model.entity.Titles;
+import model.entity.Transaction;
 import model.entity.User;
 import org.jdesktop.swingx.JXDatePicker;
 
@@ -16,7 +18,9 @@ import javax.swing.text.AbstractDocument;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DocumentFilter;
+import java.sql.Date;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -36,7 +40,6 @@ public class TransactionSettingForm extends JFrame {
 
         amount_Label = new JLabel("Amount");
         amount_TextField = new JTextField();
-        amount_TextField.setText("0.0");
         ((AbstractDocument) amount_TextField.getDocument()).setDocumentFilter(new DocumentFilter() {
             Pattern regEx = Pattern.compile("\\d*");
 
@@ -57,6 +60,27 @@ public class TransactionSettingForm extends JFrame {
                         }
                     }
                     super.replace(fb, offset, length, text, attrs);
+                    return;
+                } else if (text.contains(".")) {
+                    int i = 0;
+                    for (char c : text.toCharArray()) {
+                        if (!(regEx.matcher(String.valueOf(c)).matches() || c == '.')) {
+                            getToolkit().beep();
+                            return;
+                        }
+                        if (c == '.') {
+                            if (i == 0) {
+                                getToolkit().beep();
+                                return;
+                            } else {
+                                if (amount_TextField.getText().contains(".")) {
+                                    getToolkit().beep();
+                                    return;
+                                }
+                            }
+                        }
+                        super.replace(fb, i++, 0, String.valueOf(c), attrs);
+                    }
                     return;
                 }
                 getToolkit().beep();
@@ -94,6 +118,13 @@ public class TransactionSettingForm extends JFrame {
         add_Button.addActionListener(e -> {
             add_ButtonActionPreform();
         });
+        add_Button.setVisible(false);
+
+        apply_Button = new JButton("Apply");
+        apply_Button.addActionListener(e -> {
+            apply_ButtonActionPreform();
+        });
+        apply_Button.setVisible(false);
 
         close_Button = new JButton("Close");
         close_Button.addActionListener(e -> {
@@ -147,6 +178,8 @@ public class TransactionSettingForm extends JFrame {
                         .addComponent(description_TextArea, GroupLayout.PREFERRED_SIZE, 777, GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createSequentialGroup()
                                 .addContainerGap(50, 600)
+                                .addComponent(apply_Button, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(add_Button, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(close_Button, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)
@@ -179,6 +212,7 @@ public class TransactionSettingForm extends JFrame {
                 .addComponent(description_TextArea, GroupLayout.PREFERRED_SIZE, 180, GroupLayout.PREFERRED_SIZE)
                 .addGap(10)
                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.CENTER)
+                        .addComponent(apply_Button, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
                         .addComponent(add_Button, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
                         .addComponent(close_Button, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
                 )
@@ -188,24 +222,61 @@ public class TransactionSettingForm extends JFrame {
 
     }
 
-    public void fillForm(User user) {
-        try {
+    public void fillForm(User user, DomainEnum domain) {
+        fillForm(user, domain, null);
+    }
+
+    public void fillForm(User user, DomainEnum domain, Transaction transaction) {
+        if (user != null) {
             this.user = user;
-            if (user != null) {
-                userValue_Label.setText(user.getUsername());
-                listAccount = AccountController.getController().findByUserId(user.getId());
-                for (Account account : listAccount) {
-                    account_ComboBox.addItem(account.getName());
-                }
-                fillTitleComboBox();
+            switch (domain) {
+                case ADD:
+                    setTitle("Transaction Creation");
+                    add_Button.setVisible(true);
+                    try {
+                        userValue_Label.setText(user.getUsername());
+                        listAccount = AccountController.getController().findByUserId(user.getId());
+                        for (Account account : listAccount) {
+                            account_ComboBox.addItem(account.getName());
+                        }
+                        fillTitleComboBox();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        JOptionPane.showConfirmDialog(this, "Can not fillForm");
+                    }
+                    break;
+                case MODIFY:
+                    setTitle("Transaction modify");
+                    apply_Button.setVisible(true);
+                    if (transaction != null) {
+                        this.transaction = transaction;
+                        try {
+                            userValue_Label.setText(user.getUsername());
+                            listAccount = AccountController.getController().findByUserId(user.getId());
+                            for (Account account : listAccount) {
+                                account_ComboBox.addItem(account.getName());
+                            }
+                            account_ComboBox.setSelectedItem(transaction.getAccount().getName());
+                            type_ComboBox.setSelectedItem(transaction.getType());
+                            fillTitleComboBox();
+                            titles_ComboBox.setSelectedItem(transaction.getTitles().getName());
+                            amount_TextField.setText(String.valueOf(transaction.getAmount()));
+                            description_TextArea.setText(transaction.getDescription());
+                            transactionDatePicker.setDate(Date.valueOf(transaction.getTransactionDate().toLocalDate()));
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            JOptionPane.showConfirmDialog(this, "Can not fillForm");
+                        }
 
+                    }
+
+                    break;
             }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            JOptionPane.showConfirmDialog(this, "Can not fillForm");
-
+        } else {
+            JOptionPane.showMessageDialog(this, "Can not open form");
+            dispose();
         }
+
     }
 
     private void fillTitleComboBox() {
@@ -214,6 +285,31 @@ public class TransactionSettingForm extends JFrame {
         for (Titles title : listTitles) {
             titles_ComboBox.addItem(title.getName());
         }
+
+    }
+
+    private void apply_ButtonActionPreform() {
+        try {
+            if (transactionDatePicker.getDate().toString().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "please put transaction date ");
+            } else if (amount_TextField.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "please put amount");
+            } else {
+                TransactionController.getController().edit(transaction.getId(), user, getAccount(),
+                        Double.valueOf(amount_TextField.getText().trim()),
+                        TitlesController.getController().findByName(titles_ComboBox.getSelectedItem().toString()),
+                        new Timestamp(transactionDatePicker.getDate().getTime()).toLocalDateTime(),
+                        description_TextArea.getText(),
+                        TypeEnum.toEnum(type_ComboBox.getSelectedItem().toString()));
+                JOptionPane.showMessageDialog(this, "Modify success!!");
+                dispose();
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "have some error to modify");
+        }
+
 
     }
 
@@ -230,7 +326,7 @@ public class TransactionSettingForm extends JFrame {
                         new Timestamp(transactionDatePicker.getDate().getTime()).toLocalDateTime(),
                         description_TextArea.getText(),
                         TypeEnum.toEnum(type_ComboBox.getSelectedItem().toString()));
-                JOptionPane.showMessageDialog(this,"Save success!!");
+                JOptionPane.showMessageDialog(this, "Save success!!");
                 dispose();
             }
 
@@ -273,10 +369,12 @@ public class TransactionSettingForm extends JFrame {
     private JTextField amount_TextField;
 
     private JButton add_Button;
+    private JButton apply_Button;
     private JButton close_Button;
 
 
     private User user;
+    private Transaction transaction;
     private List<Account> listAccount;
 
 }

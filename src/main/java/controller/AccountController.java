@@ -1,5 +1,6 @@
 package controller;
 
+import enums.TypeEnum;
 import model.entity.Account;
 import model.entity.User;
 import model.service.AccountService;
@@ -113,6 +114,23 @@ public class AccountController {
             System.out.println("Error : " + e.getMessage());
             return null;
 
+        }
+    }
+
+    public void updateAccount(TypeEnum type, Double amount, Account account) {
+        try {
+            switch (type) {
+                case COST:
+                    AccountController.getController().edit(account.getId(), account.getName(),
+                            account.getBalance() - amount, account.getUser());
+                    break;
+                case INCOME:
+                    AccountController.getController().edit(account.getId(), account.getName(),
+                            account.getBalance() + amount, account.getUser());
+                    break;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

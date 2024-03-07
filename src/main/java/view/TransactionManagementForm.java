@@ -1,14 +1,17 @@
 package view;
 
+import controller.TransactionController;
+import enums.DomainEnum;
 import enums.TypeEnum;
+import model.entity.Transaction;
 import model.entity.User;
 import org.jdesktop.swingx.JXDatePicker;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
+import java.util.List;
 
 public class TransactionManagementForm extends JPanel {
 
@@ -42,7 +45,7 @@ public class TransactionManagementForm extends JPanel {
         date_CheckBox = new JCheckBox("Date");
         datePicker = new JXDatePicker();
 
-        Object[] headers = {"Row", "ID", "User", "Bank", "Type", "Titles", "Amount", "Transaction date", "Description"};
+        Object[] headers = {"Row", "ID", "User", "Bank", "Type", "Titles", "Amount", "Transaction date", "Description" , "DTO"};
 
         tableModel = new DefaultTableModel(headers, 0);
         table = new JTable(tableModel);
@@ -51,12 +54,19 @@ public class TransactionManagementForm extends JPanel {
         TableColumn id_Column = table.getColumnModel().getColumn(id_columnNo);
         id_Column.setPreferredWidth(30);
 
+        TableColumn dto_column = table.getColumnModel().getColumn(dto_columnNo);
+        dto_column.setWidth(0);
+        dto_column.setMinWidth(0);
+        dto_column.setMaxWidth(0);
+        dto_column.setPreferredWidth(0);
+        doLayout();
+
         sorter = new TableRowSorter<>(tableModel);
         sorter.setRowFilter(new CustomRowFilter());
         table.setRowSorter(sorter);
 //        sorter.sort
 
-
+//        table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         scrollPane = new JScrollPane(table);
 
         add_Button = new JButton("Add");
@@ -187,7 +197,40 @@ public class TransactionManagementForm extends JPanel {
 
     public void fillForm(User user) {
         this.user = user;
+        new Thread(() -> {
+            try {
+                List<Transaction> transactionList = TransactionController.getController().findByUserId(this.user.getId());
+                synchronized (tableModel){
 
+                    for (Transaction transaction : transactionList) {
+                        tableModel.addRow(toArray(transaction));
+                    }
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(this, "Can not fill form");
+
+            }
+
+        }).start();
+
+    }
+
+    private Object[] toArray(Transaction transaction){
+        Object[] array = new Object[table.getColumnCount()];
+        array[row_columnNo] = table.getRowCount()+1;
+        array[id_columnNo] = transaction.getId();
+        array[user_columnNo] = transaction.getUser().getName();
+        array[bank_columnNo] = transaction.getAccount().getName();
+        array[type_columnNo] = transaction.getType().toString();
+        array[titles_columnNo] = transaction.getTitles().getName();
+        array[amount_columnNo] = transaction.getAmount();
+        array[transactionDate_columnNo] = transaction.getTransactionDate();
+        array[description_columnNo] = transaction.getDescription();
+        array[dto_columnNo] = transaction;
+
+        return array;
     }
 
     private void add_ButtonActionPreform() {
@@ -195,7 +238,7 @@ public class TransactionManagementForm extends JPanel {
             try {
                 TransactionSettingForm transactionSettingForm = new TransactionSettingForm();
                 transactionSettingForm.setVisible(true);
-                transactionSettingForm.fillForm(user);
+                transactionSettingForm.fillForm(user, DomainEnum.ADD);
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -206,11 +249,31 @@ public class TransactionManagementForm extends JPanel {
     }
 
     private void modify_ButtonActionPreform() {
+        new Thread(() -> {
+            try{
+                if(table.getSelectedRows().length == 1 ){
+                Transaction transaction = (Transaction) tableModel.getValueAt(table.getSelectedRow(),dto_columnNo);
+                TransactionSettingForm transactionSettingForm = new TransactionSettingForm();
+                transactionSettingForm.setVisible(true);
+                transactionSettingForm.fillForm(user, DomainEnum.MODIFY, transaction);
+                }else{
+                    JOptionPane.showMessageDialog(this,"Please select one row");
+                }
+            }catch (Exception e){
+                e.printStackTrace();
+
+            }
+
+
+        }).start();
 
     }
 
     private void refresh_ButtonActionPreform() {
-
+        while (tableModel.getRowCount() != 0) {
+            tableModel.removeRow(0);
+        }
+        fillForm(user);
     }
 
     private void delete_ButtonActionPreform() {
@@ -268,8 +331,9 @@ public class TransactionManagementForm extends JPanel {
     private final int type_columnNo = colNo++;
     private final int titles_columnNo = colNo++;
     private final int amount_columnNo = colNo++;
-    private final int transaction_columnNo = colNo++;
+    private final int transactionDate_columnNo = colNo++;
     private final int description_columnNo = colNo++;
+    private final int dto_columnNo = colNo++;
 
     private JButton add_Button;
     private JButton modify_Button;

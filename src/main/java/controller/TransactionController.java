@@ -9,6 +9,7 @@ import model.service.TransactionService;
 
 import java.time.LocalDateTime;
 import java.util.List;
+
 import lombok.extern.log4j.Log4j;
 import model.service.TransactionService;
 
@@ -27,7 +28,7 @@ public class TransactionController {
     }
 
     public Transaction save(Integer id, User user, Account account, Double amount, Titles titles, LocalDateTime transactionDateTime, String description, TypeEnum type) throws Exception {
-        if (user !=null) {
+        if (user != null) {
             Transaction transaction =
                     Transaction
                             .builder()
@@ -42,6 +43,10 @@ public class TransactionController {
                             .build();
             TransactionService.getService().save(transaction);
             log.info("save");
+            if (transaction != null) {
+                AccountController.getController().updateAccount(transaction.getType(),
+                        transaction.getAmount(), transaction.getAccount());
+            }
             return transaction;
         } else {
             log.error("can not save");
@@ -65,6 +70,10 @@ public class TransactionController {
                             .build();
             TransactionService.getService().edit(transaction);
             log.info("edit");
+            if (transaction != null) {
+                AccountController.getController().updateAccount(transaction.getType(),
+                        transaction.getAmount(), transaction.getAccount());
+            }
             return transaction;
         } else {
             throw new Exception("Invalid Data");
@@ -77,6 +86,10 @@ public class TransactionController {
             if (transaction != null) {
                 TransactionService.getService().remove(id);
                 log.info("remove transaction");
+                if (transaction != null) {
+                    AccountController.getController().updateAccount(transaction.getType(),
+                            transaction.getAmount(), transaction.getAccount());
+                }
                 return transaction;
             } else {
                 System.out.println("Transaction not find");
@@ -113,6 +126,7 @@ public class TransactionController {
 
         }
     }
+
     public List<Transaction> findByUserId(Integer id) {
         try {
             log.info("find all by user_id");
@@ -120,11 +134,14 @@ public class TransactionController {
 
         } catch (Exception e) {
             log.error("Error to find all by user_id");
+            e.printStackTrace();
             System.out.println("Error : " + e.getMessage());
             return null;
 
         }
-    }  public List<Transaction> findByDateAndAccountId(Integer id, LocalDateTime from, LocalDateTime to) {
+    }
+
+    public List<Transaction> findByDateAndAccountId(Integer id, LocalDateTime from, LocalDateTime to) {
         try {
             log.info("find all by account_id and date");
             return TransactionService.getService().findByDateAndAccountId(id, from, to);
@@ -135,7 +152,9 @@ public class TransactionController {
             return null;
 
         }
-    }  public List<Transaction> findByDateAndUserId(Integer id, LocalDateTime from, LocalDateTime to) {
+    }
+
+    public List<Transaction> findByDateAndUserId(Integer id, LocalDateTime from, LocalDateTime to) {
         try {
             log.info("find all by user_id and date");
             return TransactionService.getService().findByDateAndUserId(id, from, to);

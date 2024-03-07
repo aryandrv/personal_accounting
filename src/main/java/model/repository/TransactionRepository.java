@@ -49,7 +49,7 @@ public class TransactionRepository implements Repository<Transaction>, AutoClose
     public Transaction edit(Transaction transaction) throws Exception {
         connection = JdbcProvider.getJdbcProvider().getConnection();
         preparedStatement = connection.prepareStatement(
-                "UPDATE USER_TBL SET USER_ID=?,ACCOUNT_ID=?,AMOUNT=?,TITLES_ID=?,TRANSACTIONDATE=?, DESCRIPTION=?, TYPE=? WHERE ID=?"
+                "UPDATE TRANSACTION_TBL SET USER_ID=?,ACCOUNT_ID=?,AMOUNT=?,TITLES_ID=?,TRANSACTIONDATE=?, DESCRIPTION=?, TYPE=? WHERE ID=?"
         );
         preparedStatement.setInt(1, transaction.getUser().getId());
         preparedStatement.setInt(2, transaction.getAccount().getId());
@@ -57,8 +57,8 @@ public class TransactionRepository implements Repository<Transaction>, AutoClose
         preparedStatement.setInt(4, transaction.getTitles().getId());
         preparedStatement.setTimestamp(5, Timestamp.valueOf(transaction.getTransactionDate()));
         preparedStatement.setString(6, transaction.getDescription());
-        preparedStatement.setString(6, transaction.getType().toString());
-        preparedStatement.setInt(7, transaction.getId());
+        preparedStatement.setString(7, transaction.getType().toString());
+        preparedStatement.setInt(8, transaction.getId());
         preparedStatement.execute();
 
         return transaction;
@@ -179,7 +179,7 @@ public class TransactionRepository implements Repository<Transaction>, AutoClose
     public List<Transaction> findByUserId(int userId) throws Exception {
         connection = JdbcProvider.getJdbcProvider().getConnection();
         preparedStatement = connection.prepareStatement(
-                "SELECT * FROM TRANSACTION_TBL WHERE USER_ID=?"
+                "SELECT * FROM TRANSACTION_REPORT WHERE TRANSACTION_USERID=?"
         );
 
         preparedStatement.setInt(1, userId);
@@ -189,7 +189,7 @@ public class TransactionRepository implements Repository<Transaction>, AutoClose
 
         while (resultSet.next()) {
             Transaction transaction = Transaction.builder()
-                    .id(resultSet.getInt("ID"))
+                    .id(resultSet.getInt("transaction_id"))
                     .user(User.builder()
                             .id(resultSet.getInt("user_id"))
                             .name(resultSet.getString("user_name"))
@@ -199,11 +199,11 @@ public class TransactionRepository implements Repository<Transaction>, AutoClose
                             .creationDate(resultSet.getTimestamp("user_creationdate").toLocalDateTime())
                             .build())
                     .account(Account.builder()
-                            .id(resultSet.getInt("ID"))
-                            .name(resultSet.getString("NAME"))
-                            .balance(resultSet.getDouble("BALANCE"))
+                            .id(resultSet.getInt("account_id"))
+                            .name(resultSet.getString("account_name"))
+                            .balance(resultSet.getDouble("account_balance"))
                             .user(User.builder()
-                                    .id(resultSet.getInt("user_id"))
+                                    .id(resultSet.getInt("account_userid"))
                                     .name(resultSet.getString("user_name"))
                                     .family(resultSet.getString("user_family"))
                                     .username(resultSet.getString("user_username"))
@@ -211,20 +211,20 @@ public class TransactionRepository implements Repository<Transaction>, AutoClose
                                     .creationDate(resultSet.getTimestamp("user_creationdate").toLocalDateTime())
                                     .build())
                             .build())
-                    .amount(resultSet.getDouble("AMOUNT"))
+                    .amount(resultSet.getDouble("transaction_amount"))
                     .titles(Titles.builder()
-                            .id(resultSet.getInt("ID"))
-                            .name("NAME")
-                            .type(TypeEnum.valueOf(resultSet.getString("TYPE")))
+                            .id(resultSet.getInt("titles_id"))
+                            .name(resultSet.getString("titles_name"))
+                            .type(TypeEnum.toEnum(resultSet.getString("titles_type")))
                             .build())
-                    .transactionDate(resultSet.getTimestamp("TRANSACTIONDATE").toLocalDateTime())
-                    .description(resultSet.getString("DESCRIPTION"))
-                    .type(TypeEnum.valueOf(resultSet.getString("TYPE")))
+                    .transactionDate(resultSet.getTimestamp("transaction_date").toLocalDateTime())
+                    .description(resultSet.getString("transaction_description"))
+                    .type(TypeEnum.toEnum(resultSet.getString("transaction_type")))
                     .build();
 
             transactionList.add(transaction);
-
         }
+
         return transactionList;
     }
 

@@ -3,6 +3,7 @@ package view;
 import controller.TitlesController;
 import enums.TypeEnum;
 import model.entity.Titles;
+import model.entity.Transaction;
 import model.entity.User;
 
 import javax.swing.*;
