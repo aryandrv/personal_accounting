@@ -167,4 +167,17 @@ public class TransactionController {
         }
     }
 
+    public Double sumByType(Integer userID, Integer accountId, TypeEnum type) {
+        try {
+            log.info("find all by user_id and date");
+            return TransactionService.getService().sumByType(userID, accountId, type);
+
+        } catch (Exception e) {
+            log.error("Error to find all by user_id and date");
+            System.out.println("Error : " + e.getMessage());
+            return null;
+
+        }
+    }
+
 }

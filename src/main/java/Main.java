@@ -1,6 +1,8 @@
 import controller.AccountController;
 import controller.TitlesController;
+import controller.TransactionController;
 import controller.UserController;
+import enums.TypeEnum;
 import model.entity.Account;
 import model.entity.Titles;
 import model.entity.User;
@@ -16,8 +18,9 @@ public class Main {
 //            User user = UserController.getController().save(2, "radin", "darvishzadeh",
 //                    "radin_drv", "12345678", LocalDateTime.now());
 //            User user = UserController.getController().findById(1);
-            List<Account> account = AccountController.getController().findByUserId(1);
-            System.out.println(account);
+//            List<Account> account = AccountController.getController().findByUserId(1);
+            System.out.println(TransactionController.getController().sumByType(1,41, TypeEnum.INCOME));
+//            System.out.println(account);
 //            Account account1 = AccountController.getController().edit(1, "Saman", 150.5, user);
 //            Titles titles = TitlesController.getController().findById(6);
 //            Titles titles = TitlesService.getService().remove(11);

@@ -339,6 +339,23 @@ public class TransactionRepository implements Repository<Transaction>, AutoClose
 
     }
 
+    public Double sumByType(Integer userId, Integer accountId, TypeEnum type) throws Exception{
+        connection = JdbcProvider.getJdbcProvider().getConnection();
+        preparedStatement = connection.prepareStatement(
+                "SELECT SUM(AMOUNT) AS AMOUNT FROM TRANSACTION_TBL WHERE " +
+                        "USER_ID = ? And ACCOUNT_ID = ? AND TYPE = ?");
+
+        preparedStatement.setInt(1, userId);
+        preparedStatement.setInt(2, accountId);
+        preparedStatement.setString(3, type.toString());
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()){
+            return resultSet.getDouble("AMOUNT");
+        }
+        return null;
+
+    }
+
     @Override
     public void close() throws Exception {
         preparedStatement.close();

@@ -522,3 +522,17 @@
 2024-03-07 15:06:44,840 [AWT-EventQueue-0] INFO  controller.TitlesController - find all TEST 
 2024-03-07 15:06:47,175 [AWT-EventQueue-0] INFO  controller.AccountController - find all by user_id TEST 
 2024-03-07 15:06:57,740 [AWT-EventQueue-0] INFO  controller.UserController - find by id TEST 
+2024-03-08 13:03:23,247 [main] INFO  controller.UserController - find by id TEST 
+2024-03-08 13:03:36,893 [Thread-4] INFO  controller.TransactionController - find all by user_id TEST 
+2024-03-08 13:03:38,265 [Thread-5] INFO  controller.AccountController - find all by user_id TEST 
+2024-03-08 13:03:38,540 [Thread-5] INFO  controller.TitlesController - find all by type TEST 
+2024-03-08 13:03:44,076 [AWT-EventQueue-0] INFO  controller.TitlesController - find all by type TEST 
+2024-03-08 13:03:58,599 [AWT-EventQueue-0] INFO  controller.TitlesController - find by name TEST 
+2024-03-08 13:03:58,924 [AWT-EventQueue-0] INFO  controller.TransactionController - save TEST 
+2024-03-08 13:03:59,106 [AWT-EventQueue-0] INFO  controller.AccountController - edit TEST 
+2024-03-08 13:04:02,586 [Thread-6] INFO  controller.TransactionController - find all by user_id TEST 
+2024-03-08 13:08:42,775 [main] INFO  controller.TransactionController - find all by user_id and date TEST 
+2024-03-08 13:08:48,378 [main] ERROR controller.TransactionController - Error to find all by user_id and date TEST 
+2024-03-08 13:09:59,965 [main] INFO  controller.TransactionController - find all by user_id and date TEST 
+2024-03-08 13:11:41,439 [main] ERROR controller.TransactionController - Error to find all by user_id and date TEST 
+2024-03-08 13:11:48,935 [main] INFO  controller.TransactionController - find all by user_id and date TEST 

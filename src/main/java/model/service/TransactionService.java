@@ -1,5 +1,6 @@
 package model.service;
 
+import enums.TypeEnum;
 import model.entity.Transaction;
 import model.repository.TransactionRepository;
 
@@ -59,9 +60,16 @@ public class TransactionService {
         try (TransactionRepository transactionRepository = new TransactionRepository()) {
             return transactionRepository.findByDateAndAccountId(id,from,to);
         }
-    }public List<Transaction> findByDateAndUserId(int id, LocalDateTime from, LocalDateTime to) throws Exception {
+    }
+    public List<Transaction> findByDateAndUserId(int id, LocalDateTime from, LocalDateTime to) throws Exception {
         try (TransactionRepository transactionRepository = new TransactionRepository()) {
             return transactionRepository.findByDateAndUserId(id,from,to);
+        }
+    }
+
+    public Double sumByType(Integer userID, Integer accountId, TypeEnum type) throws Exception {
+        try (TransactionRepository transactionRepository = new TransactionRepository()) {
+            return transactionRepository.sumByType(userID,accountId,type);
         }
     }
 
