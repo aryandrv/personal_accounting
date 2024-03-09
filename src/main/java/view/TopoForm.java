@@ -68,8 +68,6 @@ public class TopoForm extends JFrame {
 
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-
-
     }
 
     private void drawGui() {

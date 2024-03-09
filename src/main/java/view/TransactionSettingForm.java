@@ -260,7 +260,7 @@ public class TransactionSettingForm extends JFrame {
                             type_ComboBox.setSelectedItem(transaction.getType());
                             fillTitleComboBox();
                             titles_ComboBox.setSelectedItem(transaction.getTitles().getName());
-                            amount_TextField.setText(String.valueOf(transaction.getAmount()));
+                            amount_TextField.setText(String.valueOf(transaction.getAmount() >= 0 ? transaction.getAmount() : transaction.getAmount() * -1));
                             description_TextArea.setText(transaction.getDescription());
                             transactionDatePicker.setDate(Date.valueOf(transaction.getTransactionDate().toLocalDate()));
                         } catch (Exception e) {
@@ -296,7 +296,8 @@ public class TransactionSettingForm extends JFrame {
                 JOptionPane.showMessageDialog(this, "please put amount");
             } else {
                 TransactionController.getController().edit(transaction.getId(), user, getAccount(),
-                        Double.valueOf(amount_TextField.getText().trim()),
+                        TypeEnum.toEnum(type_ComboBox.getSelectedItem().toString()).equals(TypeEnum.INCOME) ?
+                                Double.valueOf(amount_TextField.getText().trim()) : -1 * Double.valueOf(amount_TextField.getText().trim()),
                         TitlesController.getController().findByName(titles_ComboBox.getSelectedItem().toString()),
                         new Timestamp(transactionDatePicker.getDate().getTime()).toLocalDateTime(),
                         description_TextArea.getText(),
@@ -321,7 +322,8 @@ public class TransactionSettingForm extends JFrame {
                 JOptionPane.showMessageDialog(this, "please put amount");
             } else {
                 TransactionController.getController().save(0, user, getAccount(),
-                        Double.valueOf(amount_TextField.getText().trim()),
+                        TypeEnum.toEnum(type_ComboBox.getSelectedItem().toString()).equals(TypeEnum.INCOME) ?
+                                Double.valueOf(amount_TextField.getText().trim()) : -1 * Double.valueOf(amount_TextField.getText().trim()),
                         TitlesController.getController().findByName(titles_ComboBox.getSelectedItem().toString()),
                         new Timestamp(transactionDatePicker.getDate().getTime()).toLocalDateTime(),
                         description_TextArea.getText(),

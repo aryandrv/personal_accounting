@@ -44,8 +44,9 @@ public class TransactionController {
             TransactionService.getService().save(transaction);
             log.info("save");
             if (transaction != null) {
-                AccountController.getController().updateAccount(transaction.getType(),
-                        transaction.getAmount(), transaction.getAccount());
+                Account account1 = transaction.getAccount();
+                AccountController.getController().edit(account1.getId(),
+                        account1.getName(), account1.getBalance() + transaction.getAmount() , account1.getUser());
             }
             return transaction;
         } else {
@@ -68,11 +69,17 @@ public class TransactionController {
                             .description(description)
                             .type(type)
                             .build();
+            Transaction oldTransaction = TransactionController.getController().findById(transaction.getId());
             TransactionService.getService().edit(transaction);
             log.info("edit");
-            if (transaction != null) {
-                AccountController.getController().updateAccount(transaction.getType(),
-                        transaction.getAmount(), transaction.getAccount());
+            if (transaction != null && oldTransaction != null) {
+                if(transaction.getAmount() == oldTransaction.getAmount()){
+                    return transaction;
+                }else{
+                    Account account1 = transaction.getAccount();
+                    AccountController.getController().edit(account1.getId(),
+                            account1.getName(), account1.getBalance() + (oldTransaction.getAmount() * -1) + transaction.getAmount()  , account1.getUser());
+                }
             }
             return transaction;
         } else {
@@ -87,8 +94,9 @@ public class TransactionController {
                 TransactionService.getService().remove(id);
                 log.info("remove transaction");
                 if (transaction != null) {
-                    AccountController.getController().updateAccount(transaction.getType(),
-                            transaction.getAmount(), transaction.getAccount());
+                    Account account1 = transaction.getAccount();
+                    AccountController.getController().edit(account1.getId(),
+                            account1.getName(), account1.getBalance() + (transaction.getAmount() * -1) , account1.getUser());
                 }
                 return transaction;
             } else {
@@ -158,19 +166,6 @@ public class TransactionController {
         try {
             log.info("find all by user_id and date");
             return TransactionService.getService().findByDateAndUserId(id, from, to);
-
-        } catch (Exception e) {
-            log.error("Error to find all by user_id and date");
-            System.out.println("Error : " + e.getMessage());
-            return null;
-
-        }
-    }
-
-    public Double sumByType(Integer userID, Integer accountId, TypeEnum type) {
-        try {
-            log.info("find all by user_id and date");
-            return TransactionService.getService().sumByType(userID, accountId, type);
 
         } catch (Exception e) {
             log.error("Error to find all by user_id and date");
