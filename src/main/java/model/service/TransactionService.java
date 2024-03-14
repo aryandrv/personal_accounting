@@ -30,7 +30,7 @@ public class TransactionService {
 
     public Transaction remove(int id) throws Exception {
         try (TransactionRepository transactionRepository = new TransactionRepository()) {
-            Transaction transaction= transactionRepository.findById(id);
+            Transaction transaction = transactionRepository.findById(id);
             if (transaction != null){
                 transactionRepository.remove(id);
                 return transaction;
@@ -56,7 +56,14 @@ public class TransactionService {
         try (TransactionRepository transactionRepository = new TransactionRepository()) {
             return transactionRepository.findByUserId(id);
         }
-    }public List<Transaction> findByDateAndAccountId(int id, LocalDateTime from, LocalDateTime to) throws Exception {
+    }
+
+    public List<Transaction> findByAccountId(int id) throws Exception {
+        try (TransactionRepository transactionRepository = new TransactionRepository()) {
+            return transactionRepository.findByAccountId(id);
+        }
+    }
+    public List<Transaction> findByDateAndAccountId(int id, LocalDateTime from, LocalDateTime to) throws Exception {
         try (TransactionRepository transactionRepository = new TransactionRepository()) {
             return transactionRepository.findByDateAndAccountId(id,from,to);
         }
@@ -67,10 +74,5 @@ public class TransactionService {
         }
     }
 
-    public Double sumByType(Integer userID, Integer accountId, TypeEnum type) throws Exception {
-        try (TransactionRepository transactionRepository = new TransactionRepository()) {
-            return transactionRepository.sumByType(userID,accountId,type);
-        }
-    }
 
 }

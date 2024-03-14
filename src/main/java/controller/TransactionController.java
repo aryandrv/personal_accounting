@@ -46,7 +46,7 @@ public class TransactionController {
             if (transaction != null) {
                 Account account1 = transaction.getAccount();
                 AccountController.getController().edit(account1.getId(),
-                        account1.getName(), account1.getBalance() + transaction.getAmount() , account1.getUser());
+                        account1.getName(), account1.getBalance() + transaction.getAmount(), account1.getUser());
             }
             return transaction;
         } else {
@@ -73,12 +73,12 @@ public class TransactionController {
             TransactionService.getService().edit(transaction);
             log.info("edit");
             if (transaction != null && oldTransaction != null) {
-                if(transaction.getAmount() == oldTransaction.getAmount()){
+                if (transaction.getAmount() == oldTransaction.getAmount()) {
                     return transaction;
-                }else{
+                } else {
                     Account account1 = transaction.getAccount();
                     AccountController.getController().edit(account1.getId(),
-                            account1.getName(), account1.getBalance() + (oldTransaction.getAmount() * -1) + transaction.getAmount()  , account1.getUser());
+                            account1.getName(), account1.getBalance() + (oldTransaction.getAmount() * -1) + transaction.getAmount(), account1.getUser());
                 }
             }
             return transaction;
@@ -96,7 +96,7 @@ public class TransactionController {
                 if (transaction != null) {
                     Account account1 = transaction.getAccount();
                     AccountController.getController().edit(account1.getId(),
-                            account1.getName(), account1.getBalance() + (transaction.getAmount() * -1) , account1.getUser());
+                            account1.getName(), account1.getBalance() + (transaction.getAmount() * -1), account1.getUser());
                 }
                 return transaction;
             } else {
@@ -107,6 +107,26 @@ public class TransactionController {
             log.error("error to remove");
             System.out.println("Error : " + e.getMessage());
             return null;
+        }
+    }
+
+    // This methods after remove one account is called
+    public Boolean remove(List<Transaction> transactionList) {
+        try {
+            if (transactionList != null && !transactionList.isEmpty()) {
+                for (Transaction transaction : transactionList) {
+                    if (transaction != null) {
+                        Transaction transaction1 = remove(transaction.getId());
+                    }
+                }
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            log.error("error to remove all transaction");
+            System.out.println("Error : " + e.getMessage());
+            return false;
         }
     }
 
@@ -128,7 +148,7 @@ public class TransactionController {
             return TransactionService.getService().findById(id);
 
         } catch (Exception e) {
-            log.error("Error to find");
+            log.error("Error to find All");
             System.out.println("Error : " + e.getMessage());
             return null;
 
@@ -142,6 +162,20 @@ public class TransactionController {
 
         } catch (Exception e) {
             log.error("Error to find all by user_id");
+            e.printStackTrace();
+            System.out.println("Error : " + e.getMessage());
+            return null;
+
+        }
+    }
+
+    public List<Transaction> findByAccountId(Integer id) {
+        try {
+            log.info("find all by account_id");
+            return TransactionService.getService().findByAccountId(id);
+
+        } catch (Exception e) {
+            log.error("Error to find all by account_id");
             e.printStackTrace();
             System.out.println("Error : " + e.getMessage());
             return null;

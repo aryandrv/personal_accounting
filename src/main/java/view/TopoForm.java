@@ -79,7 +79,7 @@ public class TopoForm extends JFrame {
                         .addComponent(profile_Icon, GroupLayout.PREFERRED_SIZE, 160, GroupLayout.PREFERRED_SIZE)
                         .addComponent(username)
                         .addComponent(timeToLogin)
-                        .addComponent(home_button, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
+//                        .addComponent(home_button, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
                         .addComponent(profile_button, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
                         .addComponent(transaction_button, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
                         .addComponent(bankAccount_button, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
@@ -95,8 +95,8 @@ public class TopoForm extends JFrame {
                 .addGap(5)
                 .addComponent(timeToLogin)
                 .addGap(10)
-                .addComponent(home_button, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
-                .addGap(10)
+//                .addComponent(home_button, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
+//                .addGap(10)
                 .addComponent(profile_button, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
                 .addGap(10)
                 .addComponent(transaction_button, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
@@ -173,6 +173,8 @@ public class TopoForm extends JFrame {
                 if (bankAccountManagementForm == null) {
                     bankAccountManagementForm = new BankAccountManagementForm();
                     bankAccountManagementForm.fillForm(user);
+                } else {
+                    bankAccountManagementForm.refresh_ButtonActionPreform();
                 }
                 bankAccountManagementForm.setVisible(true);
                 right_Panel.add(bankAccountManagementForm);
@@ -186,6 +188,8 @@ public class TopoForm extends JFrame {
                 if (transactionManagementForm == null) {
                     transactionManagementForm = new TransactionManagementForm();
                     transactionManagementForm.fillForm(user);
+                } else {
+                    transactionManagementForm.refresh_ButtonActionPreform();
                 }
                 transactionManagementForm.setVisible(true);
                 right_Panel.add(transactionManagementForm);

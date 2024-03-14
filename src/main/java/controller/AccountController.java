@@ -2,6 +2,7 @@ package controller;
 
 import enums.TypeEnum;
 import model.entity.Account;
+import model.entity.Transaction;
 import model.entity.User;
 import model.service.AccountService;
 import model.service.UserService;
@@ -9,6 +10,7 @@ import model.service.UserService;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.regex.Pattern;
+
 import lombok.extern.log4j.Log4j;
 
 
@@ -66,6 +68,8 @@ public class AccountController {
         try {
             Account account = AccountService.getService().findById(id);
             if (account != null) {
+                TransactionController.getController().remove(TransactionController.
+                        getController().findByAccountId(id));
                 AccountService.getService().remove(id);
                 log.info("remove");
                 return account;
@@ -76,6 +80,7 @@ public class AccountController {
         } catch (Exception e) {
             log.error("error to remove");
             System.out.println("Error : " + e.getMessage());
+            e.printStackTrace();
             return null;
         }
     }
@@ -104,7 +109,9 @@ public class AccountController {
             return null;
 
         }
-    }    public List<Account> findByUserId(Integer id) {
+    }
+
+    public List<Account> findByUserId(Integer id) {
         try {
             log.info("find all by user_id");
             return AccountService.getService().findByUserId(id);

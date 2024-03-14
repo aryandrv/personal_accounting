@@ -190,7 +190,7 @@ public class BankAccountManagementForm extends JPanel {
 
     }
 
-    private void refresh_ButtonActionPreform() {
+    public void refresh_ButtonActionPreform() {
         while (tableModel.getRowCount() != 0) {
             tableModel.removeRow(0);
         }
@@ -198,6 +198,27 @@ public class BankAccountManagementForm extends JPanel {
     }
 
     private void delete_ButtonActionPreform() {
+        try {
+            synchronized (tableModel) {
+                int[] selectedRow = table.getSelectedRows();
+                if (selectedRow.length == 1) {
+                    Account account = AccountController.getController().remove((Integer) tableModel.getValueAt(selectedRow[0], 1));
+                    if (account != null) {
+                        tableModel.removeRow(selectedRow[0]);
+                        if (table.getColumnModel().getColumn(0).getHeaderValue().toString().toLowerCase().trim().equals("row")) {
+                            for (int i = 0; i < table.getRowCount(); i++) {
+                                table.setValueAt((i + 1), i, 0);
+                            }
+                        }
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(this, "Please select one row");
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
 
     }
     public static void main(String[] args) {

@@ -31,14 +31,7 @@ public class AccountService {
 
     public Account remove(int id) throws Exception {
         try (AccountRepository accountRepository = new AccountRepository()) {
-            Account account= accountRepository.findById(id);
-            if (account != null){
-                accountRepository.remove(id);
-                return account;
-            }
-            else {
-                return null;
-            }
+                return accountRepository.remove(id);
         }
     }
 
