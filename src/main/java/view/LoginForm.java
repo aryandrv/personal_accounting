@@ -41,25 +41,22 @@ public class LoginForm extends JFrame {
         layout.setHorizontalGroup(layout.createSequentialGroup()
                 .addGap(20)
                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addComponent(username_Label)
-                                .addGap(15)
-                                .addComponent(username_TextField, GroupLayout.PREFERRED_SIZE, 180, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(username_Label)
+                        .addComponent(password_Label)
 
-                        )
-                        .addGroup(layout.createSequentialGroup()
-                                .addComponent(password_Label)
-                                .addGap(15)
-                                .addComponent(password_TextField, GroupLayout.PREFERRED_SIZE, 180, GroupLayout.PREFERRED_SIZE)
-                        )
+                )
+                .addGap(15)
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                        .addComponent(username_TextField, GroupLayout.PREFERRED_SIZE, 180, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(password_TextField, GroupLayout.PREFERRED_SIZE, 180, GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createSequentialGroup()
                                 .addGap(10)
                                 .addComponent(login_Button, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)
                                 .addGap(5)
                                 .addComponent(close_Button, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)
                         )
-
                 )
+
                 .addGap(20)
         );
         layout.setVerticalGroup(layout.createSequentialGroup()
@@ -95,7 +92,7 @@ public class LoginForm extends JFrame {
                 TopoForm topoform = new TopoForm(user);
                 topoform.setVisible(true);
             } else {
-                JOptionPane.showMessageDialog(this,"ridi");
+                JOptionPane.showMessageDialog(this, "ridi");
             }
         }
 

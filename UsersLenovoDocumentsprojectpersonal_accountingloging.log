@@ -934,3 +934,35 @@
 2024-03-15 02:06:59,877 [Thread-6] INFO  controller.AccountController - find all by user_id TEST 
 2024-03-15 02:06:59,885 [Thread-6] INFO  controller.TitlesController - find all by type TEST 
 2024-03-15 02:07:02,735 [AWT-EventQueue-0] INFO  controller.TitlesController - find all TEST 
+2024-03-15 13:48:48,858 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
+2024-03-15 13:49:13,667 [Thread-4] INFO  controller.TransactionController - find all by user_id TEST 
+2024-03-15 13:54:02,799 [main] INFO  controller.UserController - find by id TEST 
+2024-03-15 13:55:15,111 [Thread-4] INFO  controller.TransactionController - find all by user_id TEST 
+2024-03-15 14:17:01,668 [main] INFO  controller.UserController - find by id TEST 
+2024-03-15 14:17:06,893 [Thread-4] INFO  controller.TransactionController - find all by user_id TEST 
+2024-03-15 14:17:06,905 [Thread-4] INFO  controller.AccountController - find all by user_id TEST 
+2024-03-15 14:17:06,971 [Thread-4] INFO  controller.TitlesController - find all by type TEST 
+2024-03-15 14:17:13,009 [AWT-EventQueue-0] INFO  controller.AccountController - find all by user_id TEST 
+2024-03-15 14:17:22,022 [Thread-5] INFO  controller.TransactionController - find all by user_id TEST 
+2024-03-15 14:17:22,031 [Thread-5] INFO  controller.AccountController - find all by user_id TEST 
+2024-03-15 14:17:22,036 [Thread-5] INFO  controller.TitlesController - find all by type TEST 
+2024-03-15 14:17:51,486 [AWT-EventQueue-0] INFO  controller.TitlesController - find all by type TEST 
+2024-03-15 14:23:11,691 [main] INFO  controller.UserController - find by id TEST 
+2024-03-15 14:23:14,567 [AWT-EventQueue-0] INFO  controller.AccountController - find all by user_id TEST 
+2024-03-15 14:23:16,320 [Thread-4] INFO  controller.TransactionController - find all by user_id TEST 
+2024-03-15 14:23:16,330 [Thread-4] INFO  controller.AccountController - find all by user_id TEST 
+2024-03-15 14:23:16,337 [Thread-4] INFO  controller.TitlesController - find all by type TEST 
+2024-03-15 14:26:58,162 [main] INFO  controller.UserController - find by id TEST 
+2024-03-15 14:27:01,121 [AWT-EventQueue-0] INFO  controller.AccountController - find all by user_id TEST 
+2024-03-15 14:27:01,774 [Thread-4] INFO  controller.TransactionController - find all by user_id TEST 
+2024-03-15 14:27:01,784 [Thread-4] INFO  controller.AccountController - find all by user_id TEST 
+2024-03-15 14:27:01,791 [Thread-4] INFO  controller.TitlesController - find all by type TEST 
+2024-03-15 14:27:35,304 [AWT-EventQueue-0] INFO  controller.AccountController - find all by user_id TEST 
+2024-03-15 14:27:41,772 [AWT-EventQueue-0] INFO  controller.AccountController - save TEST 
+2024-03-15 14:27:44,453 [Thread-5] INFO  controller.TransactionController - find all by user_id TEST 
+2024-03-15 14:27:44,460 [Thread-5] INFO  controller.AccountController - find all by user_id TEST 
+2024-03-15 14:27:44,463 [Thread-5] INFO  controller.TitlesController - find all by type TEST 
+2024-03-15 14:33:46,843 [main] INFO  controller.UserController - find by id TEST 
+2024-03-15 14:33:51,834 [Thread-4] INFO  controller.TransactionController - find all by user_id TEST 
+2024-03-15 14:33:51,979 [Thread-4] INFO  controller.AccountController - find all by user_id TEST 
+2024-03-15 14:33:52,006 [Thread-4] INFO  controller.TitlesController - find all by type TEST 

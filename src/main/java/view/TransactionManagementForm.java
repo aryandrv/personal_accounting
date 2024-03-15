@@ -1,18 +1,24 @@
 package view;
 
+import controller.AccountController;
 import controller.TitlesController;
 import controller.TransactionController;
 import enums.DomainEnum;
 import enums.TypeEnum;
+import model.entity.Account;
 import model.entity.Titles;
 import model.entity.Transaction;
 import model.entity.User;
 import org.jdesktop.swingx.JXDatePicker;
 
 import javax.swing.*;
+import javax.swing.event.PopupMenuEvent;
+import javax.swing.event.PopupMenuListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableRowSorter;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.List;
 
 public class TransactionManagementForm extends JPanel {
@@ -27,22 +33,82 @@ public class TransactionManagementForm extends JPanel {
         panel1.setBorder(BorderFactory.createTitledBorder("Filter by"));
 
         bankAccount_CheckBox = new JCheckBox("Account name");
+        bankAccount_CheckBox.addActionListener(e -> {
+            bankAccount_Combobox.setEnabled(bankAccount_CheckBox.isSelected());
+            sorter.sort();
+        });
         bankAccount_Combobox = new JComboBox();
+        bankAccount_Combobox.setEnabled(false);
+        bankAccount_Combobox.addActionListener(e -> {
+            sorter.sort();
+        });
 
         titles_CheckBox = new JCheckBox("Title");
+        titles_CheckBox.addActionListener(e -> {
+            titles_Combobox.setEnabled(titles_CheckBox.isSelected());
+            sorter.sort();
+        });
         titles_Combobox = new JComboBox();
+        titles_Combobox.setEnabled(false);
+        titles_Combobox.addActionListener(e -> {
+            sorter.sort();
+        });
 
         amountFrom_CheckBox = new JCheckBox("Amount from");
+        amountFrom_CheckBox.addActionListener(e -> {
+            amountFrom_TextField.setEnabled(amountFrom_CheckBox.isSelected());
+            sorter.sort();
+        });
         amountFrom_TextField = new JTextField();
+        amountFrom_TextField.setEnabled(false);
+
+        amountFrom_TextField.addKeyListener(new KeyAdapterImpl());
+
 
         amountTo_CheckBox = new JCheckBox("Amount to");
+        amountTo_CheckBox.addActionListener(e -> {
+            amountTo_TextField.setEnabled(amountTo_CheckBox.isSelected());
+            sorter.sort();
+        });
         amountTo_TextField = new JTextField();
+        amountTo_TextField.setEnabled(false);
+
+        amountTo_TextField.addKeyListener(new KeyAdapterImpl());
 
         description_CheckBox = new JCheckBox("Description");
+        description_CheckBox.addActionListener(e -> {
+            description_TextField.setEnabled(description_CheckBox.isSelected());
+            sorter.sort();
+        });
         description_TextField = new JTextField();
+        description_TextField.setEnabled(false);
+        description_TextField.addKeyListener(new KeyAdapterImpl());
 
         type_CheckBox = new JCheckBox("Type");
+        type_CheckBox.addActionListener(e -> {
+            type_Combobox.setEnabled(type_CheckBox.isSelected());
+            sorter.sort();
+        });
         type_Combobox = new JComboBox(TypeEnum.values());
+        type_Combobox.setEnabled(false);
+
+        type_Combobox.addPopupMenuListener(new PopupMenuListener() {
+            @Override
+            public void popupMenuWillBecomeVisible(PopupMenuEvent e) {
+                sorter.sort();
+            }
+
+            @Override
+            public void popupMenuWillBecomeInvisible(PopupMenuEvent e) {
+                sorter.sort();
+                fillTitleComboBox();
+            }
+
+            @Override
+            public void popupMenuCanceled(PopupMenuEvent e) {
+                sorter.sort();
+            }
+        });
 
         date_CheckBox = new JCheckBox("Date");
         datePicker = new JXDatePicker();
@@ -66,7 +132,6 @@ public class TransactionManagementForm extends JPanel {
         sorter = new TableRowSorter<>(tableModel);
         sorter.setRowFilter(new CustomRowFilter());
         table.setRowSorter(sorter);
-//        sorter.sort
 
 //        table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         scrollPane = new JScrollPane(table);
@@ -203,12 +268,16 @@ public class TransactionManagementForm extends JPanel {
             try {
                 List<Transaction> transactionList = TransactionController.getController().findByUserId(this.user.getId());
                 synchronized (tableModel){
-
                     for (Transaction transaction : transactionList) {
                         tableModel.addRow(toArray(transaction));
                     }
                 }
-
+                bankAccount_Combobox.removeAllItems();
+                List<Account> listAccount = listAccount = AccountController.getController().findByUserId(user.getId());
+                for (Account account : listAccount) {
+                    bankAccount_Combobox.addItem(account.getName());
+                }
+                fillTitleComboBox();
             } catch (Exception e) {
                 e.printStackTrace();
                 JOptionPane.showMessageDialog(this, "Can not fill form");
@@ -216,6 +285,15 @@ public class TransactionManagementForm extends JPanel {
             }
 
         }).start();
+
+    }
+
+    private void fillTitleComboBox() {
+        List<Titles> listTitles = TitlesController.getController().findByType(type_Combobox.getSelectedItem().toString());
+        titles_Combobox.removeAllItems();
+        for (Titles title : listTitles) {
+            titles_Combobox.addItem(title.getName());
+        }
 
     }
 
@@ -375,10 +453,10 @@ public class TransactionManagementForm extends JPanel {
                 if (type_CheckBox.isSelected() && type_Combobox.getSelectedItem() != null && !entry.getStringValue(type_columnNo).equals(type_Combobox.getSelectedItem().toString())) {
                     return false;
                 }
-                if (amountFrom_CheckBox.isSelected() && amountFrom_TextField != null && !(Double.valueOf(entry.getStringValue(amount_columnNo)) >= Double.valueOf(amountFrom_TextField.getText().trim()))) {
+                if (amountFrom_CheckBox.isSelected() && amountFrom_TextField != null && !amountFrom_TextField.getText().isEmpty() && !(Double.valueOf(entry.getStringValue(amount_columnNo)) >= Double.valueOf(amountFrom_TextField.getText().trim()))) {
                     return false;
                 }
-                if (amountTo_CheckBox.isSelected() && amountTo_TextField != null && !(Double.valueOf(entry.getStringValue(amount_columnNo)) <= Double.valueOf(amountTo_TextField.getText().trim()))) {
+                if (amountTo_CheckBox.isSelected() && amountTo_TextField != null && !amountTo_TextField.getText().isEmpty() && !(Double.valueOf(entry.getStringValue(amount_columnNo)) <= Double.valueOf(amountTo_TextField.getText().trim()))) {
                     return false;
                 }
 
@@ -395,7 +473,15 @@ public class TransactionManagementForm extends JPanel {
         }
     }
 
-    ;
+    private class KeyAdapterImpl extends KeyAdapter {
+
+        @Override
+        public void keyReleased(KeyEvent e) {
+            sorter.sort();
+        }
+    }
+
+
 
 
 }

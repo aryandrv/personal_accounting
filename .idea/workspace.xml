@@ -5,21 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6ff2f35b-f77f-43d1-aa91-f961d4384e62" name="Changes" comment="user">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_5_2024_7_59_AM_[Changes]1/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_5_2024_7_59_AM__Changes_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_6_2024_8_50_AM_[Changes]1/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_6_2024_8_50_AM__Changes_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_7_2024_12_44_AM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_7_2024_12_44_AM__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UsersLenovoDocumentsprojectpersonal_accountingloging.log" beforeDir="false" afterPath="$PROJECT_DIR$/UsersLenovoDocumentsprojectpersonal_accountingloging.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AccountController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/TransactionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/TransactionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/repository/TransactionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/repository/TransactionRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/service/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/service/AccountService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/service/TransactionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/service/TransactionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/BankAccountManagementForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/BankAccountManagementForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/TopoForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/TopoForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/LoginForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/LoginForm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/TransactionManagementForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/TransactionManagementForm.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -88,7 +76,7 @@
       <recent name="C:\Users\Lenovo\Documents\project\personal_accounting\src\main\java\model\repository" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.LoginForm">
+  <component name="RunManager" selected="Application.TopoForm">
     <configuration name="BankAccountManagementForm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="view.BankAccountManagementForm" />
       <module name="personal_accounting" />
@@ -241,7 +229,8 @@
       <workItem from="1709815853136" duration="438000" />
       <workItem from="1709817149996" duration="591000" />
       <workItem from="1709885225526" duration="12502000" />
-      <workItem from="1710446211181" duration="8642000" />
+      <workItem from="1710446211181" duration="8776000" />
+      <workItem from="1710491896525" duration="3391000" />
     </task>
     <task id="LOCAL-00001" summary="nothing">
       <option name="closed" value="true" />
@@ -435,7 +424,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710015041047</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="user">
+      <option name="closed" value="true" />
+      <created>1710455856892</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1710455856892</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -473,5 +470,10 @@
         <PinnedItemInfo parentTag="javax.swing.table.DefaultTableModel" memberName="columnIdentifiers" />
       </pinned-members>
     </pin-to-top-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/personal_accounting$TopoForm.ic" NAME="TopoForm Coverage Results" MODIFIED="1710455757070" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>view.*</FILTER>
+    </SUITE>
   </component>
 </project>
