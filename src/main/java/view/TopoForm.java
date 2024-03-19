@@ -84,7 +84,7 @@ public class TopoForm extends JFrame {
                         .addComponent(transaction_button, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
                         .addComponent(bankAccount_button, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
                         .addComponent(titles_button, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
-                        .addComponent(refresh_button, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)
+//                        .addComponent(refresh_button, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)
                 )
                 .addGap(20)
         );
@@ -104,8 +104,8 @@ public class TopoForm extends JFrame {
                 .addComponent(bankAccount_button, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
                 .addGap(10)
                 .addComponent(titles_button, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
-                .addGap(20)
-                .addComponent(refresh_button, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
+//                .addGap(20)
+//                .addComponent(refresh_button, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
                 .addGap(50)
         );
 
