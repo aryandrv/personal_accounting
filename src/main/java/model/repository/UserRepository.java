@@ -67,7 +67,7 @@ public class UserRepository implements Repository<User>, AutoCloseable {
     }
 
     @Override
-    public List findAll() throws Exception {
+    public List<User> findAll() throws Exception {
         connection =JdbcProvider.getJdbcProvider().getConnection();
         preparedStatement = connection.prepareStatement(
                 "SELECT * FROM USER_TBL"
@@ -125,7 +125,7 @@ public class UserRepository implements Repository<User>, AutoCloseable {
         );
 
         preparedStatement.setString(1,username);
-        preparedStatement.setString(1,password);
+        preparedStatement.setString(2,password);
         ResultSet resultSet = preparedStatement.executeQuery();
 
         User user = null;

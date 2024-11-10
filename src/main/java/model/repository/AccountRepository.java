@@ -21,7 +21,7 @@ public class AccountRepository implements Repository<Account>, AutoCloseable {
     public Account save(Account account) throws Exception {
         connection = JdbcProvider.getJdbcProvider().getConnection();
         preparedStatement = connection.prepareStatement(
-                "SELECT ACOUNT_SEQ.nextval AS NEXT_ID FROM DUAL"
+                "SELECT ACCOUNT_SEQ.nextval AS NEXT_ID FROM DUAL"
         );
         ResultSet resultSet = preparedStatement.executeQuery();
         resultSet.next();

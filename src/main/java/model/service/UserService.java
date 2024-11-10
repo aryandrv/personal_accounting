@@ -65,7 +65,7 @@ public class UserService {
 
     public User findByUsernameAndPassword(String username,String password) throws Exception {
         try (UserRepository userRepository = new UserRepository()) {
-            return userRepository.findByUsername(username);
+            return userRepository.findByUsernameAndPassword(username, password);
         }
     }
 }

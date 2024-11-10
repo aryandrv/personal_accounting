@@ -15,8 +15,8 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         try {
-//            User user = UserController.getController().save(2, "radin", "darvishzadeh",
-//                    "radin_drv", "12345678", LocalDateTime.now());
+            User user = UserController.getController().save(1, "radin", "darvishzadeh",
+                    "radin_drv", "12345678", LocalDateTime.now());
 //            User user = UserController.getController().findById(1);
 //            List<Account> account = AccountController.getController().findByUserId(1);
 //            System.out.println(TransactionController.getController().sumByType(1,41, TypeEnum.INCOME));

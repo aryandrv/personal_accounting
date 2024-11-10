@@ -92,7 +92,7 @@ public class LoginForm extends JFrame {
                 TopoForm topoform = new TopoForm(user);
                 topoform.setVisible(true);
             } else {
-                JOptionPane.showMessageDialog(this, "ridi");
+                JOptionPane.showMessageDialog(this, "Username or password incorrect");
             }
         }
 

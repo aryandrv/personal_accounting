@@ -268,6 +268,9 @@ public class TransactionManagementForm extends JPanel {
             try {
                 List<Transaction> transactionList = TransactionController.getController().findByUserId(this.user.getId());
                 synchronized (tableModel){
+                    if(transactionList == null){
+                        throw new Exception("List is null");
+                    }
                     for (Transaction transaction : transactionList) {
                         tableModel.addRow(toArray(transaction));
                     }

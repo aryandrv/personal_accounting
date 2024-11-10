@@ -981,3 +981,52 @@
 2024-03-20 00:26:07,105 [Thread-4] INFO  controller.AccountController - find all by user_id TEST 
 2024-03-20 00:26:07,113 [Thread-4] INFO  controller.TitlesController - find all by type TEST 
 2024-03-20 00:26:09,154 [AWT-EventQueue-0] INFO  controller.AccountController - find all by user_id TEST 
+2024-11-01 23:39:38,823 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
+2024-11-01 23:41:47,340 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
+2024-11-01 23:41:48,549 [AWT-EventQueue-0] ERROR controller.UserController - Error to find TEST 
+2024-11-01 23:42:18,635 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
+2024-11-01 23:42:18,639 [AWT-EventQueue-0] ERROR controller.UserController - Error to find TEST 
+2024-11-01 23:44:15,829 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
+2024-11-01 23:47:10,113 [AWT-EventQueue-0] ERROR controller.UserController - Error to find TEST 
+2024-11-01 23:47:34,132 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
+2024-11-01 23:47:35,171 [AWT-EventQueue-0] ERROR controller.UserController - Error to find TEST 
+2024-11-01 23:48:39,462 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
+2024-11-01 23:48:40,628 [AWT-EventQueue-0] ERROR controller.UserController - Error to find TEST 
+2024-11-01 23:49:06,067 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
+2024-11-01 23:50:52,694 [AWT-EventQueue-0] ERROR controller.UserController - Error to find TEST 
+2024-11-01 23:52:21,956 [main] INFO  controller.UserController - save TEST 
+2024-11-01 23:53:09,721 [main] INFO  controller.UserController - save TEST 
+2024-11-01 23:56:10,040 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
+2024-11-02 00:02:19,425 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
+2024-11-02 00:02:46,873 [Thread-4] INFO  controller.TransactionController - find all by user_id TEST 
+2024-11-02 00:02:46,905 [Thread-4] ERROR controller.TransactionController - Error to find all by user_id TEST 
+2024-11-10 22:36:35,953 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
+2024-11-10 22:47:29,391 [Thread-4] INFO  controller.TransactionController - find all by user_id TEST 
+2024-11-10 22:47:29,459 [Thread-4] ERROR controller.TransactionController - Error to find all by user_id TEST 
+2024-11-10 22:47:37,581 [AWT-EventQueue-0] INFO  controller.AccountController - find all by user_id TEST 
+2024-11-10 22:47:37,599 [AWT-EventQueue-0] ERROR controller.AccountController - Error to find all by user_id TEST 
+2024-11-10 23:08:19,963 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
+2024-11-10 23:09:00,094 [AWT-EventQueue-0] INFO  controller.AccountController - find all by user_id TEST 
+2024-11-10 23:13:00,778 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
+2024-11-10 23:13:03,290 [AWT-EventQueue-0] INFO  controller.AccountController - find all by user_id TEST 
+2024-11-10 23:16:20,319 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
+2024-11-10 23:16:22,904 [AWT-EventQueue-0] INFO  controller.AccountController - find all by user_id TEST 
+2024-11-10 23:16:29,689 [AWT-EventQueue-0] INFO  controller.AccountController - save TEST 
+2024-11-10 23:16:42,425 [AWT-EventQueue-0] INFO  controller.AccountController - save TEST 
+2024-11-10 23:16:45,113 [AWT-EventQueue-0] INFO  controller.AccountController - save TEST 
+2024-11-10 23:16:49,491 [AWT-EventQueue-0] INFO  controller.AccountController - find all by user_id TEST 
+2024-11-10 23:16:49,520 [AWT-EventQueue-0] ERROR controller.AccountController - Error to find all by user_id TEST 
+2024-11-10 23:16:51,495 [AWT-EventQueue-0] INFO  controller.AccountController - find all by user_id TEST 
+2024-11-10 23:16:51,500 [AWT-EventQueue-0] ERROR controller.AccountController - Error to find all by user_id TEST 
+2024-11-10 23:16:56,582 [AWT-EventQueue-0] INFO  controller.AccountController - find all by user_id TEST 
+2024-11-10 23:16:56,586 [AWT-EventQueue-0] ERROR controller.AccountController - Error to find all by user_id TEST 
+2024-11-10 23:17:16,045 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
+2024-11-10 23:17:18,872 [AWT-EventQueue-0] INFO  controller.AccountController - find all by user_id TEST 
+2024-11-10 23:17:18,921 [AWT-EventQueue-0] ERROR controller.AccountController - Error to find all by user_id TEST 
+2024-11-10 23:20:39,947 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
+2024-11-10 23:20:42,251 [AWT-EventQueue-0] INFO  controller.AccountController - find all by user_id TEST 
+2024-11-10 23:20:54,675 [AWT-EventQueue-0] INFO  controller.AccountController - save TEST 
+2024-11-10 23:20:56,316 [AWT-EventQueue-0] INFO  controller.AccountController - find all by user_id TEST 
+2024-11-10 23:20:57,174 [AWT-EventQueue-0] INFO  controller.AccountController - find all by user_id TEST 
+2024-11-10 23:21:00,263 [Thread-4] INFO  controller.TransactionController - find all by user_id TEST 
+2024-11-10 23:21:00,276 [Thread-4] ERROR controller.TransactionController - Error to find all by user_id TEST 
