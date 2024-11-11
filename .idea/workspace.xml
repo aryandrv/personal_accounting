@@ -5,20 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6ff2f35b-f77f-43d1-aa91-f961d4384e62" name="Changes" comment="user">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/make_db.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/f9267f67-91e2-4241-a652-c53aedbc3b7c.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f9267f67-91e2-4241-a652-c53aedbc3b7c.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/f9267f67-91e2-4241-a652-c53aedbc3b7c/storage_v2/_src_/schema/ARYAN.dZS6Aw.zip" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f9267f67-91e2-4241-a652-c53aedbc3b7c/storage_v2/_src_/schema/ARYAN.dZS6Aw.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_5_2024_7_59_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_5_2024_7_59_AM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_6_2024_8_50_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_6_2024_8_50_AM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UsersLenovoDocumentsprojectpersonal_accountingloging.log" beforeDir="false" afterPath="$PROJECT_DIR$/UsersLenovoDocumentsprojectpersonal_accountingloging.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/repository/AccountRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/repository/AccountRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/LoginForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/LoginForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/TransactionManagementForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/TransactionManagementForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/make_db.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/make_db.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -249,7 +241,8 @@
       <workItem from="1730466457854" duration="271000" />
       <workItem from="1730488071936" duration="5230000" />
       <workItem from="1731263141901" duration="14000" />
-      <workItem from="1731263171316" duration="4908000" />
+      <workItem from="1731263171316" duration="5330000" />
+      <workItem from="1731354804643" duration="2711000" />
     </task>
     <task id="LOCAL-00001" summary="nothing">
       <option name="closed" value="true" />
@@ -459,7 +452,23 @@
       <option name="project" value="LOCAL" />
       <updated>1710500721506</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="user">
+      <option name="closed" value="true" />
+      <created>1731268339038</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1731268339038</updated>
+    </task>
+    <task id="LOCAL-00028" summary="user">
+      <option name="closed" value="true" />
+      <created>1731268424553</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1731268424553</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

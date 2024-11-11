@@ -64,5 +64,33 @@ from ACCOUNT_TBL A,
      USER_TBL U
 where A.USER_ID = U.ID;
 
+create view TRANSACTION_REPORT as
+select U.ID       as user_id,
+       U.NAME     as user_name,
+       U.FAMILY   as user_family,
+       U.USERNAME as user_username,
+       U.password as user_password,
+       U.creationDate as user_creationdate,
+       A.ID       as account_id,
+       A.NAME     as account_name,
+       A.BALANCE  as account_balance,
+       A.user_id  as account_userId,
+       TR.ID      as transaction_id,
+       TR.USER_ID as transaction_userId,
+       TR.ACCOUNT_ID as transaction_accountId,
+       TR.TITLES_ID as transaction_titlesId,
+       TR.AMOUNT as transaction_amount,
+       TR.TYPE as transaction_type,
+       TR.DESCRIPTION as transaction_description,
+       TR.TRANSACTIONDATE as transaction_date,
+       TL.ID as titles_id,
+       TL.NAME as titles_name,
+       TL.TYPE as titles_type
+from TRANSACTION_TBL TR,
+     ACCOUNT_TBL A,
+     USER_TBL U,
+     TITLES_TBL TL
+where TR.USER_ID = U.ID AND TR.ACCOUNT_ID = A.ID AND TR.TITLES_ID = TL.ID;
+
 
 
