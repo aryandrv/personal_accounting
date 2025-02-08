@@ -22,7 +22,6 @@ public class TopoForm extends JFrame {
         right_Panel = new JPanel();
         right_Panel.setBorder(BorderFactory.createTitledBorder(titles));
 
-
         profile_Icon = new JLabel(ImageIconUtil.USER);
 
         username = new JLabel("Welcome : " + user.getUsername());
@@ -60,12 +59,24 @@ public class TopoForm extends JFrame {
             }
         });
 
+        userForm_button = new JButton("User");
+        userForm_button.addActionListener(e -> {
+            if (!Objects.equals(selectedButton, ButtonEnum.USER)) {
+                selectedButton = ButtonEnum.USER;
+                changeButton(selectedButton);
+            }
+        });
+        userForm_button.setVisible(true);
+
+        if(!user.getUsername().equals("Root")){
+        userForm_button.setVisible(false);
+        }
+
         refresh_button = new JButton("Refresh");
         refresh_button.addActionListener(e -> {
             refresh_ButtonActionPreform();
 
         });
-
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
@@ -79,12 +90,12 @@ public class TopoForm extends JFrame {
                         .addComponent(profile_Icon, GroupLayout.PREFERRED_SIZE, 160, GroupLayout.PREFERRED_SIZE)
                         .addComponent(username)
                         .addComponent(timeToLogin)
-//                        .addComponent(home_button, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
                         .addComponent(profile_button, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
                         .addComponent(transaction_button, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
                         .addComponent(bankAccount_button, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
                         .addComponent(titles_button, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
-//                        .addComponent(refresh_button, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(userForm_button, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
+                //                        .addComponent(refresh_button, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)
                 )
                 .addGap(20)
         );
@@ -95,8 +106,7 @@ public class TopoForm extends JFrame {
                 .addGap(5)
                 .addComponent(timeToLogin)
                 .addGap(10)
-//                .addComponent(home_button, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
-//                .addGap(10)
+                //                .addGap(10)
                 .addComponent(profile_button, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
                 .addGap(10)
                 .addComponent(transaction_button, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
@@ -104,8 +114,10 @@ public class TopoForm extends JFrame {
                 .addComponent(bankAccount_button, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
                 .addGap(10)
                 .addComponent(titles_button, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
-//                .addGap(20)
-//                .addComponent(refresh_button, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
+                .addGap(10)
+                                .addComponent(userForm_button, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
+                //                .addGap(20)
+                //                .addComponent(refresh_button, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
                 .addGap(50)
         );
 
@@ -142,10 +154,19 @@ public class TopoForm extends JFrame {
     private void changeButton(ButtonEnum buttonEnum) {
         right_Panel.removeAll();
         switch (buttonEnum) {
-            case HOME:
+            case USER:
+                right_Panel.setBorder(BorderFactory.createTitledBorder("User Management Form"));
+
+                if (userManagementForm == null) {
+                    userManagementForm = new UserManagementForm();
+                    userManagementForm.fillForm();
+                }
+                userManagementForm.setVisible(true);
+                right_Panel.add(userManagementForm);
+                this.repaint();
+                this.validate();
                 break;
             case TITLES:
-                right_Panel.setName("Profile");
                 right_Panel.setBorder(BorderFactory.createTitledBorder("Titles Management Form"));
 
                 if (titlesManagementForm == null) {
@@ -199,7 +220,6 @@ public class TopoForm extends JFrame {
 
         }
 
-
     }
 
     public static void main(String[] args) {
@@ -216,6 +236,7 @@ public class TopoForm extends JFrame {
     private TitlesManagementForm titlesManagementForm = null;
     private BankAccountManagementForm bankAccountManagementForm = null;
     private TransactionManagementForm transactionManagementForm = null;
+    private UserManagementForm userManagementForm = null;
 
     private ButtonEnum selectedButton = null;
 
@@ -229,6 +250,7 @@ public class TopoForm extends JFrame {
     private JButton transaction_button;
     private JButton titles_button;
     private JButton bankAccount_button;
+    private JButton userForm_button;
     private JButton refresh_button;
 
     private String titles;
@@ -238,10 +260,9 @@ public class TopoForm extends JFrame {
     private enum ButtonEnum {
         PROFILE,
         TITLES,
-        HOME,
+        USER,
         TRANSACTION,
         BANKACCOUNT;
     }
-
 
 }

@@ -4,6 +4,7 @@ import controller.UserController;
 import model.entity.User;
 
 import javax.swing.*;
+import java.time.LocalDateTime;
 
 public class LoginForm extends JFrame {
     public LoginForm() {
@@ -99,6 +100,19 @@ public class LoginForm extends JFrame {
     }
 
     public static void main(String[] args) {
+        try {
+
+        User user = UserController.getController().findByUsername("Root");
+        if(user == null){
+            user = UserController.getController().save(1,"root","root","Root","12345678", LocalDateTime.now());
+
+        }
+        }catch (Exception e){
+            e.printStackTrace();
+
+        }
+
+
         LoginForm page = new LoginForm();
         page.setVisible(true);
 
