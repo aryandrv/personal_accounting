@@ -321,7 +321,7 @@ public class TransactionManagementForm extends JPanel {
             try {
                 TransactionSettingForm transactionSettingForm = new TransactionSettingForm();
                 transactionSettingForm.setVisible(true);
-                transactionSettingForm.fillForm(user, DomainEnum.ADD);
+                transactionSettingForm.fillForm(user, DomainEnum.ADD, this);
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -338,7 +338,7 @@ public class TransactionManagementForm extends JPanel {
                 Transaction transaction = (Transaction) tableModel.getValueAt(table.getSelectedRow(),dto_columnNo);
                 TransactionSettingForm transactionSettingForm = new TransactionSettingForm();
                 transactionSettingForm.setVisible(true);
-                transactionSettingForm.fillForm(user, DomainEnum.MODIFY, transaction);
+                transactionSettingForm.fillForm(user, DomainEnum.MODIFY, transaction ,this);
                 }else{
                     JOptionPane.showMessageDialog(this,"Please select one row");
                 }
