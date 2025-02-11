@@ -59,6 +59,8 @@ public class ProfileManagementForm extends JPanel {
         apply_Button.setVisible(false);
         apply_Button.addActionListener(e -> {
             apply_ButtonActionPreform();
+            modify_Panel.setVisible(false);
+            apply_Button.setVisible(false);
         });
         modify_Button = new JButton("Modify");
         modify_Button.addActionListener(e -> {
@@ -237,6 +239,7 @@ public class ProfileManagementForm extends JPanel {
                     , user.getCreationDate());
             topoform.user = this.user;
             topoform.refresh_ButtonActionPreform();
+            fillForm(user, topoform);
 
 
         } catch (Exception e) {

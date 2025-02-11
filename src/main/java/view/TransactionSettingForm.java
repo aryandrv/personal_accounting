@@ -222,13 +222,15 @@ public class TransactionSettingForm extends JFrame {
 
     }
 
-    public void fillForm(User user, DomainEnum domain) {
-        fillForm(user, domain, null);
+    public void fillForm(User user, DomainEnum domain, TransactionManagementForm transactionManagementForm) {
+        fillForm(user, domain, null, transactionManagementForm);
     }
 
-    public void fillForm(User user, DomainEnum domain, Transaction transaction) {
+    public void fillForm(User user, DomainEnum domain, Transaction transaction,  TransactionManagementForm transactionManagementForm) {
         if (user != null) {
             this.user = user;
+            this.transactionManagementForm = transactionManagementForm;
+
             switch (domain) {
                 case ADD:
                     setTitle("Transaction Creation");
@@ -303,6 +305,7 @@ public class TransactionSettingForm extends JFrame {
                         description_TextArea.getText(),
                         TypeEnum.toEnum(type_ComboBox.getSelectedItem().toString()));
                 JOptionPane.showMessageDialog(this, "Modify success!!");
+                transactionManagementForm.refresh_ButtonActionPreform();
                 dispose();
             }
 
@@ -329,6 +332,7 @@ public class TransactionSettingForm extends JFrame {
                         description_TextArea.getText(),
                         TypeEnum.toEnum(type_ComboBox.getSelectedItem().toString()));
                 JOptionPane.showMessageDialog(this, "Save success!!");
+                transactionManagementForm.refresh_ButtonActionPreform();
                 dispose();
             }
 
@@ -377,6 +381,7 @@ public class TransactionSettingForm extends JFrame {
 
     private User user;
     private Transaction transaction;
+    private TransactionManagementForm transactionManagementForm;
     private List<Account> listAccount;
 
 }
