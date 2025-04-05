@@ -17,6 +17,8 @@ public class TopoForm extends JFrame {
     }
 
     private void initComponent() {
+        setTitle("personal_accounting");
+
         left_Panel = new JPanel();
         left_Panel.setBorder(BorderFactory.createTitledBorder("Welcome"));
         right_Panel = new JPanel();

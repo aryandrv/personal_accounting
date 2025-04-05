@@ -14,6 +14,8 @@ public class LoginForm extends JFrame {
 
     private void initComponent() {
 
+        setTitle("personal_accounting");
+
         username_Label = new JLabel("Username");
         password_Label = new JLabel("Password");
 
