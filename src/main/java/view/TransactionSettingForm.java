@@ -250,6 +250,7 @@ public class TransactionSettingForm extends JFrame {
                 case MODIFY:
                     setTitle("Transaction modify");
                     apply_Button.setVisible(true);
+                    account_ComboBox.setEnabled(false);
                     if (transaction != null) {
                         this.transaction = transaction;
                         try {

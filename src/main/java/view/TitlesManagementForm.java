@@ -181,6 +181,9 @@ public class TitlesManagementForm extends JPanel {
             }
         } catch (Exception e) {
             e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Can not remove this row");
+
+
 
         }
 
