@@ -91,7 +91,7 @@ public class TransactionController {
         try {
             Transaction transaction = TransactionService.getService().findById(id);
             if (transaction != null) {
-                TransactionService.getService().remove(id);
+                transaction = TransactionService.getService().remove(id);
                 log.info("remove transaction");
                 if (transaction != null) {
                     Account account1 = transaction.getAccount();

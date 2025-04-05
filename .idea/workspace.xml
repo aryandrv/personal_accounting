@@ -5,12 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6ff2f35b-f77f-43d1-aa91-f961d4384e62" name="Changes" comment="user">
-      <change afterPath="$PROJECT_DIR$/src/main/java/view/UserManagementForm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/f9267f67-91e2-4241-a652-c53aedbc3b7c.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f9267f67-91e2-4241-a652-c53aedbc3b7c.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UsersLenovoDocumentsprojectpersonal_accountingloging.log" beforeDir="false" afterPath="$PROJECT_DIR$/UsersLenovoDocumentsprojectpersonal_accountingloging.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/LoginForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/LoginForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/TopoForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/TopoForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/TransactionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/TransactionController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -246,7 +244,10 @@
       <workItem from="1734380792610" duration="668000" />
       <workItem from="1735576439868" duration="1145000" />
       <workItem from="1739030308002" duration="4589000" />
-      <workItem from="1739035930232" duration="2178000" />
+      <workItem from="1739035930232" duration="2803000" />
+      <workItem from="1739188696000" duration="1108000" />
+      <workItem from="1741820114414" duration="1294000" />
+      <workItem from="1743875487696" duration="1738000" />
     </task>
     <task id="LOCAL-00001" summary="nothing">
       <option name="closed" value="true" />
@@ -480,7 +481,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731357752985</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="user">
+      <option name="closed" value="true" />
+      <created>1739038210959</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1739038210959</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -511,10 +520,14 @@
           <line>15</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/view/UserManagementForm.java</url>
-          <line>171</line>
-          <option name="timeStamp" value="7" />
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/view/BankAccountManagementForm.java</url>
+          <line>26</line>
+          <properties class="view.BankAccountManagementForm" method="initComponent">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
