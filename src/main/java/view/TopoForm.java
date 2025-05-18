@@ -19,6 +19,8 @@ public class TopoForm extends JFrame {
     private void initComponent() {
         setTitle("personal_accounting");
 
+        setResizable(false);
+
         left_Panel = new JPanel();
         left_Panel.setBorder(BorderFactory.createTitledBorder("Welcome"));
         right_Panel = new JPanel();
@@ -141,6 +143,8 @@ public class TopoForm extends JFrame {
                 .addGap(50)
         );
         pack();
+        setLocationRelativeTo(null);
+
     }
 
     public void refresh_ButtonActionPreform() {

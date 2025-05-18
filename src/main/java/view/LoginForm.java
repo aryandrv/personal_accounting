@@ -16,6 +16,8 @@ public class LoginForm extends JFrame {
 
         setTitle("personal_accounting");
 
+        setResizable(false);
+
         username_Label = new JLabel("Username");
         password_Label = new JLabel("Password");
 
@@ -33,6 +35,8 @@ public class LoginForm extends JFrame {
             super.dispose();
 
         });
+
+        getRootPane().setDefaultButton(login_Button);
         setSize(400, 300);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
@@ -81,11 +85,15 @@ public class LoginForm extends JFrame {
                 .addGap(50)
         );
         pack();
+        setLocationRelativeTo(null);
+
 
 
     }
 
     private void login_ButtonActionPreform() {
+        try {
+
         String username = username_TextField.getText();
         String password = password_TextField.getText();
         if (!username.isEmpty() && !password.isEmpty()) {
@@ -97,26 +105,27 @@ public class LoginForm extends JFrame {
             } else {
                 JOptionPane.showMessageDialog(this, "Username or password incorrect");
             }
+        }else{
+            JOptionPane.showMessageDialog(this, "Fill username or password");
+        }
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage());
         }
 
     }
 
     public static void main(String[] args) {
-        try {
+        LoginForm page = new LoginForm();
+        page.setVisible(true);
 
+        try {
         User user = UserController.getController().findByUsername("Root");
         if(user == null){
             user = UserController.getController().save(1,"root","root","Root","12345678", LocalDateTime.now());
-
         }
         }catch (Exception e){
-            e.printStackTrace();
-
+            JOptionPane.showMessageDialog(page,e.getMessage());
         }
-
-
-        LoginForm page = new LoginForm();
-        page.setVisible(true);
 
     }
 

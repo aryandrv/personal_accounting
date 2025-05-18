@@ -188,8 +188,7 @@ public class UserManagementForm extends JPanel {
                 JOptionPane.showMessageDialog(this, "Please enter the correct name");
             }
         } catch (Exception e) {
-            e.printStackTrace();
-
+            JOptionPane.showMessageDialog(this, e.getMessage());
         }
 
     }

@@ -2,28 +2,47 @@ package model.repository.tools;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Properties;
 
 public class JdbcProvider {
     private static JdbcProvider jdbcProvider = new JdbcProvider();
     private BasicDataSource basicDataSource = new BasicDataSource();
 
     private JdbcProvider() {
+        loadProperties();
     }
 
     public static JdbcProvider getJdbcProvider() {
         return jdbcProvider;
     }
 
+    private void loadProperties() {
+        try (InputStream input = getClass().getClassLoader().getResourceAsStream("db.properties")) {
+            if (input == null) {
+                throw new Exception("db.properties file not found.");
+            }
+
+            Properties props = new Properties();
+            props.load(input);
+
+            basicDataSource.setDriverClassName(props.getProperty("db.driver"));
+            basicDataSource.setUrl(props.getProperty("db.url"));
+            basicDataSource.setUsername(props.getProperty("db.username"));
+            basicDataSource.setPassword(props.getProperty("db.password"));
+
+            basicDataSource.setMinIdle(Integer.parseInt(props.getProperty("db.minIdle")));
+            basicDataSource.setMaxTotal(Integer.parseInt(props.getProperty("db.maxTotal")));
+
+        } catch (Exception e) {
+            throw new RuntimeException("Error reading db.properties file", e);
+        }
+    }
+
 
     public Connection getConnection() throws SQLException {
-        basicDataSource.setDriverClassName("oracle.jdbc.driver.OracleDriver");
-        basicDataSource.setUrl("jdbc:oracle:thin:@localhost:1521:xe");
-        basicDataSource.setUsername("aryan");
-        basicDataSource.setPassword("aryan123");
-        basicDataSource.setMinIdle(5);
-        basicDataSource.setMaxTotal(20);
         return basicDataSource.getConnection();
     }
 }

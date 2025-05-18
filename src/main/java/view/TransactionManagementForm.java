@@ -244,7 +244,7 @@ public class TransactionManagementForm extends JPanel {
                 .addGap(15)
         );
         layout.setVerticalGroup(layout.createSequentialGroup()
-                .addGap(30)
+                .addGap(20)
                 .addComponent(panel1, GroupLayout.PREFERRED_SIZE, 180, GroupLayout.PREFERRED_SIZE)
                 .addGap(10)
                 .addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)
@@ -255,7 +255,7 @@ public class TransactionManagementForm extends JPanel {
                         .addComponent(delete_Button, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
                         .addComponent(refresh_Button, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
                 )
-                .addGap(30)
+                .addGap(20)
 
 
         );

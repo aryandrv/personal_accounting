@@ -3,6 +3,7 @@ package controller;
 import model.entity.User;
 import model.service.UserService;
 
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -110,21 +111,24 @@ public class UserController {
         }
     }
 
-    public User findByUsername(String username) {
+    public User findByUsername(String username) throws SQLException {
         try {
             log.info("find by username");
             return UserService.getService().findByUsername(username);
+
+        } catch (SQLException e){
+            log.error("Error to connect Data base");
+            throw new SQLException("Error to connect Data base");
 
         } catch (Exception e) {
             log.error("Error to find");
             System.out.println("Error : " + e.getMessage());
             return null;
-
         }
 
     }
 
-    public User findByUsernameAndPassword(String username, String password) {
+    public User findByUsernameAndPassword(String username, String password) throws SQLException  {
         try {
             log.info("find by username and password");
             User user = UserService.getService().findByUsernameAndPassword(username, password);
@@ -133,11 +137,14 @@ public class UserController {
             } else {
                 return null;
             }
+        } catch (SQLException e){
+            log.error("Error to connect Data base");
+            throw new SQLException("Error to connect Data base");
+
         } catch (Exception e) {
             log.error("Error to find");
             System.out.println("Invalid Username/Password /n" + e.getMessage());
             return null;
-
         }
     }
 
