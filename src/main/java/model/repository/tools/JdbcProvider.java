@@ -2,6 +2,7 @@ package model.repository.tools;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 
+import java.io.FileInputStream;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -20,7 +21,7 @@ public class JdbcProvider {
     }
 
     private void loadProperties() {
-        try (InputStream input = getClass().getClassLoader().getResourceAsStream("db.properties")) {
+        try (InputStream input = new FileInputStream("db.properties")) {
             if (input == null) {
                 throw new Exception("db.properties file not found.");
             }

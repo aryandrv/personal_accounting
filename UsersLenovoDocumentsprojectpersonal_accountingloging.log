@@ -1577,3 +1577,16 @@
 2025-05-19 01:11:50,463 [AWT-EventQueue-0] ERROR controller.UserController - Error to connect Data base TEST 
 2025-05-19 01:12:27,671 [main] INFO  controller.UserController - find by username TEST 
 2025-05-19 01:12:29,315 [main] ERROR controller.UserController - Error to connect Data base TEST 
+2025-05-21 23:26:12,485 [main] INFO  controller.UserController - find by username TEST 
+2025-05-21 23:26:48,201 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
+2025-05-21 23:26:56,190 [Thread-3] INFO  controller.TransactionController - find all by user_id TEST 
+2025-05-21 23:26:56,224 [Thread-3] INFO  controller.AccountController - find all by user_id TEST 
+2025-05-21 23:26:56,236 [Thread-3] INFO  controller.TitlesController - find all by type TEST 
+2025-05-21 23:26:57,729 [AWT-EventQueue-0] INFO  controller.AccountController - find all by user_id TEST 
+2025-05-21 23:27:00,237 [AWT-EventQueue-0] INFO  controller.TitlesController - find all TEST 
+2025-05-22 00:10:34,246 [main] INFO  controller.UserController - find by username TEST 
+2025-05-22 00:13:14,795 [main] INFO  controller.UserController - find by username TEST 
+2025-05-22 00:13:28,015 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
+2025-05-22 00:13:32,887 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
+2025-05-22 00:14:32,912 [main] INFO  controller.UserController - find by username TEST 
+2025-05-22 00:14:38,088 [AWT-EventQueue-0] INFO  controller.UserController - find by username and password TEST 
