@@ -1687,3 +1687,4 @@
 2025-05-31 02:59:12,325 [Thread-4] INFO  controller.AccountController - find all by user_id TEST 
 2025-05-31 02:59:12,338 [Thread-4] INFO  controller.TitlesController - find all by type TEST 
 2025-05-31 02:59:16,253 [main] INFO  controller.UserController - find by id TEST 
+2025-05-31 03:08:18,918 [main] INFO  controller.UserController - find by id TEST 
