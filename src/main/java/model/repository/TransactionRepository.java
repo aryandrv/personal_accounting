@@ -12,9 +12,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.YearMonth;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class TransactionRepository implements Repository<Transaction>, AutoCloseable {
     private PreparedStatement preparedStatement;
@@ -389,6 +393,64 @@ public class TransactionRepository implements Repository<Transaction>, AutoClose
         }
 
         return transactionList;
+    }
+
+    public Map<String, Double> getIncomeExpenseByMonth(YearMonth yearMonth, int userId) throws Exception {
+        connection = JdbcProvider.getJdbcProvider().getConnection();
+
+        String sql = "SELECT " +
+                "SUM(CASE WHEN transaction_type = 'Income' THEN transaction_amount ELSE 0 END) AS INCOME, " +
+                "SUM(CASE WHEN transaction_type = 'Cost' THEN transaction_amount ELSE 0 END) AS COST " +
+                "FROM TRANSACTION_REPORT " +
+                "WHERE transaction_userId = ? " +
+                "AND EXTRACT(YEAR FROM transaction_date) = ? " +
+                "AND EXTRACT(MONTH FROM transaction_date) = ?";
+
+        preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setInt(1, userId);
+        preparedStatement.setInt(2, yearMonth.getYear());
+        preparedStatement.setInt(3, yearMonth.getMonthValue());
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        Map<String, Double> result = new HashMap<>();
+        if (resultSet.next()) {
+            result.put("income", resultSet.getDouble("INCOME"));
+            result.put("cost", resultSet.getDouble("COST"));
+        } else {
+            result.put("income", 0.0);
+            result.put("cost", 0.0);
+        }
+
+        return result;
+    }
+    public Map<String, Double> getIncomeExpenseByDateRange(int userId, LocalDate fromDate, LocalDate toDate) throws Exception {
+        connection = JdbcProvider.getJdbcProvider().getConnection();
+
+        String sql = "SELECT " +
+                "SUM(CASE WHEN transaction_type = 'Income' THEN transaction_amount ELSE 0 END) AS INCOME, " +
+                "SUM(CASE WHEN transaction_type = 'Cost' THEN transaction_amount ELSE 0 END) AS COST " +
+                "FROM TRANSACTION_REPORT " +
+                "WHERE transaction_userId = ? " +
+                "AND transaction_date BETWEEN TO_DATE(?, 'YYYY-MM-DD') AND TO_DATE(?, 'YYYY-MM-DD')";
+
+        preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setInt(1, userId);
+        preparedStatement.setString(2, fromDate.toString());
+        preparedStatement.setString(3, toDate.toString());
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        Map<String, Double> result = new HashMap<>();
+        if (resultSet.next()) {
+            result.put("income", resultSet.getDouble("INCOME"));
+            result.put("cost", resultSet.getDouble("COST"));
+        } else {
+            result.put("income", 0.0);
+            result.put("cost", 0.0);
+        }
+
+        return result;
     }
 
 

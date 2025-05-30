@@ -304,7 +304,7 @@ public class TransactionManagementForm extends JPanel {
         Object[] array = new Object[table.getColumnCount()];
         array[row_columnNo] = table.getRowCount()+1;
         array[id_columnNo] = transaction.getId();
-        array[user_columnNo] = transaction.getUser().getName();
+        array[user_columnNo] = transaction.getUser().getUsername();
         array[bank_columnNo] = transaction.getAccount().getName();
         array[type_columnNo] = transaction.getType().toString();
         array[titles_columnNo] = transaction.getTitles().getName();

@@ -5,6 +5,7 @@ import model.entity.User;
 import utils.ImageIconUtil;
 
 import javax.swing.*;
+import java.awt.*;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -25,6 +26,7 @@ public class TopoForm extends JFrame {
         left_Panel.setBorder(BorderFactory.createTitledBorder("Welcome"));
         right_Panel = new JPanel();
         right_Panel.setBorder(BorderFactory.createTitledBorder(titles));
+        right_Panel.setSize(500,800);
 
         profile_Icon = new JLabel(ImageIconUtil.USER);
 
@@ -43,6 +45,13 @@ public class TopoForm extends JFrame {
         bankAccount_button.addActionListener(e -> {
             if (!Objects.equals(selectedButton, ButtonEnum.BANKACCOUNT)) {
                 selectedButton = ButtonEnum.BANKACCOUNT;
+                changeButton(selectedButton);
+            }
+        });
+        transactionAnalysis_button = new JButton("Analysis");
+        transactionAnalysis_button.addActionListener(e -> {
+            if (!Objects.equals(selectedButton, ButtonEnum.transactionAnalysis)) {
+                selectedButton = ButtonEnum.transactionAnalysis;
                 changeButton(selectedButton);
             }
         });
@@ -96,10 +105,10 @@ public class TopoForm extends JFrame {
                         .addComponent(timeToLogin)
                         .addComponent(profile_button, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
                         .addComponent(transaction_button, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(transactionAnalysis_button, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
                         .addComponent(bankAccount_button, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
                         .addComponent(titles_button, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(userForm_button, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
-                //                        .addComponent(refresh_button, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(userForm_button, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
                 )
                 .addGap(20)
         );
@@ -115,13 +124,13 @@ public class TopoForm extends JFrame {
                 .addGap(10)
                 .addComponent(transaction_button, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
                 .addGap(10)
+                .addComponent(transactionAnalysis_button, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
+                .addGap(10)
                 .addComponent(bankAccount_button, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
                 .addGap(10)
                 .addComponent(titles_button, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
                 .addGap(10)
                                 .addComponent(userForm_button, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
-                //                .addGap(20)
-                //                .addComponent(refresh_button, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
                 .addGap(50)
         );
 
@@ -223,6 +232,30 @@ public class TopoForm extends JFrame {
                 this.repaint();
                 this.validate();
                 break;
+            case transactionAnalysis:
+                right_Panel.setName("Analysis");
+                right_Panel.setBorder(BorderFactory.createTitledBorder("Transaction Analysis Form"));
+
+                if (TransactionAnalysisPanel == null) {
+                    TransactionAnalysisPanel = new TransactionAnalysisPanel();
+                    TransactionAnalysisPanel.fillForm(user);
+
+                } else {
+//                    TransactionAnalysisPanel.refresh_ButtonActionPreform();
+                }
+
+                JScrollPane scrollPane = new JScrollPane(TransactionAnalysisPanel);
+                scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+
+                scrollPane.setPreferredSize(new Dimension(792, 470));
+                scrollPane.setBorder(BorderFactory.createEmptyBorder());
+
+
+                TransactionAnalysisPanel.setVisible(true);
+                right_Panel.add(scrollPane);
+                this.repaint();
+                this.validate();
+                break;
 
         }
 
@@ -241,6 +274,7 @@ public class TopoForm extends JFrame {
     private ProfileManagementForm profileManagementForm = null;
     private TitlesManagementForm titlesManagementForm = null;
     private BankAccountManagementForm bankAccountManagementForm = null;
+    private TransactionAnalysisPanel TransactionAnalysisPanel = null;
     private TransactionManagementForm transactionManagementForm = null;
     private UserManagementForm userManagementForm = null;
 
@@ -256,6 +290,8 @@ public class TopoForm extends JFrame {
     private JButton transaction_button;
     private JButton titles_button;
     private JButton bankAccount_button;
+
+    private JButton transactionAnalysis_button;
     private JButton userForm_button;
     private JButton refresh_button;
 
@@ -268,7 +304,9 @@ public class TopoForm extends JFrame {
         TITLES,
         USER,
         TRANSACTION,
-        BANKACCOUNT;
+        BANKACCOUNT,
+
+        transactionAnalysis;
     }
 
 }

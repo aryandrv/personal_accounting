@@ -7,8 +7,11 @@ import model.entity.Transaction;
 import model.entity.User;
 import model.service.TransactionService;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.YearMonth;
 import java.util.List;
+import java.util.Map;
 
 import lombok.extern.log4j.Log4j;
 import model.service.TransactionService;
@@ -209,4 +212,14 @@ public class TransactionController {
         }
     }
 
+    public Map<String, Double> getMonthlyIncomeExpense(YearMonth yearMonth, int userId) {
+        return TransactionService.getService().getMonthlyIncomeExpense(yearMonth, userId);
+    }
+
+    public Map<String, Double> getIncomeExpenseByDateRange(int userId, LocalDate fromDate, LocalDate toDate) {
+        return TransactionService.getService().getIncomeExpenseByDateRange(userId, fromDate, toDate);
+    }
+
+
 }
+

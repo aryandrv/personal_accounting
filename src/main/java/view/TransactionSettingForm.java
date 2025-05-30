@@ -219,6 +219,7 @@ public class TransactionSettingForm extends JFrame {
                 .addGap(30)
         );
         pack();
+        setLocationRelativeTo(null);
 
     }
 

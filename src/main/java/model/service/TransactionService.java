@@ -4,8 +4,12 @@ import enums.TypeEnum;
 import model.entity.Transaction;
 import model.repository.TransactionRepository;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.YearMonth;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class TransactionService {
     private static TransactionService service = new TransactionService();
@@ -73,6 +77,31 @@ public class TransactionService {
             return transactionRepository.findByDateAndUserId(id,from,to);
         }
     }
+
+    public Map<String, Double> getMonthlyIncomeExpense(YearMonth yearMonth, int userId) {
+        try (TransactionRepository repo = new TransactionRepository()) {
+            return repo.getIncomeExpenseByMonth(yearMonth, userId);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Map<String, Double> emptyMap = new HashMap<>();
+            emptyMap.put("income", 0.0);
+            emptyMap.put("cost", 0.0);
+            return emptyMap;
+        }
+    }
+
+    public Map<String, Double> getIncomeExpenseByDateRange(int userId, LocalDate fromDate, LocalDate toDate) {
+        try (TransactionRepository repo = new TransactionRepository()) {
+            return repo.getIncomeExpenseByDateRange(userId, fromDate, toDate);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Map<String, Double> emptyMap = new HashMap<>();
+            emptyMap.put("income", 0.0);
+            emptyMap.put("cost", 0.0);
+            return emptyMap;
+        }
+    }
+
 
 
 }
