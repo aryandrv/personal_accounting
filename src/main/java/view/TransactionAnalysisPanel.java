@@ -1,6 +1,8 @@
 package view;
 
 import controller.TransactionController;
+import enums.TypeEnum;
+import model.entity.TitleSummary;
 import model.entity.User;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -14,11 +16,13 @@ import org.jfree.data.general.DefaultPieDataset;
 import org.jdesktop.swingx.JXDatePicker;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 public class TransactionAnalysisPanel extends JPanel {
@@ -32,8 +36,16 @@ public class TransactionAnalysisPanel extends JPanel {
     private JButton analyzeButton;
 
     private JPanel chartsContainer;  // پنلی که هر دو چارت رو نگه می‌داره
+    private JPanel titleAnalysisPanel;
 
     private User user;
+    private DefaultTableModel titleTableModel;
+    private JTable titleSummaryTable;
+    private JScrollPane titleTableScrollPane;
+    private ChartPanel pieChartIncomePanel;
+    private ChartPanel pieChartCostPanel;
+    private ChartPanel barChartIncomePanel;
+    private ChartPanel barChartCostPanel;
 
     public TransactionAnalysisPanel() {
         initComponent();
@@ -55,6 +67,32 @@ public class TransactionAnalysisPanel extends JPanel {
 
         chartsContainer = new JPanel();
         chartsContainer.setLayout(new BoxLayout(chartsContainer, BoxLayout.Y_AXIS));
+
+        titleAnalysisPanel = new JPanel();
+        titleAnalysisPanel.setLayout(new BorderLayout());
+
+        // جدول
+        titleTableModel = new DefaultTableModel(new String[]{"Title", "Type", "Amount", "Transaction Count"}, 0);
+        titleSummaryTable = new JTable(titleTableModel);
+        titleTableScrollPane = new JScrollPane(titleSummaryTable);
+
+        // پنل نمودارهای Titles دو در دو کنار هم
+        JPanel chartsGridPanel = new JPanel(new GridLayout(2, 2, 10, 10));
+        pieChartIncomePanel = new ChartPanel(null);
+        pieChartCostPanel = new ChartPanel(null);
+        barChartIncomePanel = new ChartPanel(null);
+        barChartCostPanel = new ChartPanel(null);
+
+        chartsGridPanel.add(pieChartIncomePanel);
+        chartsGridPanel.add(pieChartCostPanel);
+        chartsGridPanel.add(barChartIncomePanel);
+        chartsGridPanel.add(barChartCostPanel);
+
+        titleAnalysisPanel.add(chartsGridPanel, BorderLayout.CENTER);
+        titleAnalysisPanel.add(titleTableScrollPane, BorderLayout.SOUTH);
+
+        chartsContainer.add(Box.createRigidArea(new Dimension(0, 20)));
+        chartsContainer.add(titleAnalysisPanel);
     }
 
     private void drawGUI() {
@@ -92,7 +130,7 @@ public class TransactionAnalysisPanel extends JPanel {
                                 .addComponent(analyzeButton, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
                         )
                         .addGap(30)
-                        .addComponent(chartsContainer, GroupLayout.PREFERRED_SIZE, 850, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(chartsContainer, GroupLayout.PREFERRED_SIZE, 2000, GroupLayout.PREFERRED_SIZE)
                         .addGap(30)
         );
     }
@@ -130,6 +168,16 @@ public class TransactionAnalysisPanel extends JPanel {
         chartsContainer.add(barChartPanel);
         chartsContainer.add(Box.createRigidArea(new Dimension(0, 20))); // فاصله عمودی بین دو نمودار
         chartsContainer.add(pieChartPanel);
+
+        chartsContainer.add(Box.createRigidArea(new Dimension(0, 20))); // فاصله با نمودارهای اصلی
+        chartsContainer.add(titleAnalysisPanel);
+
+        try {
+            fillTitleSummaryByType(user, fromLocalDate, toLocalDate);
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error loading title summaries by type");
+        }
 
         chartsContainer.revalidate();
         chartsContainer.repaint();
@@ -183,5 +231,45 @@ public class TransactionAnalysisPanel extends JPanel {
         plot.setSectionPaint("Cost", new Color(255, 0, 0));
 
         return new ChartPanel(pieChart);
+    }
+
+    private void fillTitleSummaryByType(User user, LocalDate from, LocalDate to) throws Exception {
+        List<TitleSummary> summaries = TransactionController.getController()
+                .getTitleSummariesByType(user.getId(), from, to);
+
+        titleTableModel.setRowCount(0);
+
+        DefaultPieDataset pieIncomeDataset = new DefaultPieDataset();
+        DefaultPieDataset pieCostDataset = new DefaultPieDataset();
+
+        DefaultCategoryDataset barIncomeDataset = new DefaultCategoryDataset();
+        DefaultCategoryDataset barCostDataset = new DefaultCategoryDataset();
+
+        for (TitleSummary ts : summaries) {
+            titleTableModel.addRow(new Object[]{
+                    ts.getTitleName(),
+                    ts.getType(),
+                    String.format("%.2f", ts.getTotalAmount()),
+                    ts.getTransactionCount()
+            });
+
+            if (TypeEnum.INCOME.equals(ts.getType())) {
+                pieIncomeDataset.setValue(ts.getTitleName(), ts.getTotalAmount());
+                barIncomeDataset.addValue(ts.getTotalAmount(), TypeEnum.INCOME.toString(), ts.getTitleName());
+            } else if (TypeEnum.COST.equals(ts.getType())) {
+                pieCostDataset.setValue(ts.getTitleName(), ts.getTotalAmount());
+                barCostDataset.addValue(ts.getTotalAmount(), TypeEnum.COST.toString(), ts.getTitleName());
+            }
+        }
+
+        JFreeChart pieIncomeChart = ChartFactory.createPieChart("Income by Title", pieIncomeDataset, true, true, false);
+        JFreeChart pieCostChart = ChartFactory.createPieChart("Cost by Title", pieCostDataset, true, true, false);
+        JFreeChart barIncomeChart = ChartFactory.createBarChart("Income by Title", "Title", "Amount", barIncomeDataset);
+        JFreeChart barCostChart = ChartFactory.createBarChart("Cost by Title", "Title", "Amount", barCostDataset);
+
+        pieChartIncomePanel.setChart(pieIncomeChart);
+        pieChartCostPanel.setChart(pieCostChart);
+        barChartIncomePanel.setChart(barIncomeChart);
+        barChartCostPanel.setChart(barCostChart);
     }
 }

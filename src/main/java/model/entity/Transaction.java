@@ -25,6 +25,4 @@ public class Transaction {
     private String description;
     private LocalDateTime transactionDate;
 
-
-
 }

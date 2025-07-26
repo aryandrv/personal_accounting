@@ -1688,3 +1688,17 @@
 2025-05-31 02:59:12,338 [Thread-4] INFO  controller.TitlesController - find all by type TEST 
 2025-05-31 02:59:16,253 [main] INFO  controller.UserController - find by id TEST 
 2025-05-31 03:08:18,918 [main] INFO  controller.UserController - find by id TEST 
+2025-05-31 03:13:47,605 [main] INFO  controller.UserController - find by id TEST 
+2025-05-31 03:14:29,401 [main] INFO  controller.UserController - find by id TEST 
+2025-05-31 22:47:02,953 [main] INFO  controller.UserController - find by id TEST 
+2025-05-31 22:48:58,906 [AWT-EventQueue-0] INFO  controller.TitlesController - find all TEST 
+2025-05-31 23:45:33,193 [main] INFO  controller.UserController - find by id TEST 
+2025-05-31 23:46:32,425 [main] INFO  controller.UserController - find by id TEST 
+2025-05-31 23:48:51,316 [main] INFO  controller.UserController - find by id TEST 
+2025-05-31 23:52:36,264 [main] INFO  controller.UserController - find by id TEST 
+2025-05-31 23:56:31,055 [main] INFO  controller.UserController - find by id TEST 
+2025-06-01 00:08:50,483 [main] INFO  controller.UserController - find by id TEST 
+2025-06-01 00:16:48,713 [main] INFO  controller.UserController - find by id TEST 
+2025-06-01 00:18:58,435 [main] INFO  controller.UserController - find by id TEST 
+2025-06-01 00:19:28,354 [main] INFO  controller.UserController - find by id TEST 
+2025-06-05 12:39:21,787 [main] INFO  controller.UserController - find by id TEST 

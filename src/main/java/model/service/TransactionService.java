@@ -1,6 +1,7 @@
 package model.service;
 
 import enums.TypeEnum;
+import model.entity.TitleSummary;
 import model.entity.Transaction;
 import model.repository.TransactionRepository;
 
@@ -99,6 +100,15 @@ public class TransactionService {
             emptyMap.put("income", 0.0);
             emptyMap.put("cost", 0.0);
             return emptyMap;
+        }
+    }
+
+    public List<TitleSummary> getTitleSummariesByType(int userId, LocalDate from, LocalDate to) throws Exception {
+        try (TransactionRepository repo = new TransactionRepository()) {
+            return repo.getTitleSummariesByType(userId, from, to);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         }
     }
 

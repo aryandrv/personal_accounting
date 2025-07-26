@@ -1,10 +1,7 @@
 package model.repository;
 
 import enums.TypeEnum;
-import model.entity.Account;
-import model.entity.Titles;
-import model.entity.Transaction;
-import model.entity.User;
+import model.entity.*;
 import model.repository.impl.Repository;
 import model.repository.tools.JdbcProvider;
 
@@ -450,6 +447,72 @@ public class TransactionRepository implements Repository<Transaction>, AutoClose
             result.put("cost", 0.0);
         }
 
+        return result;
+    }
+
+    public List<TitleSummary> getTitleSummaries(int userId, LocalDate fromDate, LocalDate toDate) throws Exception {
+        String sql = "SELECT TL.ID as title_id, TL.NAME as title_name, " +
+                "SUM(TR.AMOUNT) as total_amount, COUNT(*) as transaction_count " +
+                "FROM TRANSACTION_TBL TR " +
+                "JOIN TITLES_TBL TL ON TR.TITLES_ID = TL.ID " +
+                "WHERE TR.USER_ID = ? AND TR.TRANSACTIONDATE BETWEEN TO_DATE(?, 'YYYY-MM-DD') AND TO_DATE(?, 'YYYY-MM-DD') " +
+                "GROUP BY TL.ID, TL.NAME " +
+                "HAVING SUM(TR.AMOUNT) <> 0 " +
+                "ORDER BY total_amount DESC";
+
+        List<TitleSummary> result = new ArrayList<>();
+
+        try (Connection conn = JdbcProvider.getJdbcProvider().getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setInt(1, userId);
+            ps.setString(2, fromDate.toString());
+            ps.setString(3, toDate.toString());
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                TitleSummary ts = new TitleSummary();
+                ts.setTitleId(rs.getInt("title_id"));
+                ts.setTitleName(rs.getString("title_name"));
+                ts.setTotalAmount(rs.getDouble("total_amount"));
+                ts.setTransactionCount(rs.getInt("transaction_count"));
+                result.add(ts);
+            }
+        }
+        return result;
+    }
+
+    public List<TitleSummary> getTitleSummariesByType(int userId, LocalDate fromDate, LocalDate toDate) throws Exception {
+        connection = JdbcProvider.getJdbcProvider().getConnection();
+
+        String sql = "SELECT TL.ID as title_id, TL.NAME as title_name, TR.TYPE as type, " +
+                "SUM(TR.AMOUNT) as total_amount, COUNT(*) as transaction_count " +
+                "FROM TRANSACTION_TBL TR " +
+                "JOIN TITLES_TBL TL ON TR.TITLES_ID = TL.ID " +
+                "WHERE TR.USER_ID = ? AND TR.TRANSACTIONDATE BETWEEN TO_DATE(?, 'YYYY-MM-DD') AND TO_DATE(?, 'YYYY-MM-DD') " +
+                "GROUP BY TL.ID, TL.NAME, TR.TYPE " +
+                "HAVING SUM(TR.AMOUNT) <> 0 " +
+                "ORDER BY TL.NAME, TR.TYPE";
+
+        List<TitleSummary> result = new ArrayList<>();
+
+        preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setInt(1, userId);
+        preparedStatement.setString(2, fromDate.toString());
+        preparedStatement.setString(3, toDate.toString());
+
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                TitleSummary ts = new TitleSummary();
+                ts.setTitleId(rs.getInt("title_id"));
+                ts.setTitleName(rs.getString("title_name"));
+                ts.setType(TypeEnum.toEnum(rs.getString("type")));
+                ts.setTotalAmount(rs.getDouble("total_amount"));
+                ts.setTransactionCount(rs.getInt("transaction_count"));
+                result.add(ts);
+            }
         return result;
     }
 

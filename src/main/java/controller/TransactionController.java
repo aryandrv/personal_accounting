@@ -1,10 +1,7 @@
 package controller;
 
 import enums.TypeEnum;
-import model.entity.Account;
-import model.entity.Titles;
-import model.entity.Transaction;
-import model.entity.User;
+import model.entity.*;
 import model.service.TransactionService;
 
 import java.time.LocalDate;
@@ -218,6 +215,9 @@ public class TransactionController {
 
     public Map<String, Double> getIncomeExpenseByDateRange(int userId, LocalDate fromDate, LocalDate toDate) {
         return TransactionService.getService().getIncomeExpenseByDateRange(userId, fromDate, toDate);
+    }
+    public List<TitleSummary> getTitleSummariesByType(int userId, LocalDate from, LocalDate to) throws Exception {
+        return TransactionService.getService().getTitleSummariesByType(userId, from, to);
     }
 
 
