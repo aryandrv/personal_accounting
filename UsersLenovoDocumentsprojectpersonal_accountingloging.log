@@ -1702,3 +1702,29 @@
 2025-06-01 00:18:58,435 [main] INFO  controller.UserController - find by id TEST 
 2025-06-01 00:19:28,354 [main] INFO  controller.UserController - find by id TEST 
 2025-06-05 12:39:21,787 [main] INFO  controller.UserController - find by id TEST 
+2025-07-26 23:26:24,419 [main] INFO  controller.UserController - find by id TEST 
+2025-07-28 00:41:38,478 [main] INFO  controller.UserController - find by id TEST 
+2025-07-28 00:46:09,099 [AWT-EventQueue-0] INFO  controller.AccountController - find all by user_id TEST 
+2025-07-28 00:46:16,938 [main] INFO  controller.UserController - find by id TEST 
+2025-07-28 01:14:35,099 [main] INFO  controller.UserController - find by id TEST 
+2025-07-28 01:17:16,312 [main] INFO  controller.UserController - find by id TEST 
+2025-07-28 01:20:14,501 [main] INFO  controller.UserController - find by id TEST 
+2025-07-28 01:24:38,521 [main] INFO  controller.UserController - find by id TEST 
+2025-07-28 01:33:21,006 [main] INFO  controller.UserController - find by id TEST 
+2025-07-28 01:34:39,173 [main] INFO  controller.UserController - find by id TEST 
+2025-07-28 01:37:26,307 [main] INFO  controller.UserController - find by id TEST 
+2025-07-28 01:38:26,563 [main] INFO  controller.UserController - find by id TEST 
+2025-07-28 01:44:47,041 [main] INFO  controller.UserController - find by id TEST 
+2025-07-28 01:45:33,496 [Thread-4] INFO  controller.TransactionController - find all by user_id TEST 
+2025-07-28 01:45:33,536 [Thread-4] INFO  controller.AccountController - find all by user_id TEST 
+2025-07-28 01:45:33,547 [Thread-4] INFO  controller.TitlesController - find all by type TEST 
+2025-07-28 01:45:36,193 [Thread-5] INFO  controller.AccountController - find all by user_id TEST 
+2025-07-28 01:45:36,201 [Thread-5] INFO  controller.TitlesController - find all by type TEST 
+2025-07-28 01:46:09,154 [AWT-EventQueue-0] INFO  controller.TitlesController - find all by type TEST 
+2025-07-28 01:46:32,791 [AWT-EventQueue-0] INFO  controller.TitlesController - find all by type TEST 
+2025-07-28 01:46:46,677 [AWT-EventQueue-0] INFO  controller.TitlesController - find by name TEST 
+2025-07-28 01:46:46,845 [AWT-EventQueue-0] INFO  controller.TransactionController - save TEST 
+2025-07-28 01:46:47,037 [AWT-EventQueue-0] INFO  controller.AccountController - edit TEST 
+2025-07-28 01:46:48,466 [Thread-6] INFO  controller.TransactionController - find all by user_id TEST 
+2025-07-28 01:46:48,491 [Thread-6] INFO  controller.AccountController - find all by user_id TEST 
+2025-07-28 01:46:48,496 [Thread-6] INFO  controller.TitlesController - find all by type TEST 

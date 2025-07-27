@@ -63,13 +63,15 @@ public class TransactionAnalysisPanel extends JPanel {
         toDatePicker.setFormats(new SimpleDateFormat("yyyy-MM-dd"));
 
         analyzeButton = new JButton("Analyze");
-        analyzeButton.addActionListener(e -> fillForm(user));
+        analyzeButton.addActionListener(e -> analyze_ButtonActionPreform());
 
         chartsContainer = new JPanel();
         chartsContainer.setLayout(new BoxLayout(chartsContainer, BoxLayout.Y_AXIS));
 
         titleAnalysisPanel = new JPanel();
-        titleAnalysisPanel.setLayout(new BorderLayout());
+//        titleAnalysisPanel.setLayout(new BorderLayout());
+        titleAnalysisPanel.setLayout(new BoxLayout(titleAnalysisPanel, BoxLayout.Y_AXIS));
+        titleAnalysisPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
         // جدول
         titleTableModel = new DefaultTableModel(new String[]{"Title", "Type", "Amount", "Transaction Count"}, 0);
@@ -89,6 +91,7 @@ public class TransactionAnalysisPanel extends JPanel {
         chartsGridPanel.add(barChartCostPanel);
 
         titleAnalysisPanel.add(chartsGridPanel, BorderLayout.CENTER);
+        titleAnalysisPanel.add(Box.createRigidArea(new Dimension(0, 30))); // 30px فاصله
         titleAnalysisPanel.add(titleTableScrollPane, BorderLayout.SOUTH);
 
         chartsContainer.add(Box.createRigidArea(new Dimension(0, 20)));
@@ -139,8 +142,11 @@ public class TransactionAnalysisPanel extends JPanel {
         this.user = user;
     }
 
-    public void fillForm(User user) {
+    public void fillform(User user){
         this.user = user;
+    }
+
+    private void analyze_ButtonActionPreform() {
 
         Date fromDate = fromDatePicker.getDate();
         Date toDate = toDatePicker.getDate();
@@ -257,7 +263,8 @@ public class TransactionAnalysisPanel extends JPanel {
                 pieIncomeDataset.setValue(ts.getTitleName(), ts.getTotalAmount());
                 barIncomeDataset.addValue(ts.getTotalAmount(), TypeEnum.INCOME.toString(), ts.getTitleName());
             } else if (TypeEnum.COST.equals(ts.getType())) {
-                pieCostDataset.setValue(ts.getTitleName(), ts.getTotalAmount());
+                double positiveAmount = Math.abs(ts.getTotalAmount());
+                pieCostDataset.setValue(ts.getTitleName(), positiveAmount);
                 barCostDataset.addValue(ts.getTotalAmount(), TypeEnum.COST.toString(), ts.getTitleName());
             }
         }
@@ -271,5 +278,7 @@ public class TransactionAnalysisPanel extends JPanel {
         pieChartCostPanel.setChart(pieCostChart);
         barChartIncomePanel.setChart(barIncomeChart);
         barChartCostPanel.setChart(barCostChart);
+
     }
+
 }

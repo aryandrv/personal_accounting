@@ -238,7 +238,7 @@ public class TopoForm extends JFrame {
 
                 if (TransactionAnalysisPanel == null) {
                     TransactionAnalysisPanel = new TransactionAnalysisPanel();
-                    TransactionAnalysisPanel.fillForm(user);
+                    TransactionAnalysisPanel.fillform(user);
 
                 } else {
 //                    TransactionAnalysisPanel.refresh_ButtonActionPreform();
